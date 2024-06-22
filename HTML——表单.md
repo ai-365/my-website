@@ -1,4 +1,3 @@
-# HTML表单
 
 制作一个表单至少需要三个元素： from、input、button。
 
