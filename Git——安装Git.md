@@ -1,4 +1,4 @@
-<p style="font-size:30px;">安装Git</p>
+
 
 ### 命令行工具和图形界面的选择
 
