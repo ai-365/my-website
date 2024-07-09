@@ -1,3 +1,10 @@
+本文内容：
+- 快速启动静态文件服务器
+- 使用FastAPI实现HTTP服务器
+- 使用requests模块发送请求
+- 在flask中构造json响应体
+- 使用jinja2渲染HTML
+
 ###   快速启动静态文件服务器
 
 
