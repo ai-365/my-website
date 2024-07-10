@@ -6,4 +6,3 @@ show_excerpts: true
 header_pages:
   - Python/index.md
   - JavaScript/index.md
-  - 'React Native'/index.md
