@@ -4,5 +4,5 @@ author: "  "
 theme: minima
 show_excerpts: true
 header_pages:
-  - 随笔.md
-  - Python/index.md
+  - '随笔.md'
+  - 'Python/index.md'
