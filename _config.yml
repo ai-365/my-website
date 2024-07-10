@@ -4,5 +4,4 @@ author: "  "
 theme: minima
 show_excerpts: true
 header_pages:
-  - Python
-  - JavaScript
+  - about.md
