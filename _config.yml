@@ -4,5 +4,5 @@ author: "  "
 theme: minima
 show_excerpts: true
 header_pages:
-  - Python/index.md
-  - JavaScript/index.md
+  - Python
+  - JavaScript
