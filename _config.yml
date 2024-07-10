@@ -5,4 +5,4 @@ theme: minima
 show_excerpts: true
 header_pages:
   - about.md
-  - "Python/index.md"
+  - Python/index.md
