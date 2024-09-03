@@ -2,7 +2,7 @@
 
 <a style="position: fixed;top:100px;left:-20px;" href="#top">回到顶部</a>
 
-# PowerShell
+<p style="font-size: 36px; font-weight: bolder;">PowerShell</p>
 
 - [别名](#别名)
 - [获取内置别名：Get-Alias](#获取内置别名get-alias)
