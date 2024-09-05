@@ -1,6 +1,17 @@
-Jinja2是一种模板语言，类似于 f 字符串或者format()函数，广泛运用于网页变量的渲染。
 
-###   基本使用
+
+<p id="top"></p>
+
+<a style="position: fixed;top:100px;left:-20px;" href="#top">回到顶部</a>
+
+- [渲染模板字符串](#渲染模板字符串)
+- [渲染模板HTML](#渲染模板html)
+- [使用flask和jinja2渲染模板HTML](#使用flask和jinja2渲染模板html)
+
+
+Jinja2是一种模板语言，类似于 f 字符串或者format()函数，可以将包含变量的字符串或HTML模板文件渲染成最终的文本。
+
+##   渲染模板字符串
 
 ```
 from jinja2 import Template
@@ -11,11 +22,7 @@ template.render(name='John Doe')
 
 通过创建一个 Template 的实例，你会得到一个新的模板对象，提供一 个名为 render() 的方法，该方法在有字典或关键字参数时调用 扩充模板。字典或关键字参数会被传递到模板，即模板“上下文”。
 
-对象字典变量，可以这样写：
-{{ foo.bar }}
-{{ foo['bar'] }}
-
-###  渲染HTML
+##  渲染模板HTML
 
 首先创建一个HTML文件，将需要解析的变量使用双花括号包裹，示例如下：
 
@@ -60,3 +67,32 @@ print(html)
 </html>
 
 ```
+
+
+##   使用flask和jinja2渲染模板HTML
+
+在使用模板引擎（如Jinja2）构建动态网页时 ，列表数据常被用来生成表格、列表项等重复结构。例如下面的HTML模板文件：
+
+```
+<!-- users.html -->
+<ul>
+{% for user in users %}
+  <li>{{ user.name }} (ID: {{ user.id }})</li>
+{% endfor %}
+</ul>
+```
+
+在flask后端：
+
+```
+from flask import render_template
+
+@app.route('/users')
+def show_users():
+    users = [
+        {'id': 1, 'name': 'Alice'},
+        {'id': 2, 'name': 'Bob'},
+    ]
+    return render_template('users.html', users=users)
+```
+

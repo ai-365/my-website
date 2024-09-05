@@ -1,9 +1,14 @@
-本文内容：
-- 快速启动静态文件服务器
-- 使用FastAPI实现HTTP服务器
-- 使用requests模块发送请求
-- 在flask中构造json响应体
-- 使用jinja2渲染HTML
+
+
+<p id="top"></p>
+
+<a style="position: fixed;top:100px;left:-20px;" href="#top">回到顶部</a>
+
+- [快速启动静态文件服务器](#快速启动静态文件服务器)
+- [使用FastAPI实现HTTP服务器](#使用fastapi实现http服务器)
+- [使用requests模块发送请求](#使用requests模块发送请求)
+- [在flask中构造json响应体](#在flask中构造json响应体)
+
 
 ###   快速启动静态文件服务器
 
@@ -14,7 +19,7 @@
 python -m http.server 65000
 ```
 
-### 使用FastAPI实现HTTP服务器
+###   使用FastAPI实现HTTP服务器
 
 FastAPI是Python 的第三方库，用于实现HTTP服务器。如下是一个简单的示例：
 
@@ -107,29 +112,3 @@ def get_users():
     return jsonify(users=users)
 ```
 
-###   使用jinja2渲染HTML
-
-在使用模板引擎（如Jinja2）构建动态网页时 ，列表数据常被用来生成表格、列表项等重复结构。例如，渲染用户列表为HTML：
-
-```
-<!-- users.html -->
-<ul>
-{% for user in users %}
-  <li>{{ user.name }} (ID: {{ user.id }})</li>
-{% endfor %}
-</ul>
-```
-
-在Python后端：
-
-```
-from flask import render_template
-
-@app.route('/users')
-def show_users():
-    users = [
-        {'id': 1, 'name': 'Alice'},
-        {'id': 2, 'name': 'Bob'},
-    ]
-    return render_template('users.html', users=users)
-```

@@ -1,4 +1,19 @@
-本文主要讲解Pandas的常见用法
+
+<p id="top"></p>
+
+<a style="position: fixed;top:100px;left:-20px;" href="#top">回到顶部</a>
+
+
+- [读取CSV](#读取csv)
+- [排序](#排序)
+- [拼接](#拼接)
+- [与numpy结合](#与numpy结合)
+- [行列名称](#行列名称)
+- [条件筛选](#条件筛选)
+- [缺失值处理](#缺失值处理)
+- [loc和iloc](#loc和iloc)
+- [删除列](#删除列)
+
 
 ###  读取CSV
 
@@ -14,14 +29,17 @@ pd.read_csv(路径，encoding="utf-8")
 - dtype： 列的数据类型
 
 写入CSV文件：
+
 ```
 pd.to_csv(路径)
 ```
 
 写入Excel：
+
 ```
 pd.to_excel(路径)
 ```
+
 ###  排序
 
 
@@ -33,13 +51,14 @@ ascending=False 表示逆序
 
 ###  拼接
 
-
 纵向堆叠：
+
 ```
 concat（[df1,df2], axis=0）
 ```
 
 横向拼接：
+
 ```
 concat（[df1,df2], axis=1）
 ```
