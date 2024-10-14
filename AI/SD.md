@@ -1,4 +1,6 @@
+<p id="top"></p>
 
+<a style="position: fixed;top:100px;left:-20px;" href="#top">回到顶部</a>
 - [Stable Diffusion](#stable-diffusion)
   - [SD的发布时间](#sd的发布时间)
   - [SDXL简介](#sdxl简介)
@@ -6,8 +8,10 @@
   - [从 U-Net 到Transformer](#从-u-net-到transformer)
   - [隐空间的作用](#隐空间的作用)
   - [SD应用的主要文件夹](#sd应用的主要文件夹)
-- [repeat、epoch、batch\_size](#repeatepochbatch_size)
-- [SD提示词](#sd提示词)
+- [LoRA训练](#lora训练)
+  - [repeat、epoch、batch\_size的区别](#repeatepochbatch_size的区别)
+  - [打tag](#打tag)
+- [提示词](#提示词)
   - [增大或减小权重的语法](#增大或减小权重的语法)
   - [组合语法](#组合语法)
   - [隔离语法](#隔离语法)
@@ -41,13 +45,23 @@ SDXL 就是 SD 的升级版，图片生成的效果更好、更逼真、分辨�
 
 重点关注几个文件夹： checkpoint 大模型文件夹 、 embeddings 向量化、Lora微调、VAE变分自编码器、 ControlNet插件、Custom Nodes 自定义节点
 
-##   repeat、epoch、batch_size
+
+
+## LoRA训练
+
+###   repeat、epoch、batch_size的区别
 
 ![repeat、epoch、batch_size](img/repeat、epoch、batch_size.png)
 
-## SD提示词
 
-### 增大或减小权重的语法
+###  打tag
+
+如果是未来可以灵活调整的特征，都必须把tag打清楚。如果是固化在模型里面的特征，都不要去打tag。例如，如果希望头发颜色可以自定义，则必须写明 red hair ，如果不写明，将来AI会认为“人类的头发就是红色的”，将来所有生成的图片都将是红色头发。
+
+
+##  提示词
+
+###  增大或减小权重的语法
 
 权重语法使用括号包裹。(a:n)中，a为提示词，n为权重，n大于1则增加权重，n小于1则减少权重。一般n取0.3到1.5之间。
 
