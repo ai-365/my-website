@@ -8,7 +8,7 @@
 - [gnome-tweaks](#gnome-tweaks)
 - [中文输入法](#中文输入法)
 - [文档资源管理器](#文档资源管理器)
-- [virtualbox](#virtualbox)
+- [VirtualBox](#virtualbox)
 - [U盘启动器](#u盘启动器)
 - [openbox安装Manjaro-kde](#openbox安装manjaro-kde)
 - [文档资源管理器](#文档资源管理器-1)
@@ -225,7 +225,7 @@ pacman/yay  apt  yum/dnf  fluthub
 
 manjaro可以自由选择桌面环境。地址：https://manjaro.org/download/
 
-## virtualbox
+## VirtualBox
 
 去  https://www.virtualbox.org/  下载。
 
