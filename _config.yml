@@ -1,0 +1,14 @@
+title: Personal Blog
+description: "  "
+author: "  "
+theme: minima
+show_excerpts: true
+header_pages:
+  - 随笔.md
+  - Python/index.md
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      title: "标题"
