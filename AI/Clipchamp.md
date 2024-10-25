@@ -1,6 +1,6 @@
 <h1 id="top" style="font-size:40px;">Clipchamp</h1>
 
-<p><a style="position:fixed; " href="#top">回到顶部</a></p>
+<p><a style="position:fixed; left: -20px;" href="#top">回到顶部</a></p>
 
 
 
