@@ -6,3 +6,5 @@ show_excerpts: true
 header_pages:
   - 随笔.md
   - Python/index.md
+plugins:
+  - "jekyll-toc"
