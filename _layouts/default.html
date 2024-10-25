@@ -1,19 +1,31 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="./style.css">
-  </head>
-  <body>
-    <nav>
-      <a href="/blog">Home首页</a>
-    </nav>
-    <section>
-      {{ content }}
-    </section>
-    <footer>
-      &copy; to me
-    </footer>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <title>{{ page.title }}</title>
+  <!-- <link rel="stylesheet" href="./style.css"> -->
+</head>
+
+<body>
+  <nav>
+    <a href="/blog">Home首页</a>
+  </nav>
+  <section>
+    {{ content }}
+  </section>
+  <footer>
+    &copy; to me
+  </footer>
+  <style>
+    h1 {
+      color: red;
+    }
+
+    h2 {
+      color: blue;
+    }
+  </style>
+</body>
+
 </html>
