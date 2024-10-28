@@ -1,9 +1,7 @@
 
 - [AI](AI/index.md)
 
-
-
-- [Linux](Linux/index.md)
+- [Linux](Linux.md)
 
 - [Python](Python.md)
 
