@@ -5,6 +5,15 @@
   h2{
     background: pink;
   }
+
+  
+h2::before {
+  content: "H2";
+  position:absolute;
+  right: 50px;
+  opacity: 30%;
+}
+
   h3{
     background: lightblue;
   }
@@ -41,6 +50,7 @@
     - [字重（加粗）](#字重加粗)
     - [倾斜](#倾斜)
     - [文本阴影](#文本阴影)
+    - [文字前缀](#文字前缀)
   - [段落样式](#段落样式)
     - [首行缩进：text-indent](#首行缩进text-indent)
     - [文本对齐：text-align](#文本对齐text-align)
@@ -708,7 +718,14 @@ font-style: italic;
 
 这表示阴影颜色为浅蓝，阴影向下向右均偏移半个字号。
 
+### 文字前缀
 
+如果需要加文字前缀，使用::before，示例：
+
+```
+h2::before {
+  content: "H2";
+```
 
 ##  段落样式
 
