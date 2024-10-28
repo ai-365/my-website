@@ -17,6 +17,9 @@
 - [浮动](#浮动)
 - [Electron](#electron)
 - [WebSocket](#websocket)
+- [Socket](#socket)
+- [Web API](#web-api)
+- [React](#react)
 
 
 # DOM 
@@ -2765,3 +2768,729 @@ WebSocket客户端使用浏览器实现，示例如下：
 
 示例中的ws是客户端对象，ws.send()表示发送数据到服务器。ws.onmessage监听服务器的消息，并指定如何处理消息。
 
+# Socket
+
+## Socket通信
+
+### Socket服务端：Node.js net 模块实现
+Socket通信的服务端代码示例如下：
+
+```
+const net = require('net')
+const server = net.createServer()
+
+// 监听客户端的连接
+server.on("connection", client => {
+
+    // 监听客户端的消息：data事件
+    client.on("data", data => {
+        console.log(data.toString().trim())
+
+        // 发送给客户端
+        client.write('服务器已收到')
+    })
+})
+server.listen(8888, () => console.log('服务器已启动'))
+```
+
+### Socket客户端：Node.js net模块实现
+
+Socket通信的客户端使用Node.js实现，代码如下：
+
+```
+const net = require('net')
+const client = net.createConnection({host:'127.0.0.1',port:8888})
+
+// 监听客户端命令行的输入：data事件，发送给服务端
+process.stdin.on('data',data=>client.write(data.toString()))
+
+// 监听服务端的消息：data事件
+client.on('data',data=>console.log(data.toString().trim()))
+```
+
+
+# Web API
+
+## 位置
+要获取设备的位置和速度，可以通过navigator.geoloaction.getCurrentPosition()方法，通过解析回调函数的参数可以得到经度、纬度、设备前进方向和速度，示例如下：
+
+```
+<script>
+        navigator.geolocation.getCurrentPosition(position=>{
+                // 经度
+                console.log('经度', position.coords.latitude)
+                // 纬度
+                console.log('纬度', position.coords.longitude)
+        
+        })
+</script>
+```
+
+##  桌面通知
+
+可以直接调用Notification()函数即可创建一条通知，代码示例如下：
+
+```
+<script>
+        new Notification( 'Title', {body:'content', icon:'notice.png'} )
+</script>
+```
+
+不过，需要注意两点：
+-  不能直接以本地文件运行，要以服务器形式运行
+-  需要手动允许通知权限
+
+首先，点击浏览器链接左边的标记，点击“此网站的权限”。
+
+![通知权限](../img/通知权限.png)
+
+找到通知那一栏，设置为“允许”。
+
+![通知权限2](../img/通知权限2.png)
+
+这样，就可以看到桌面通知了。
+
+
+
+##  Local Storage
+
+要在浏览器本地存储数据，可以使用cookie、local storage、session storage，这三种对象的区别如下：
+- cookie： 最古老的方式，使用特定的格式字符串存储和传输本地数据。
+- local storage： 持久化的本地存储，在关闭浏览器后依然有效。
+- session storage： 临时的本地存储，在关闭窗口后删除。
+
+下面讲解localStorage对象的使用方法。
+
+要存储键值对，使用setItem()方法：
+
+```
+localStorage.setItem(key, value)
+```
+
+也可以直接使用点号语法：
+
+```
+localStorage.key = value
+```
+
+使用getItem()方法读取键对应的值：
+
+```
+localStorage.getItem(key)
+```
+
+也可以直接使用点号语法：
+
+```
+console.log(localStorage.key)
+```
+
+使用removeItem()方法可以删除键值对：
+
+```
+localStorage.removeItem(key)
+```
+
+使用clear()方法可以清空所有本地存储的键值对：
+
+```
+localStorage.clear()
+```
+
+
+##   postMessage()
+
+postMessage()方法用于主页面向子页面发送消息。
+
+首先，在需要发送消息的源窗口中，通过 iframe 标签嵌入另一个窗口，然后，iframe元素调用postMessage()方法发送消息，主页面main.html的代码如下：
+
+```html
+<h1>main page</h1>
+<!-- 嵌入sub.html -->
+<iframe src="sub.html" id="sub"><iframe>   
+
+<script>
+        // 向sub.html发送消息
+        document.querySelector('#sub').contentWindow.postMessage('message from main page!')
+</script>
+```
+
+然后，在子页面sub.html就可以监听消息：
+
+```html
+<h2>sub page</h2>
+<script>
+window.onmessage=e=> document.body+=e.data
+</script>
+```
+
+
+
+##  自定义事件
+
+大部分情况下，我们都是使用的浏览器提供的默认事件，这些事件都由用户触发，如鼠标单击、键盘按键。其实，可以自定义事件。
+
+要创建自定义事件，使用如下方式定义一个事件对象event，事件名称是myevent，注意事件对象和事件名称概念要区分，不要搞混了。
+
+```
+const event = document.createEvent("CustomEvent")
+event.initCustomEvent("myevent", true, false, "event happened!")
+```
+
+上面的示例中，initCustomEvent的四个参数的含义是：
+- 自定义事件的名称，如示例中的myevent
+- 事件是否冒泡
+- 事件是否可以取消
+- 任意值，作为事件传递的detail数据。
+
+定义好事件后，任意的HTML元素都可以订阅这个事件了：
+
+```js
+document.addEventListener("myevent",event=>console.log(event.detail))
+```
+
+然后，使用disPatchEvent()函数触发：
+
+```js
+document.dispatchEvent(event)
+```
+
+该示例的完整代码如下：
+
+```js
+<script>
+const event = document.createEvent("CustomEvent")
+event.initCustomEvent("myevent", true, false, "event happened!")
+
+document.addEventListener("myevent",event=>console.log(event.detail))
+document.dispatchEvent(event)
+</script>
+```
+
+##   Style API
+
+可以使用JavaScript操作样式，包括内联样式和外部样式表。
+
+如果属性名称是一个单词，在HTML元素中的style属性名称就是JavaScript设置的style属性名称。
+
+```js
+document.querySelector('p').color='red'
+document.querySelector('p').display='inline'
+```
+
+如果在HTML中，元素的style属性里面的样式名称是用两个单词用连字符连接，例如background-color，那么在JavaScript中的style属性名称为backgroundColor，而不是background-color。例如：
+
+```
+document.querySelector('p').backgroundColor='red'
+document.querySelector('p').fontSize='20px'
+```
+
+还有一点要注意，JavaScript操作的样式值都必须是字符串，例如颜色值是'#ffffff'，而不是#ffffff。再比如字体大小应该写成'20px'，写成20px、20、'20'都是错误的。
+
+可以使用JavaScript引入外部的CSS文件，示例如下：
+
+```
+const link = document.createElement('link')
+link.rel='stylesheet'
+link.href='custom.css'
+document.head.append(link)
+```
+
+className设置或返回HTML中class属性的值，是一个字符串。classList是一个包含class名称的类数组对象。
+
+```
+<p class="aaa bbb">
+<script>
+const p = document.querySelector('p')
+console.log(p.className)  // 'aaa bbb'
+p.classList.add('ccc')
+p.classList.remove('aaa')
+console.log(p.className)  // 'bbb ccc'
+console.log(p.classList.length)
+console.log(…p)
+</script>
+```
+
+
+
+## URL API
+
+浏览器和Node.js都有一个全局类型URL，使用new URL可以新建一个url实例，便于对链接进行解析。
+
+new URL()的第一个参数可以是绝对路径或相对路径，如下是一个绝对路径示例：
+
+```
+let url = new URL("https://example.com:8000/path/file.txt?key=value")
+```
+
+如果是相对路径，则必须将主机名和端口作为第二个参数：
+
+```
+let url = new URL("/path/file.txt?key=value", "https://example.com:8000")
+```
+
+生成了url对象后，就可以得到各个部分了，包括：
+
+- url.href： 完整链接，例如https://example.com:8000/path/file.txt?key=value。
+- url.host：主机名和端口，例如example.com:8000。
+- url.protocol： 协议，例如https。
+- url.port：端口，例如8000。
+- url.host：主机名，例如example.com。
+- url.pathname：路径，例如/path/file.txt。
+- url.searchParams：查询参数对象。
+
+查询参数对象url.searchParams是一个包含键值对的对象，可以获取、设置、添加、删除键值对。例如：
+
+```
+// 获取键对应的值：
+url.searchParams.get("key") 
+// 修改键的值：
+url.searchParams.set("key","newValue")
+// 查看是否存在某个键：
+url.searchParams.has("key")
+// 添加一个键值对：
+url.searchParams.append("ke2","value2")
+// 删除一个键值对：
+url.searchParams.delete("ke2","value2")
+```
+
+另外，很多时候需要对链接中的中文字符或空格字符进行编解码，这主要用到两个内置函数：
+
+- encodeURI()	：	将非ASCII字符编码成机器可读的字符。
+- decodeURI()	：	将ASCII反转成人类可读的字符。
+
+这两个函数的用法示例如下：
+
+```js
+console.log(encodeURI('你好 世界'))  
+// out： %E4%BD%A0%E5%A5%BD%20%E4%B8%96%E7%95%8C
+//  20%表示空格
+
+console.log(decodeURI('%E4%BD%A0%E5%A5%BD%20%E4%B8%96%E7%95%8C'))
+// out： 你好 世界
+```
+
+
+
+## 定时器API
+
+JavaScript定时器API可以延迟执行、循环执行另一个函数，有三种方法：setTimeout() 、 setInterval() 、 requestAnimationFrame() 。
+
+###  setTimeout()
+setTimeout()的作用是在一定延时之后执行某个函数。它接受两个参数，第一个参数是函数名称，也可以是箭头函数，第二个参数是延迟的时间，单位为毫秒。
+
+如下示例先定义了要执行的函数，然后将函数名称传给setTimeout()，注意，函数名称后面不可以加括号。
+
+```
+function foo(){
+        console.log('2秒后')
+}
+setTimeout(foo, 2000)
+```
+
+上述示例在Node.js环境下也同样适用。
+
+### setInterval()
+
+setInterval()的作用是按照给定的时间间隔重复执行一个函数。它接受两个参数，第一个参数是函数名称，也可以是箭头函数，第二个参数是间隔时间，单位为毫秒。
+
+可以使用clearInterval()函数取消定时。只需要将setInterval()赋给一个变量，如果要取消定时，将该变量传给clearInterval()即可。如下是一个按秒更新的计数器，在5秒之后便不再更新：
+
+```
+<script>
+    
+    let a = 0
+   
+    function foo() {
+        a = a + 1
+        console.log(a)
+        if (a == 5) clearInterval(循环)
+    }
+
+    const 循环 = setInterval(foo, 1000)
+
+</script>
+```
+
+上述示例在Node.js环境下也同样适用。
+
+###  requestAnimationFrame()
+requestAnimationFrame() 告诉浏览器希望执行一个动画，并且要求浏览器在下次重绘之前调用指定的回调函数更新动画。该方法需要传入一个回调函数作为参数，该回调函数会在浏览器下一次重绘之前执行。
+
+requestAnimationFrame()的基本语法如下：
+
+```js
+function animation(){
+      // 每次执行的逻辑
+      requestAnimationFrame(animation)
+}
+animation()
+```
+
+
+如下示例代码，变量a会在每帧之后加1：
+
+```html
+<body>
+</body>
+
+<script>
+     let a = 0
+     function animation() {
+            a = a + 1
+            document.body.innerHTML = a
+            requestAnimationFrame(animation)
+      }
+     animation()
+</script>
+```
+
+
+
+##  浏览器直接读写本地文件系统
+
+```
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <button id="button">打开文件</button>
+
+    <script>
+        document.getElementById('button').onclick = async () => {
+            const [fileHandle] = await window.showOpenFilePicker();
+            const file = await fileHandle.getFile()
+            const text = await file.text()
+            console.log('旧内容:',text)
+            const  writable = await fileHandle.createWritable()
+            await writable.write(text+'\n新内容\n新内容\n')
+            await writable.close();
+
+            const file2 = await fileHandle.getFile()
+            const text2 = await file2.text()
+            console.log('新内容:',text2)
+
+        }
+    </script>
+
+</body>
+
+</html>
+
+```
+
+
+
+# React
+
+##  React 基础
+
+###  在HTML页面中直接引入React
+
+-  引入react.js
+-  引入react-dom.js
+-  引入babel.js
+
+在页面使用React的简单示例：
+
+```
+<head>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const container = document.getElementById('root')
+        const root = ReactDOM.createRoot(container)
+        root.render(<h1>hello</h1>)
+    </script>
+
+</body>
+```
+
+
+
+
+###  新建并启动React项目
+
+运行如下三行命令即可快速新建并启动一个React 项目：
+
+```
+npx create-react-app my-app
+cd my-app
+npm run start
+```
+
+这会初始化一个新项目，my-app就是项目和文件夹的名称，然后下载相关的依赖，运行 npm run start 命令会自动打开浏览器，呈现React项目默认页面。
+
+React主要的入口文件包括：
+- ./src/App.js ：这个文件是根组件，其它的组件都会被导入到这里。
+- ./src/index.js： 入口脚本。作用是导入react包，挂载和渲染根组件到页面的某个元素上。
+- ./public/index.html： 入口页面。有一个id为root的div，React将会挂载到这个元素下面。
+
+现在，编辑./src/App.js文件内容如下：
+
+```js
+export default ()=> <h1>Hello, React !</h1>
+```
+
+浏览器会自动刷新为新的内容。
+
+
+
+###  控制样式
+
+
+对于图形界面来说，样式也不可或缺。要为元素定义样式，可以在标签中添加style属性，这与HTML语法类似，但是，有几点不同的是：
+1、属性值必须用引号包裹，单双引号都可以；
+2、类似background-color包含连字符的属性名，必须写成backgroundColor这种小驼峰；
+3、原生的CSS各属性之间是分号，现在必须改成逗号，因为是JS对象。
+
+定义样式的示例如下：
+
+```
+export default ()=> 
+        <div style={{backgroundColor: 'red', width: '50%', height: '200px'}}>
+                Hello, React !
+        </div>
+```
+
+###  使用 React 实现表单双向绑定
+
+```
+import { useState } from 'react'
+
+
+export default ()=> {
+
+  const [msg, setMsg] = useState('')
+
+  // 处理输入框的Change事件
+  // event.target 表示事件发生的源头，这里就是输入框
+  function handler(event) {
+    setMsg(event.target.value)
+  }
+
+  return <>
+    {/* 输入框内容改变时会不断触发Change事件 */}
+    <input onInput={handler} />
+    <div>输入的内容是：{msg}</div>
+  </>
+}
+```
+
+
+
+
+
+
+##  组件间通信
+
+### 父子组件间通过 Props 通信
+
+子组件的示例代码如下：
+
+```
+// Props 子组件
+export default ({ count, handleClick }) => {
+
+  return <>
+    <button onClick={handleClick}>
+      点了 {count} 次
+    </button>
+
+  </>
+}
+```
+
+父组件的示例代码及注释如下：
+
+```js
+// Props 父组件
+// 由于用到了组件状态，所以需要导入useState
+import { useState } from 'react'
+
+// 导入子组件
+import Prop子组件 from './Prop子组件'
+
+// 定义、默认导出组件
+export default ()=> {
+
+  // 组件函数内部
+  // 定义变量
+  const [count, setCount] = useState(1)
+
+  // 定义处理函数
+  function handleClick() {
+    setCount(count + 1)
+  }
+
+  // 返回单标签包裹的JSX
+  return <>
+    <h1>使用Prop进行传值</h1>
+    下面两个按钮都是子组件：<br/>
+    <Prop子组件 count={count} handleClick={handleClick} />
+    <Prop子组件 count={count} handleClick={handleClick} />
+  </>
+
+}
+```
+
+
+
+
+###   任意组件间通过 Redux 通信
+
+首先，定义store仓库：
+
+```
+// 引入createStore
+import {createStore} from 'redux'
+
+// 定义修改器
+// state表示当前状态
+// action表示携带通信数据的事件
+function reduce(state,action){
+    // 数据改变了，被赋予了事件的新值payload
+    // payload命名只是习惯，可以是其它名称
+    state.data = action.payload
+    // 返回一个新的状态
+    return state
+} 
+
+// 传入修改器定义中心仓库Store
+// 第二个参数表示state初始值
+// 注意，一定要定义初始值
+const store = createStore(reduce,{data:''})
+
+export default store
+
+// Store和state的区别：
+// Store是仓库对象
+// state是仓库对象的某一时刻的数据快照
+
+// Store的三大核心用法:
+// dispatch()
+// subscribe()
+// getState()
+```
+
+然后，定义事件触发端：
+
+import Store from "./定义Store仓库";
+
+
+export default ()=>{
+
+    
+    function handler(event){
+        // 只要输入框内容改变就会触发，输入内容作为action的payload
+        Store.dispatch({type:'msg',payload:event.target.value})
+    }
+    return <>
+        <h2>事件触发端：</h2>
+        请输入:<input autoFocus id="input" onInput={handler}/><br/>
+    </>
+}
+
+然后，定义事件接收端：
+
+import { useState } from "react";
+import Store from "./定义Store仓库";
+
+const style={
+    width:'300px',
+    height:'100px',
+    background:'hsl(90,50%,90%)',
+    padding:'10px',
+}
+
+export default ()=>{
+    const [info,setInfo] = useState('')
+
+    // 中心仓库监听变化，一旦数据更新则执行函数
+    // getState()方法获取最新的数据
+    Store.subscribe(()=>setInfo(Store.getState().data))
+    return <>
+        <h2>事件接收端：</h2>
+        <div style={style}>{info}</div>
+    </>
+}
+
+
+
+##  React Hooks
+
+###    useState()
+
+useState()函数返回一个包含两个值的数组：变量和更新该变量的函数。变量的初始值就是useState()的第一个参数。
+
+变量更新函数接收一个参数作为该变量的新的值，更新函数每执行一次，组件就重新渲染一次。
+
+useState()的语法如下：
+
+```js
+let [some, setSome] = useState(initValue)
+```
+
+some 表示一个变量名。setSome表示更新该变量的函数，每触发一次该函数，组件就重新渲染一次。该函数名也可以是其它写法，不过一般是set小驼峰的形式。initValue表示初始值，应该根据变量赋一个对应类型的初始值。由于变量值会改变，所以不要使用const，而应该使用let。
+
+如下示例定义多个变量：
+
+```js
+let [count,setCount] = useState(0)
+let [name,setName] = useState("")
+let [arr,setArr] = useState([])
+```
+
+一个使用useState的组件示例如下，当单击按钮时，调用变量更新函数，组件重新渲染，其中的内容改变。
+
+```js
+// 导入 useState，注意加花括号
+import { useState } from 'react'
+export default () => {
+
+     let [count, setCount] = useState(0)
+
+   return <button onClick={()=>setCount(count + 1)}>点了 {count} 次 ！</button>
+    
+}
+```
+
+
+有几个注意的点：
+
+- 使用之前必须导入useState、useEffect；
+- useState()和useEffect()必须写在组件的内部；
+- 使用按钮点击事件时，必须写成onClick小驼峰形式，onclick写法在React中是错的；
+- onClick的值是函数名称，一定不能加括号。
+
+###  useEffect()
+
+
+useEffect()表示在挂载和重新渲染之后执行某些操作。
+
+```js
+import { useState, useEffect } from 'react'
+
+export default () => {
+
+    let [count, setCount] = useState(0)
+
+    useEffect(() => console.log('count值已更新为'+ count ))
+
+    return <button onClick={()=>setCount(count + 1)}>点了 {count} 次 ！</button>
+
+}
+```
