@@ -7,4 +7,4 @@
 
 - [Python](Python/index.md)
 
-- [Web](Web/index.md) 
+- [Front-end](Front-end.md) 
