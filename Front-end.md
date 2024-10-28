@@ -24,6 +24,55 @@ h2::before {
 <p><a href="#top" style="position:fixed;">回到顶部</a></p>
 
 目录：
+- [基础](#基础)
+  - [JavaScript的历史](#javascript的历史)
+  - [JavaScript的组成](#javascript的组成)
+  - [ES6标准](#es6标准)
+  - [ES6的新增特性](#es6的新增特性)
+  - [原始值和引用值](#原始值和引用值)
+  - [typeof 操作符](#typeof-操作符)
+  - [布尔类型](#布尔类型)
+  - [可选链](#可选链)
+  - [数值类型](#数值类型)
+  - [原始值的相等判定](#原始值的相等判定)
+  - [引用值的相等判定](#引用值的相等判定)
+- [代理](#代理)
+  - [代理](#代理-1)
+  - [创建空代理](#创建空代理)
+  - [get()捕获器、set()捕获器和反射API](#get捕获器set捕获器和反射api)
+- [迭代器和生成器](#迭代器和生成器)
+  - [可迭代对象](#可迭代对象)
+  - [从可迭代对象创建迭代器](#从可迭代对象创建迭代器)
+  - [生成器](#生成器)
+  - [可迭代对象的forEach()方法](#可迭代对象的foreach方法)
+- [对象](#对象)
+    - [新建对象实例](#新建对象实例)
+    - [对象的简写属性](#对象的简写属性)
+    - [对象的可计算属性](#对象的可计算属性)
+    - [对象的枚举](#对象的枚举)
+    - [对象的属性名和属性值](#对象的属性名和属性值)
+    - [对象的属性特性](#对象的属性特性)
+    - [对象的数据属性](#对象的数据属性)
+    - [对象的属性的特性使用](#对象的属性的特性使用)
+    - [对象的访问器属性](#对象的访问器属性)
+    - [对象的拖尾逗号](#对象的拖尾逗号)
+    - [对象的for in方法](#对象的for-in方法)
+    - [对象的toString()方法](#对象的tostring方法)
+    - [对象的valueOf()方法](#对象的valueof方法)
+    - [对象方法的简写](#对象方法的简写)
+    - [对象属性的读取和赋值](#对象属性的读取和赋值)
+    - [对象属性名的简写](#对象属性名的简写)
+    - [使用Object.assign()合并对象](#使用objectassign合并对象)
+    - [使用三点操作符合并对象](#使用三点操作符合并对象)
+- [函数](#函数)
+    - [箭头函数](#箭头函数)
+    - [立执行函数](#立执行函数)
+    - [默认参数值](#默认参数值)
+    - [函数的arguments对象](#函数的arguments对象)
+    - [函数内部的this对象](#函数内部的this对象)
+    - [参数收集和参数扩展](#参数收集和参数扩展)
+    - [函数的call()和apply()方法](#函数的call和apply方法)
+    - [函数的暂时性死区](#函数的暂时性死区)
 - [DOM](#dom)
   - [窗口尺寸](#窗口尺寸)
   - [窗口事件](#窗口事件)
@@ -179,6 +228,1070 @@ h2::before {
   - [React Hooks](#react-hooks)
     - [useState()](#usestate)
     - [useEffect()](#useeffect)
+
+
+
+# 基础
+
+## JavaScript的历史
+
+JavaScript问世于1995年，最初是用于控制浏览器页面行为的脚本语言，例如验证某个字段是否已经填写，或者测试输入值的合法性。后来，欧洲计算机制造商协会（Ecma）下属的TC39委员会发布了ECMA-262，作为ECMAScript的语言标准。1998年，ECMAScript被纳入国际标准。此后，各大浏览器厂商以ECMAScript标准为依据，分别实现了自己的JavaScript语言。时至今日，对ECMAScript支持最好的浏览器是Google Chrome和Microsoft Edge，这两个浏览器均使用了Chromium开源内核。Chromium基于Google开源的V8引擎。
+
+除了作为浏览器的脚本语言，在2009年，Node.js问世。Node.js是一个基于Chrome V8引擎的JavaScript运行时。Node.js在语法上采用了JavaScript语言，同时带来了用于操作服务端的模块，例如：文件系统模块fs、操作系统模块os。Node.js将JavaScript的宿主环境从浏览器端带到了服务器端。
+
+经过了27年的发展，如今的JavaScript已经成长为了最流行的语言之一，以及开发者们最喜爱的编程语言之一。
+
+##  JavaScript的组成
+
+一般而言，我们所说的Javascript指的是客户端Javascript，也就是浏览器中的Javascript脚本。但是，严格来讲，根据使用环境，我们将Javascript分为两类：
+
+* __客户端Javascript__：在浏览器中运行的Javascript。
+
+* __服务端Javascript__：可以访问本地操作系统的Javascript。比如最初的Node.js，以及近几年比较热门的Deno.js、Bun.js。
+
+
+客户端JavaScript由ECMAScript、BOM、DOM三部分组成：
+
+* __EcmaScript__：即ECMA-262定义的国际标准，定义了语法规则、数据类型、关键字、模块、全局对象等核心语言特性。
+
+* __DOM__（Document Object Model）：文档对象模型，规定了JavaScript如何操作HTML元素。
+
+* __BOM__（Browser Object Model）：浏览器对象模型，用于与浏览器窗口交互，例如页面导航、浏览历史、离线存储等。
+
+
+以Node.js为例，其Javascript的组成分为如下几部分：
+
+* __EcmaScript__：即ECMA-262定义的国际标准，定义了语法规则、数据类型、关键字、模块、全局对象、异步、代理等核心语言特性。
+
+* __CommonJS__：用于访问本地操作系统的API，包含了大量开箱急用的模块，例如文件系统模块fs、操作系统模块os、Web服务器模块http等。
+
+
+
+
+
+## ES6标准
+
+ECMAScript 标准自2015年以来每年6月会发布一个新版本。ECMAScript 的某个特性从想法到最终的标准一般会经历stage0——stage4 五个阶段，分别是：strawman（最初想法）、proposal（提案）、draft（草案）、candidate（候选）、finished（完成）。一般而言，一个提案一旦进入草案阶段就很有可能会纳入最终的标准。
+
+在以前，从标准的发布到浏览器厂商的支持又会经历很长的时间，这时可以使用polyfill框架用于实现浏览器暂不支持的特性。不过现在这种情况已经得到了好转，甚至对于很多特性，往往是浏览器厂商率先推出，而后TC39委员会将其作为标准纳入。
+
+## ES6的新增特性
+
+下面列出了自ECMAScript 2015 发布以来的新增特性：
+
+* __ES6__：发行于2015年6月，新增了许多影响深远的特性：箭头函数、模块、迭代器、生成器、期约、反射、代理。ES6的发布对于JavaScript来说是一个里程碑事件，这是经典JavaScript和现代JavaScript的分水岭，奠定了JavaScript繁荣的基础。之后的ES版本也可以统称为“ES6”。
+
+* __ES7__：发布于2016年6月，新增了指数操作符。
+
+* __ES8__：发布于2017年6月，`async/await`、`Object.values()/keys()/entries()`、对象字面量拖尾逗号。async和await又是现代JavaScript发展史上另外一个极其重要的特性。
+
+* __ES9__：发布于2018年6月，新增了`Promise finally()`、异步迭代、剩余和扩展属性。
+
+* __ES10__：发布于2019年6月，新增了数组打平、字符串定长填充等特性。
+
+* __ES11__：发布于2020年6月，新增了可选链、空位合并等特性。
+
+* __ES12__：发布于2021年6月，新增了`Promise any()`、`String.prototype.replaceAll()`等特性。
+
+* __ES13__：发布于2022年6月，新增了顶层`await`、`Array.prototype.at()`、class私有方法 / 静态方法等特性。
+
+* __ES14__：发布于2023年6月，主要新增了数组的非破坏性方法，例如`Array.prototype.toReversed()`、`Array.prototype.toSorted()`等
+
+##  原始值和引用值
+
+Javascript的数据类型大体上分为两类：原始类型和引用类型。原始类型的数据值保存于栈中，引用类型的值保存于堆中，这是这两种类型最根本的区别，也决定了后续对这两种类型的赋值、修改、拷贝操作的不同。
+
+原始类型保存于栈中，它是一种先进后出的数据结构，从管理角度来讲，它是由操作系统分配管理的，也就是说它是规整的，内存的大小在申请之后不会发生变化。因此，它不会出现碎片化，并且读取速度非常的快，因此基本的原始数据类型就非常适合存放于栈中。
+
+原始数据类型分为如下几类，后面我们会一一详细讲到：
+- 数值
+- 字符串
+- 布尔值
+- null
+- undefined
+- Symbol
+
+相比于栈的固定大小，堆的分配非常自由，它是由程序员自己去分配的，比如程序员考虑到某些情况需要更多的内存，它就可以在堆上面申请一个足够大的内存。除此之外，内存的分配非常自由，它并不要求是连续的内存，只要有空间，都可以被拿来分配。不过这样就会导致产生很多碎片，不利于高速读取，因此堆的操作的速度要比栈慢很多。堆主要存放的是大小不固定的内存结构，因此，对象、数组、结构体等引用类型经常被存放到堆上。
+
+基于栈的存储特性，当我们为一个引用类型赋值时，本质上赋予的是一个指针，也叫内存地址，这才导致了声明方式和拷贝方式与原始类型的不同。
+
+引用数据类型分为如下两个大类：基本引用类型、集合引用类型。
+
+基本引用类型又分为：
+* 原始值包装类型：包括Number、String、Boolean。
+* 内置引用类型：包括Date、RegExp、Math等。
+
+集合引用类型是我们经常使用的类型，分为：
+* 对象（狭义的）
+* 数组
+* 集合（弱集合）
+* 映射（弱映射）
+
+##  typeof 操作符
+
+由于Javascript的类型是松散的，不像静态语言那样需要事先声明，Javascript会根据数据值本身去推导数据类型，typeof操作符就是为此而生的。对一个值使用typeof操作符会返回如下字符串之一：
+
+- "undefined" : 未定义的值
+- "boolean" : 布尔值
+- "string" : 字符串 
+- "number" : 数值
+- "object" : 表示值为对象(非函数)或null
+- "function" : 表示值为函数
+- "symbol" ：表示值为符号
+
+
+##  布尔类型
+
+
+布尔（英语：Boolean）是计算机科学中的逻辑数据类型，以发明布尔代数的数学家乔治·布尔为名。它是只有两种值的原始类型 : true和false。
+
+下面这些值可以被显示或隐式地转换为true：
+
+* 非空字符串，注意，`" "`中间有一个空格，也算非空。
+* 任意对象，包括空对象
+* 正负无穷大（ Infinity、- Infinity）
+* 非零数值
+
+下面这些值可以被显示或隐式地转换为false：
+
+* 空字符串`""`
+* NaN
+* 数字0
+* null
+* undefined
+
+可以使用`!!()`和`Boolean()`将其它形式的值显示地转换为布尔类型，以便于条件判断，前者是后者的简写形式。
+
+来看下面的示例：
+
+```js
+// 下面这些值都视作true
+Boolean(hello')  // => true
+Boolean('  ')  // 非空字符串，空格也算非空
+Boolean(5/0)  // 正负无穷大
+Boolean({})   // 任意对象，包括空对象
+
+// 下面这些值都视作false
+Boolean('')   // =>false 空字符串
+Boolean(0)   
+Boolean(NaN)
+Boolean(null)
+Boolean(undefined)
+```
+
+在`if`语句中，不必显式地使用`!!()`，会自动隐式调用:
+
+```js
+const a=2
+if (a){console.log(true)}   //=> true
+let b
+if (b){console.log(true)}
+else {console.log(false)}   //=> false
+```
+
+## 可选链
+
+
+如果对象obj不存在属性c，则obj.c返回undefined。而如果继续对obj.c读取属性，例如obj.c.d，则此时会报错，使用EcmaScript 2020新增的可选链(?.)特性， 可以解决这个报错的问题。如下示例：
+
+```js
+const obj = {a:1,b:2}
+console.log(obj.c)  // undefined
+console.log(obj.c.d)  // 报错，因为obj.c为undefined
+console.log(obj?.c?.d)  // 存在属性则返回，不存在则会返回undefined，而不会报错 
+```
+
+可选链加强了程序的健壮性，无需开发者手动处理潜在的报错问题。
+
+##  数值类型
+
+
+数值类型是最常见的原始类型，包括整数、浮点数、无穷大（小）、NaN。
+
+使用如下方式新建数值类型的变量：
+
+```js
+let num = 1     // 整数
+let floatNum = 0.1   // 浮点数
+let num=1.0  // 虽然跟了小数点，但依然会被处理成整数
+```
+
+NaN是一种特殊的数值，表示运算错误，但不会报错。Infinity表示无穷大，-Infinity表示无穷小，例如：
+
+```js
+console.log(0/0)   //=> NaN
+console.log(5/0)   // => Infinity，很多语言会报错，但是这里为无穷大
+console.log(5/-0)  // => -Infinity
+```
+
+有三种函数用于将其它形式的值转为数值，Number()是通用的，可将类似数值的字符串或单数值元素的数组转换为数组。parseInt()和parseFloat()用于将开头是数字而存在非数字的字符串提取成数值，例如：
+
+```js
+console.log(Number(true))  // 遇布尔值转为1或0
+console.log(Number(null))  // 0
+console.log(Number(undefined))  // NaN
+console.log(Number('123'))           // =>123
+console.log(Number('123 456'))    // => NaN
+console.log(Number('123hello'))   // => NaN
+console.log(Number(''))  //=>0
+console.log(parseInt('123hello'))  //=> 123
+console.log(parseFloat('1.23hello')) //=> 1.23
+```
+
+由于乘法运算和减法运算在碰到数值时会隐式调用Number()，因此可以使用此方法快速调用Number()，可以看作一种语法糖，例如：
+
+```js
+console.log(true * 1)    //=>1，等同于Number(true) 
+console.log('123' * 2)   // => 246，等同于Number('123')
+```
+
+
+
+## 原始值的相等判定
+
+JavaScript原始值的相等性判定有两种情况：严格相等、不严格相等。分别使用两个和三个等号。
+
+这两种相等性判定的区别只有一个：
+
+```
+是否进行类型转换
+```
+
+用一个示例可以很好的进行说明：
+
+```js
+console.log(1==true)  // true ，进行了类型转换，true转换成了1，相等
+
+console.log(1===true)  // false 不进行类型转换
+```
+
+## 引用值的相等判定
+
+引用值的相等性判定不区分严格与否，两个和三个等号是等价的。引用值的相等判定只有一个依据：
+
+```
+比较两个引用值的指针是否指向同一处
+```
+
+例如，如下两个对象，虽然内容上看起来一样，但是它们实际的内容却存储在内存的不同地方，即指针的指向不一样，因此永远不会相等：
+
+```
+const objA = {name:"bob"}
+const objB = {name:"bob"}
+console.log(objA==objB)  // false 
+console.log(objA===objB)  // false 
+```
+
+由于对象使用等号拷贝值时，默认使用浅拷贝，即只拷贝指针，那么这两个对象的指针指向同一处，因此相等，如下示例：
+
+```
+const objC = {name:"bob"}
+objD = objC // 此时只拷贝了指针
+console.log(objC==objD)  // true
+console.log(objC===objD) // true
+```
+
+# 代理
+
+ES6标准新增的代理与反射为开发者提供了拦截并向基本操作嵌入额外行为的能力。比如我们在读取或设置一个Object的属性的值的时候，有时候需要加入额外操作，以提供响应式的能力。大受欢迎的Vue3.x就大量运用了这种特性，成为最受欢迎的响应式框架。
+
+## 代理
+
+代理就是目标对象的抽象，它拦截了外界对目标对象的直接访问，从而有效的保护了目标对象。拦截操作全部都定义在捕获器对象中。
+
+虽然ES5时代的Object.defineProperty()方法也能实现类似的目标，但是它对于目标对象是破坏性的操作，而我们今天要说的代理是一种非破坏性的操作。
+
+## 创建空代理
+
+空代理就是什么操作也不拦截，这个时候的代理对象只是起到一个“传话筒”的作用。从代码表现来看，此时捕获器是一个空对象。
+
+```js 
+const target = {a:1, b:2}
+const handler = {}    // 拦截操作是空的
+const proxy = new Proxy(target,handler)
+proxy.a // => 1  // 如实返回
+proxy.b  // =>2
+```
+
+## get()捕获器、set()捕获器和反射API
+
+实际上，使用代理最常见的就是在捕获器之中添加get()和set()方法。get()方法接收三个参数，分别是：目标对象，正在读取的目标对象的属性，代理对象。set()方法接收四个参数，分别是：目标对象，正在设置的目标对象的属性，设置的新值，代理对象。
+
+同时，利用Reflect对象的API，可以快速将对代理的操作传递到目标对象上。
+
+```js
+const obj = {a:1, b:2}
+const handler = {
+    get(target,property,receiver){
+        console.log(`你正在读取${property}属性`)
+    },
+    set(target,property,value,receiver){
+        console.log(`你将${property}属性的值改成了${value}`)
+        Reflect.set(...arguments)      // 将修改操作传递到目标对象上
+    },
+}
+const proxy = new Proxy(obj,handler)
+console.log(proxy.a)  // =>'你正在读取a属性'
+proxy.b = 3    // => '你将b属性的值改成了3'
+console.log(obj.b)  //=>3，目标对象的属性值也跟着改了
+```
+
+
+# 迭代器和生成器
+
+## 可迭代对象
+
+对于某种数据类型，如果它的元素可以按照确定的顺序进行有限的读取，那么我们认为这个数据类型是可迭代对象。所以，可迭代对象有两大关键特征：元素的数量是有限的；元素的顺序是确定的。
+
+因此，数组、Map、Set都是可迭代类型。要特别注意两种类型：string是可迭代对象，里面的字符是它的元素；而Object类型不是可迭代对象，因为Object的元素的顺序是不确定的。
+
+## 从可迭代对象创建迭代器
+
+所有的可迭代对象都有一个`[Symbol.iterator]()`方法，使用该方法可以返回一个迭代器
+
+```js  
+const arr = [1,2,3]  
+const iter = arr[Symbol.iterator]()  
+```
+
+返回的迭代器有一个next()方法，不断得弹出元素值，done属性为false表示还有值可以被弹出，直到done属性变为true表示至此所有元素已经“耗尽”：
+
+```js
+iter.next()   //=> {value:1, done:false}
+iter.next()  // => {value:2, done:false}
+iter.next()  // => {value:3, done:true}，元素耗尽
+iter.next()  //=> {value:undefined ,done:true}，后面的值都将是undefined
+```
+
+## 生成器
+
+生成器的作用是生成一个自定义的可迭代对象，通过yield不断生成元素，通过return生成终止。生成器是一个函数，与普通函数的区别是在函数名称前面加上了一个星号。
+
+```js
+function * generator() {
+    yield 1
+    yield 2
+    return 3
+}
+const iter = generator()
+iter.next()   //=> {value:1, done:false}
+iter.next()  // => {value:2, done:false}
+iter.next()  // => {value:3, done:true}，元素耗尽
+iter.next()  //=> {value:undefined ,done:true}，后面的值都将是undefined
+```
+
+## 可迭代对象的forEach()方法
+
+forEach()是大多数可迭代对象都具有的方法，forEach()方法接收一个回调函数作为参数，该函数接收三个参数：
+
+element：可迭代对象的元素
+
+index：该元素的索引位置
+
+array/map/set：可迭代对象本身，可以根据当前可迭代对象的类型定义一个意义明显的参数名称。
+
+```js
+const map = new Map().set('a',1).set('b',2).set('c',3)
+map.forEach((element,index,map)=>{
+console.log(`键${index}的值是${element}`)
+})
+// 输出：
+// 键a的值是1
+// 键b的值是2
+// 键c的值是3
+```
+
+
+# 对象
+
+
+
+###  新建对象实例
+
+Object是JavaScript中最常见的数据类型，也是其它引用类型的基类。一个对象实例由一个或多个名 / 值对组成。
+
+创建对象的方法有多种，第一种是使用对象字面量的方式新建一个对象实例：
+
+```js
+const obj = {a:1,b:2}
+```
+
+第二种方式是使用new Object()创建对象，如下：
+
+```js
+const obj = new Object({a:1, b:2})
+```
+第三种方式是使用Object.fromEntites()创建对象，这个方法接受一个可迭代对象，例如一个二维数组：
+
+```js
+const arr = [ ['a',1],['b',2] ]
+
+const obj = Object.fromEnties(arr)
+
+console.log(obj)  // {a:1, b:2}
+```
+
+也可以接收一个Map类型的实例，例如：
+
+```js
+const map = new Map([ ['a',1],['b',2] ])
+
+const obj = Object.fromEnties(map)
+
+console.log(obj)  // {a:1, b:2}
+```
+
+第五种方式是读取一个JSON字符串创建对象，该字符串包裹的是一个对象字面量，也可以是通过Node.js的fs模块的readFileSync()方法从本地某个.json文件读取的。
+
+通过JSON字符串创建对象的示例如下所示：
+
+```js
+const str = '{'a':1,'b':2}'
+
+const obj = JSON.parse(str)
+
+console.log(obj)  // {a:1, b:2}
+```
+
+
+###  对象的简写属性
+
+
+Ecamscript 6为对象新增了简写特性，这并没有改变对象本身的行为，但极大地提升了编码和阅读的效率。
+
+上面这个例子演示的是属性值是变量的情况，但是又有一个特征，就是：属性名和属性值的标识符是一样的，例如：
+
+```js
+const a=1
+const b=2
+const obj={a:a,b:b} 
+console.log(obj)  // {a:1, b:2}
+```
+
+这时候，就可以使用简写方式：
+
+```js
+const a=1
+const b=2
+const obj={a,b} // 等价于 const obj = {a:a, b:b}
+console.log(obj)  // {a:1, b:2}
+```
+
+除了属性可以简写以外，方法也有简写的方式，就是去掉冒号和function关键字，例如：
+
+```js
+const obj = {
+	a:1,
+   	b:2,
+   	sum(){
+    	return a+b
+	}
+}
+
+console.log(obj.sum())
+```
+
+在有些场景中，可以看到对象的最后一个属性值后面还留有一个逗号，这种逗号叫做拖尾逗号。拖尾逗号可用在需要经常增加、删除对象属性的情况，可以保证每次操作的一致性，避免发生低级的语法错误。
+
+不过，要特别注意的是，JSON格式不支持拖尾逗号。
+
+###  对象的可计算属性
+
+对象的可计算属性是ES6新增的特性。有些情况下，属性名是一个变量，无法使用点号语法得到属性值，此时可以使用方括号的方式读取属性，例如：
+
+```js
+const key1 = 'a'
+const key2 = 'b'
+const obj = {}
+
+obj[key1] = 1
+obj[key2] = 2
+
+console.log(obj)   // {a:1, b:2}
+```
+
+使用中括号的优势是可以通过变量访问属性。
+
+对于一个确定的属性名称，除了使用点号外，也可以使用中括号读取属性，但此时需要使用引号：
+
+```js
+const obj = {}
+
+obj['a'] = 1
+obj['b'] = 2
+console.log(obj)  // {a:1, b:2}
+```
+
+### 对象的枚举
+
+对象是一组名/值对，可以使用如下方法枚举属性名、属性值、名/值对：
+
+```js
+const obj =  {a:1, b:2, c:3}
+
+const keys = Object.keys(obj)
+console.log(keys)  //   [ 'a', 'b', 'c' ]
+
+const values = Object.values(obj)
+console.log(values)  //  [ 1, 2, 3 ]
+
+const entries = Object.entries(obj)
+console.log(entries)  // [ [ 'a', 1 ], [ 'b', 2 ], [ 'c', 3 ] ]
+```
+
+
+###  对象的属性名和属性值
+
+
+使用点号可以访问或者设置对象的属性值：
+
+```js
+const obj = {a:1,b:2}
+console.log(obj.a)
+obj.a=2
+comsole.log(obj)
+```
+
+除了点号，还可以使用中括号访问或设置对象的属性值，注意需要对属性名使用引号：
+
+```js
+const obj = {a:1,b:2}
+console.log(obj["a"])  
+``` 
+
+以上两种方式适用于属性名是字面量的情况下，如果属性名是个变量标识符，那么只能使用中括号，且不能加引号，例如：
+
+```js
+const key1='a'
+const key2='b'
+const  obj = {}
+obj[key1]=1   // 解析为obj["a"]=1
+obj[key2]=2 // 解析为obj["b"]=2
+```
+
+对象的属性值也可以是变量，例如：
+
+```
+const a=1
+const b=2
+const obj={a:a,b:b}
+// 解析为 const obj={a:1,b:2}
+```
+
+对象的成员不仅可以是变量，也可以是函数。按照习惯，在对象中，变量被称呼为属性，函数被称呼为方法。例如：
+
+```js
+const obj = {
+  a:1 ,
+  b:2,
+  c:function(){
+    console.log('hello,world')
+  }
+}
+```
+
+在上面的代码中，对象实例obj有两个属性a和b，有一个方法c()。
+
+
+###  对象的属性特性
+
+
+对象的属性的特性属于比较复杂但不是很难的知识点。
+
+对象的成员分为属性和方法，而对象的属性又分为：
+- 数据属性
+- 访问器属性
+
+### 对象的数据属性
+
+一般情况下，对象的属性就是数据属性，例如：
+
+```js
+const obj = {a:1,b:2}
+```
+
+这里，a、b均为数据属性。
+
+对象的数据属性有4个特性：
+
+- **value**：表示该属性的值
+- **writable**：表示该属性的值是否可以被修改
+- **enumerable**：表示该属性是否可以通过for-in 循环遍历，默认情况下为true，如果将该特性设置为false，则for-in循环时将遍历不到该属性。
+- **configurable**：表示是否可以通过delet删除该属性，或者是否可以修改其特性。
+
+这里要注意的是writable和configurable的区别，writable侧重于能不能修改属性的值，而configurable侧重于能不能配置该属性的特性。
+
+### 对象的属性的特性使用
+
+Object.defineProperty()方法来定义：
+
+```js
+const obj = {}
+
+Object.defineProperty(obj,'a',{
+	value:1,
+  	writable:false,   // 不能修改该属性的值
+  	enumerable:true,
+  	configurable:true
+})
+
+console.log(obj.a)    // 1
+obj.a = 2
+console.log(obj.a)  //  1 ： 不会报错，但是静默失败
+```
+
+### 对象的访问器属性
+
+对象的访问器属性有4个特性：
+
+- **get**：获取函数，在读取该属性时调用。
+- **set**：获取函数，在写入属性时被调用。
+- **enumerable**：与数据属性的作用相同。
+- **configurable**：与数据属性的作用相同。
+
+这里的难点是get和set，如果对属性只定义了get函数，那么该属性就是只读的，必须同时定义get和set函数才说明该属性是可写的，例如：
+
+```js
+const obj = {a:1}
+
+Object.defineProperty(obj,'b',{
+	get(){return this.a},
+  	set(value){this.a = value}
+})
+
+console.log(obj.b)    // 1
+obj.b = 2
+console.log(obj.a)  //   2
+```
+
+这里a是数据属性，b是a的访问器属性，可读可写。再来看一个只读访问器的例子：
+
+```js
+const obj = {a:1}
+
+Object.defineProperty(obj,'b',{
+	get(){return this.a},
+})
+
+console.log(obj.b)    // 1
+obj.b = 2
+console.log(obj.a)  //   1 ： 不会报错，但是静默失败
+```
+
+### 对象的拖尾逗号
+
+一个对象往往有多个名/值对，各个名/值对之间使用逗号隔开，需要说明的是，最后一个名/值对后面的逗号也是允许的，并不会报错：
+
+```js
+const obj = {
+	a:1,
+	b:2,
+	c:3,
+}
+```
+
+这个宽松的语法特性在需要频繁复制粘贴追加的属性时非常有用，因为格式是统一的，我们不需要频繁的增减逗号。
+
+不过，需要特别说明的是，JSON的写法类似于对象，不过，JSON的写法与对象有两个最大的不同：
+* JSON字符串中的对象的属性名必须加引号。
+* JSON字符串中，对象不允许使用拖尾逗号，使用会报错。
+
+###  对象的for in方法
+
+
+可迭代对象可以使用for of 循环遍历，而Object类型并非可迭代对象，不过可以使用for in 方法遍历其属性名和属性值，例如：
+
+```js
+const obj = {a:1, b:2, c:3}
+
+for (let key in obj){
+	console.log(key)  // a  b  c
+}
+```
+
+从这里可以看出，如果只有一个参数，那么只遍历属性名称。
+
+
+
+
+### 对象的toString()方法
+
+所有对象实例的toString()方法会返回一个固定的字符串`[object Object]`，例如：
+
+```js
+console.log({}.toString())  // [object Object]
+
+console.log({a:1, b:2}.toString())  // [object Object]
+```
+
+当对象与对象相加，对象与字符串相加时，会隐式调用toString()，如下：
+
+```js
+console.log({}+{})  //   [object Object][object Object]
+console.log(({}+{}).length)  // 30
+
+console.log({}+'Hello')  // [object Object]Hello
+```
+
+### 对象的valueOf()方法
+
+对象示例的valueOf()返回对象本身，例如：
+
+```js
+console.log({}.valueOf())  //  {}
+console.log({a:1, b:2}.valueOf())  //  { a: 1, b: 2 }
+```
+
+
+###  对象方法的简写
+
+对象往往具备多个方法，方法其实就是函数，只不过在对象的命名空间中我们称之为方法，例如：
+
+```js
+const obj = {
+	a:1,
+  	b:2,
+  	say:function(){
+    	console.log('Hello,World!')
+    }
+}
+
+obj.say()
+```
+
+此时可以省略方法名称后面的冒号和function关键字：
+
+```js
+const obj = {
+  a:1,
+  b:2,
+  say(){
+    console.log('Hello,World!')
+  }
+}
+
+obj.say()
+```
+
+### 对象属性的读取和赋值
+
+通常情况下，对象的属性名是明确的字面量，这时候时候点号选取对象属性，读取或写入属性的值，例如：
+
+```js
+const obj = {a:1, b:2}
+console.log(obj.a)
+
+obj.a = 2
+console.log(obj.a)
+```
+
+使用点号可以连续读取属性，例如：
+
+```js
+const obj = {a:{a:1,b:2}, b:2}
+
+console.log(obj.a.a)
+```
+
+这里的两个属性名a并不冲突，因为它们从属于不同的对象命名空间。
+
+
+###  对象属性名的简写
+
+在很多时候，对象的属性值是一个变量标识符，而这个标识符和属性名是一样的，例如：
+
+```js
+const a = 1
+const b = 2
+
+const obj = {a:a, b:b}
+console.log(obj)  // {a:1, b:2}
+```
+
+这种情况下，可以使用一种简化的语法，如下：
+
+```js
+const a = 1
+const b = 2
+
+const obj = {a , b}
+console.log(obj)  // {a:1, b:2}
+```
+### 使用Object.assign()合并对象
+
+可以使用Object.assign()合并对象，例如：
+
+```js
+const obj1 = {a:1, b:2}
+const obj2 = {a:2, c:3}
+
+const obj = Object.assign(obj1,obj2)
+console.log(obj)  // { a: 2, b: 2, c: 3 }
+```
+
+合并对象时，如果存在同名属性，则后边的对象属性值会覆盖前面的属性值。
+
+### 使用三点操作符合并对象
+
+作为一种语法糖，可以使用三点操作符合并对象：
+
+```js
+const obj1 = {a:1, b:2}
+const obj2 = {a:2, c:3}
+
+const obj = {...obj1,...obj2}
+console.log(obj)  // { a: 2, b: 2, c: 3 }
+```
+
+最后，要特别说明的是，无论使用Object.assign()，还是使用三点运算符，只推荐源对象不包括嵌套属性、并且属性值是原始值的时候使用，此时新对象对于源对象是独立的，不存在深浅拷贝的问题。如果源对象包括嵌套属性、或者属性值存在非原始值（其实嵌套属性本身也意味着属性值非原始值了），那么新对象的某些属性可能还引用着源对象，这里面有一些“语法陷阱”需要避免，建议先使用其它方式将对象打平，再进行合并。
+
+
+# 函数
+
+
+
+###  箭头函数
+
+
+箭头函数省去了function关键字，改而使用胖箭头来隔开参数列表和函数体：
+
+```js
+let fun = (arg1,arg2,...) =>{ 
+    // statements
+}
+```
+
+箭头函数通常被当作参数传递给其它函数使用，例如：
+
+```js
+const  arr=[1,2,3]
+arr.forEach(x=>x*2)
+console.log(arr)  //=>[2,4,6]
+```
+
+使用箭头函数有几个注意事项。
+
+第一，当参数只有一个参数时，可不加圆括号。没有参数或者多于1个参数，都需要加圆括号，例如：
+
+```js
+const  fun1 = x=>x+1  // 只有一个参数
+const  fun2 = ()=>1   // 没有参数
+const  fun3 = (x,y)=>x+y  // 多于一个参数
+```
+
+第二，当箭头函数的函数体只有一行，并且这一行是赋值、打印、返回值的时候，不能加花括号，也不能写return，例如：
+
+```js
+// 这两种写法都是错的：
+const  fun1= x => return x+1
+const  fun2= x => {return x+1}
+
+// 这三种写法是对的：
+const  fun3= x =>x+1
+const  fun4= x =>console.log(x)
+const  fun5= x =>x.a=1
+```
+
+第三，当箭头函数的函数体只有一行，并且这一行返回一个对象时，需要在花括号两边加上圆括号，例如：
+
+```js
+const fun = () => ({a:1,b:2})
+console.log(fun())  // {a:1,b:2}
+```
+
+### 立执行函数
+
+
+匿名立执行函数
+
+
+```
+(function() {
+
+  console.log(1)
+
+})()
+```
+
+
+具名立执行函数
+```
+(function log() {
+
+  console.log(1)
+
+})()
+
+```
+
+传参
+
+```
+(function add(a, b) {
+
+  console.log(a + b)
+
+})(1, 2)
+```
+
+
+###  默认参数值
+
+
+在定义函数时，可以为参数赋予一个默认值。如果调用该函数时没有传递实参，那么就会使用默认值传递，这比以往的默认undefined值更方便了一步。
+
+```js
+function  sum(a=0,b=0){
+  return a+b
+}
+
+console.log(sum())    // => 0
+console.log(sum(1))   //=> 1
+console.log(sum(1,2)) //=>3
+```
+
+
+
+###  函数的arguments对象
+
+
+对于使用了function关键字的函数声明或函数表达式，函数内部有一个arguments对象，这是一个类数组对象，可以通过Array.from(arguments)将其转化为数组。arguments.length表示实参的个数。`arguments[n]`表示第n个参数。
+
+注意，箭头函数没有arguments对象。
+
+有了arguments对象，即便是不写形参，也可以定义函数，例如：
+
+```js
+function sum(){
+	const result=Array.from(arguments).reduce((prev,cur)=>prev+cur)
+	return result
+}
+ 
+console.log(sum(1,2))
+console.log(sum(1,2,3))
+```
+
+
+
+
+### 函数内部的this对象
+
+this，顾名思义，就是“这个”。
+
+this被用在对象的方法中，表示“这个对象”。
+
+函数可以被用作对象的方法。同一个函数，被不同对象调用时，上下文是不一样的，this指代调用的上下文对象。
+
+```js
+function sayName(){
+	console.log(`I am ${this.name}`)   
+}
+
+const zhangsan = {
+	name: 'Zhang San',
+	sayName: sayName
+}
+const lisi = {
+	name : 'Li Si',
+	sayName : sayName
+}
+
+zhangsan.sayName()   // I am Zhang San  
+lisi.sayName()   // I am Li Si   
+```
+
+
+###  参数收集和参数扩展
+
+
+定义函数时，如果不确定参数的个数，可以进行参数收集。参数收集的意思是只定义一个参数列表，未来传递实参时，无论参数有多少个，都会作为一个数组传递进来。这样我们就解决了参数个数不确定的问题，例如定义一个求和函数：
+
+```js
+functionsum(...values){
+     constresult = values.reduce((prev,cur)=>prev+cur)
+     console.log(result)
+}
+```
+
+这里将参数打包成一个数组，函数只针对数组进行处理，规避了参数个数不确定的问题。调用函数时，使用sum(1,2)或者sum(1,2,3,4)都是能进行求和的，因为总是会打包成一个数组处理：
+
+```js
+[1,2].reduce((prev,cur)=>prev+cur)
+[1,2,3,4].reduce((prev,cur)=>prev+cur)
+```
+
+现在，假设有一个现成的数组：
+
+```js
+constarr = [1,2,3,4]
+```
+
+我们想调用上面定义的sum()函数对其元素进行求和，我们就需要先将这些元素一一取出，再依次传参，就像这样：
+
+```js
+sum(arr[0],arr[1],arr[2],arr[3])
+```
+
+这无疑是麻烦的，使用扩展操作符，可以自动将数组解包：
+
+```js
+sum(...arr)
+```
+
+这一行将会被解析为：
+
+```js
+sum(1,2,3,4)
+```
+
+这就是参数扩展。
+
+另外，请注意，大家可能会跟上面的参数收集搞混，认为直接传数组是可以的，实际上，如果直接传递数组sum(arr)，那么函数体中就会是这样的操作：
+
+```js
+[[1,2,3,4]].reduce((prev,cur)=>prev+cur)
+```
+
+这是无法求出结果的。
+
+可以看到，参数收集和参数扩展分别用于函数定义和函数调用。一个将形参列表打包，一个用于实参的快速解包。
+
+
+
+### 函数的call()和apply()方法
+
+函数的call()方法是另一种形式的函数调用，例如`a.b(1,2)`等价于`b.call(a,1,2)`。
+
+再比如Symbol.iterator.call(arr)。由于这个例子中被调用的函数是System.iterator，中间有个句点，所有只能写成这种形式。
+
+apply()与call()相比只是传参的形式不同。
+
+
+###  函数的暂时性死区
+
+参数是按顺序被赋值的，因此，前面的参数不可以引用后面的参数的默认值，也不能引用函数体中的成员值，这就是“暂时性死区”规则，例如：
+
+```js
+function  example(a=b,  b=1,c=data){
+    const data=1
+}
+```
+
+这段代码有两处错误：
+* 参数a不能引用后面的参数b的值
+* 参数c不能引用后面的函数体成员data的值
+
+而下面这个例子是正确的：
+
+```js
+function  example(a=1 , b=a){
+    const data=b
+    console.log(data)
+}
+example()      //=>1
+```
+
+其实，简单来讲，所谓**暂时性死区**，不过也遵循了局部作用域的声明规则。使用let和const声明的时候，声明和引用是按顺序来的，即只能先声明后引用，后面的引用前面的，反过来不可以，不存在声明提升。
 
 
 # DOM 
