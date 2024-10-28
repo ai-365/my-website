@@ -5,6 +5,6 @@
 
 - [Linux](Linux/index.md)
 
-- [Python](Python/index.md)
+- [Python](Python.md)
 
 - [Front-end](Front-end.md) 
