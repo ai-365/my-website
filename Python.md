@@ -916,3 +916,1141 @@ now.strftime('%H-%M-%S')
 - %H， 两位数小时，单数前补0
 - %M， 两位数分种，单数前补0
 - %S， 两位数秒，单数前补0。
+
+
+
+# 文件目录处理
+
+
+##  路径的反斜杠问题
+
+由于Windows平台文件的路径包含反斜杠，而这在Python中表示转义，为了规避这个问题，推荐在路径字符串前面加上r标识。
+
+虽然有时候不加也能正常解析，但是最佳做法是始终加上。
+
+##  列举文件
+
+如下示例列举当前目录下的所有文件或子文件夹：
+
+```
+import os
+li= os.listdir('.')
+print(li)
+```
+
+## 工作目录
+
+###  获取工作目录
+
+使用getcwd()获取工作目录：
+
+```
+os.getcwd()
+# 'C:\\Users\\用户名'
+```
+
+### 改变工作目录
+
+使用chdir()改变工作目录：
+
+```
+os.chdir(r'C:\Users\用户名\Desktop')
+os.getcwd()
+# 'C:\\Users\\用户名\\Desktop'
+```
+
+##   新建文件夹
+
+使用os.mkdir()方法新建文件夹。
+
+```
+import os
+os.mkdir('Test') # 在当地目录新建Test文件夹
+```
+
+##   重命名文件或目录
+
+使用rename()方法重命名文件或目录，语法如下：
+```
+os.rename(old_name, new_name)
+```
+
+通过这种方式也可以移动文件（夹）。
+
+##  路径处理
+
+###  相对路径和绝对路径之间的转换
+
+相对路径到绝对路径的转化，使用：
+
+```
+os.path.abspath('file.txt') # 返回当前目录下file.txt文件的绝对路径
+# 'D:\\Test\\file.txt'
+```
+
+###   提取和去掉路径的最后一部分
+
+basename()方法提取路径的最后一部分。如果是文件，则返回文件名（含后缀）；如果是目录，则返回目录名。
+
+```
+os.path.basename(r"D:\Test\file.txt")
+# 'file.txt'
+```
+
+dirname()获取路径所在的文件夹，即去掉路径的最后一个部分，例如：
+
+```
+os.path.dirname(r"D:\Test\file.txt")
+# 'D:\\Test'
+```
+
+###   合并多段路径
+
+使用join()方法合并多段路径：
+
+```
+os.path.join(r"D:\Test", r"Test\file.txt")
+# 'D:\\Test\\Test\\file.txt'
+```
+
+###  检测路径是否存在
+
+os.path模块可以检测是否是文件夹、文件、链接、是否存在该路径：
+
+- os.path.isdir(p) ： 检测是否是文件夹
+- os.path.isfile(p) ： 检测是否是文件
+- os.path.isexists(p)： 检测是否存在该路径
+- os.path.islink(p)： 检测是否是链接
+
+以上方法中的p表示路径，可以传入相对或绝对路径。
+
+##  删除操作
+
+###  删除文件
+
+使用remove()方法删除文件，传入文件的相对或绝对路径。注意，这种方法会永久删除文件，而不会将文件移动到回收站。
+
+###  删除空文件夹
+
+使用os.rmdir(p)删除空文件夹：
+
+```
+os.rmdir(r'D:\Test')
+```
+
+如果文件夹不是空的，则会报错。
+
+使用os.removedirs(p)递归删除空文件夹：
+
+```
+os.removedirs(r'D:\Test')
+```
+
+###  删除非空文件夹
+
+如果要删除非空文件夹，应使用shutil库的rmtree(p)方法。
+
+```
+import shutil
+shutil.rmtree(r'D:\Test')
+```
+
+## 使用7z命令行解压
+
+```
+apt install p7zip-full 
+```
+
+解压：
+
+```
+7z x filename.7z  -o  指定目录
+```
+
+压缩：
+
+```
+7z a  7z a archive.7z file1 file2 ...
+```
+
+
+# 文件内容处理
+
+## 打开和关闭文件
+
+###  打开文件
+
+读写文件的第一步是打开文件，使用内置的open()函数，该函数需要指定三个参数：文件名、打开方式、编码。
+
+如果文件名包含路径，路径之间使用正斜杠即可，这也适用于Windows平台。
+
+打开方式大部分情况下只需要三种：r（只读）、w（覆盖写）、a（追加）。
+
+对于编码，大部分情况使用通用的utf8编码即可。
+
+在处理文件对象时，最好使用 with 关键字。优点是，子句体结束后，文件会正确关闭，即便触发异常也可以。而且，使用 with 相比等效的 try-finally 代码块要简短得多。
+
+```
+with open('file.txt',encoding='utf8') as f:
+```
+
+f 也叫做文件描述符，这和C语言中的概念是类似的。得到f后，就可以对文件内容进行读写了。
+
+
+
+###  关闭文件
+
+使用with语句，子句体结束后，文件会正确关闭，使用closed属性可以检查文件是否已关闭：
+
+```
+with open('file.txt',encoding='utf8') as f :
+        print(f.read())
+        
+f.closed # True
+```
+
+###   新建文件
+
+没有直接的方式新建文件，可以通过open()的方式新建。因为open()的原则是不存在就新建。
+
+```
+# 注意，一定要加上'w'或'a'参数
+file = open('file.txt', 'w', encoding='utf-8')
+file.write('内容')
+file.close()
+```
+
+## 读取文件内容
+
+###   读取文件内容为字符串
+
+使用read()方法读取全部的内容到一个字符串中，例如：
+
+```
+with open('file.txt',encoding='utf8') as f :
+        print(f.read())
+```
+
+
+###  逐行读取文件内容
+
+f对象是可以可迭代对象，使用next()可以逐行读取，如下示例调用了三次next()，相当于读取了前三行：
+
+```
+with open('file.txt',encoding='utf8') as f :
+        print(next(f))
+        print(next(f))
+        next(f)
+```
+
+
+###  读取文件内容为列表
+
+要将文件读取为列表，只需要将read()替换为readlines()即可：
+
+```
+with open('file.txt','r',encoding='utf8') as f :
+        print(f.readlines())
+```
+
+文件中的每一行就是列表中的元素，元素的类型为字符串。
+
+需要注意的是，如果前面调用了next()方法，那么“光标”就移动到了当前行，readlines()将从下一行开始读取。
+
+###   读取CSV文件
+
+csv第一行表示字段名，从第二行开始，每一行代表一条记录，字段之间用逗号分隔。
+
+如下是读取CSV的示例：
+
+```
+import csv
+f=open('file.csv')
+reader = csv.reader(f)
+next(reader)
+
+row1= next(reader)
+print('第一行:',row1)
+
+row2 = next(reader)
+print('第二行:',row2)
+```
+
+reader是一个可迭代对象，可使用for in 语句遍历。
+
+## 写入文件内容
+
+###  覆盖文件内容
+
+要写入文件内容，需要将第二个参数设置为w。如下示例先删除原有的内容，替换为新内容。如果文件不存在，则创建新文件。
+
+```
+with open('file.txt','w',encoding='utf8') as f :
+        f.write('写入的新内容')
+```
+
+###  追加文件内容
+
+要在文件末尾追加内容，需要将第二个参数设置为a。如下示例将新内容追加到文件末尾，如果文件不存在，则创建新文件。
+
+```
+with open('file.txt','a',encoding='utf8') as f :
+        f.write('追加的新内容')
+```
+
+如果要多次追加，多次调用write()即可。
+
+##  提取文件后缀
+
+使用splitext()方法可以拆分路径的后缀，返回一个元组：
+
+```
+os.path.splitext(r"D:\Test\file.txt")
+# ('D:\\Test\\file', '.txt')
+```
+
+
+##  获取创建、访问和修改时间
+
+- os.path.getctime(p) ： 创建（create）时间
+- os.path.getatime(p)： 访问（access）时间
+- os.path.getctime(p)：修改（modify）时间 
+
+上述方法皆传入相对或绝对路径，返回的皆为时间戳。
+
+##   Python对象与JSON格式的转换
+
+### 将字典转化为json文本
+
+使用json模块的dumps()方法可以将对象转换为json文本：
+
+```
+import json
+di = {'姓名':'张三', '国籍':'中国'}
+jsonStr = json.dumps(di, ensure_ascii=False)
+print(jsonStr)
+```
+
+注意，由于中文编码的问题，一定要加上ensure_ascii=False，以保证中文输出。
+
+得到的jsonStr就是一个普通的文本，可以将该文本存成一个json文件。
+
+也可以可以使用dump()方法直接将对象直接存为json文件：
+
+```
+import json
+di = {'姓名':'张三', '国籍':'中国'}
+with open('file.json','w',encoding='utf8') as f :
+        json.dump(di, f, ensure_ascii=False)
+```
+
+###   将json文本转化为Python字典
+
+使用json模块的loads()方法可以将JSON文本转换为Python对象，例如：
+
+```
+import json
+jsonStr = '{"姓名": "张三", "国籍": "中国"}'
+
+di = json.loads(jsonStr)
+print(di)
+
+```
+
+jsonStr就是一个普通的字符串，一般来源于对一个json文件的读取，通过使用open()和read()函数读取为字符串即可。
+
+也可以直接加载json文件为Python对象，注意，json文件一定要是utf8编码。例如：
+
+```
+import json
+with open('file.json',encoding='utf8') as f :
+        di = json.load(f)
+print(di)
+```
+
+
+
+# 序列
+
+
+之所以将序列单独挑出来，因为列表、元组、字符串的很多操作都是通用的，例如迭代、加法、乘法、推导式等。换言之，列表之所以适用于前述操作，就是因为列表是序列。
+
+
+
+##   序列的概念
+
+序列就是有序的队列，在Python中，包括列表、元组、字符串都是序列。
+
+序列是可迭代对象。
+
+列表、元组、字符串共用的操作总结如下：
+- 加法： 拼接
+- 乘法： 重复
+- for in ： 遍历元素。对字符串而言，是遍历每个字符。
+- in或not in： 查找元素是否存在。对字符串而言，查找子串是否在文本中。
+- 推导式： for in 的简化版。
+- len() ：求长度。
+
+##  序列的count()方法
+
+```
+fruits = ['apple', 'banana', 'orange', 'apple', 'grape', 'apple']
+
+fruits.count('apple')
+# 3
+```
+
+count()方法还适用于字符串和元组，因为它们都是序列，用法相同。
+
+
+##  序列的加法和乘法
+
+通过加法可以将两个甚至多个序列合成一个新序列。
+
+```
+[1,2,3]+[4,5,6]
+```
+
+```
+(1,)+(2,3)
+```
+
+注意，序列加法和乘法的前提是操作数必须是同种数据类型。
+
+```
+[1,2,3]*3
+# [1,2,3,1,2,3,1,2,3]
+```
+
+字符串也是序列，因此也适用于加法和乘法：
+
+```
+'abc'+'def'
+# 'abcdef'
+
+'abc'*3
+# 'abcabcabc'
+```
+
+
+# 异步
+
+###  进程、线程、协程、并发、并行概念的区别
+
+并发：   处理多个任务。并发依然是CPU依次处理每个任务，只不过切换的时间很快，执行时间很快，人类感知不到，所以看上去是多任务处理，其实微观来看，并发是单任务。并发通过新增新的线程方式实现。
+
+并行 ：   通过多个CPU同时执行任务。并行是真正意义上的多任务，从微观来看，两个CPU可以同时执行任务。并行通过派生子进程方式实现。
+
+进程：   每一个进程会分配隔离的内存。增加一个进程，内核会分配新的内存单元，由于CPU依次执行每个进程，所以，多进程程序会获得更多的CPU时间，但是缺点是会增加进程间切换的时间消耗、以及要处理进程间通信问题。
+
+线程：  进程会有一个主线程，也可以增加线程，执行并发操作。线程之间共享内存。线程消耗的资源比进程少。
+
+协程：  协程表示线程内的任务。协程改变了任务执行的先后顺序。协程基于事件循环机制，事件循环机制是编程语言层面的实现。事件循环机制中包含一个任务队列，每次取出一个任务出来执行。协程中只要有阻塞代码，事件循环和协程的执行就会受到阻塞。协程消耗的资源比线程少。
+
+###   asyncio.create_task()
+
+通过asyncio的create_task方法，可以将所有任务都收集到一个队列中。任务在这里具体表现为函数。如果这个队列中中存在耗时操作，例如文件读取、网络请求、sleep，并不会阻塞等待，而是会执行后面的任务。
+
+```
+import asyncio
+
+async def task_one():
+    print("开始执行任务一")
+    await asyncio.sleep(3)  # 模拟一个耗时的操作
+    print("经过了耗时操作后，任务一执行完成")
+
+async def task_two():
+    print("任务二，不耗时操作，提前完成")
+
+async def main():
+    task1 = asyncio.create_task(task_one())
+    task2 = asyncio.create_task(task_two())
+    await task1
+    await task2
+
+asyncio.run(main())
+```
+
+输出的结果如下：
+
+```
+开始执行任务一
+(立即显示)任务二，不耗时操作，提前完成
+(3秒后才显示)经过了耗时操作后，任务一执行完成
+```
+
+可以发现，任务一中有一个sleep耗时操作，但是任务二这个不耗时的操作在前面打印出来了。
+
+
+# 映射
+
+Python映射与字典类似，在有些时候，使用映射更加方便。
+
+映射可以合并，后面的操作数中的元素如果覆盖前面的同名键，增加新的键。
+
+使用 | 操作符更新映射。
+
+```
+d1 = {'a':1,'b':2}
+
+# 键a的值会覆盖前面的
+d2 = {'a':11,'c':3}
+
+print(d1 | d2)
+# {'a': 11, 'b': 2, 'c': 3}
+# d1和d2都没有变
+```
+
+如果想就地更新映射，使用 |=。
+
+```
+d1 = {'a':1,'b':2}
+
+# 键a的值会覆盖前面的
+d2 = {'a':11,'c':3}
+
+d1 |= d2
+
+print(d1)
+# {'a': 11, 'b': 2, 'c': 3}
+```
+
+
+
+# 元组
+
+
+不可变的列表称为元组。
+
+## 新建元组
+
+元组的字面量使用圆括号包括、逗号分隔元素，例如：
+
+```
+tu = (1,2,3)
+```
+
+
+##  元组的不可变性
+
+为什么有了列表还要使用元组？关键就在于元组的不可变性，我们可以修改列表的元素，但是无法对元组的元素。例如，如果要更改元组中某个位置的值：
+
+```
+tuple8 = (1,2,3,4)
+# 期望修改第1个元素
+tuple8[0] = 10 
+```
+
+解释器会报出如下错误：
+
+```
+TypeError: 'tuple' object does not support item assignment
+语法错误： 元组对象不支持元素赋值
+```
+
+
+## 通过可迭代对象得到新元组
+
+tuple()函数接受一个可迭代对象，例如字符串或列表，从而得到一个新元组。例如，通过字符串得到元组：
+
+```
+tu = tuple("hello")
+```
+
+通过列表得到元组：
+
+```
+li = [1,2,3]
+tu = tuple(li)
+```
+
+## 使用for in 遍历元组
+
+元组也是可迭代对象，因此可以使用for in 遍历：
+
+```
+tur = (1,2,3)
+for i in tu:
+        print(i)
+```
+
+
+##  元组的索引和分片
+
+通过中括号和从0开始的索引得到元组的元素：
+
+```
+tuple6 = (1, 2.5, 'hello')
+print(tuple6[2]) # 'hello': 读取第3个位置
+```
+
+可以对元组进行分片得到新元组，` [n:m] `  表示从第n+1个元素到第m个元素，例如：
+
+```
+tuple7= (1,2,3,4,5,6,7)
+tuple8 = turple7[3:6]  # (4,5,6) ：从第4个元素到第6个元素
+```
+
+##  元组的拖尾逗号
+
+元组的最后一个元素后面可以选择性的添加一个逗号，这并不会影响元素个数，这种逗号叫做“拖尾逗号”，在有些编辑场景下很实用。如下两种写法是等价的：
+
+```
+tuple1 = (1,2,3,4)
+tuple2 = (1,2,3,4,)
+```
+
+
+# 正则表达
+
+
+###  元字符
+
+次数匹配： 
+- {m} m次的匹配
+- {m,n} m到n次匹配
+- `*`0到多次
+- `+` 1到多次
+- ？ 0到1次
+
+开头结尾匹配 ：
+- ^  匹配开头
+- $  匹配结尾
+
+指代字符： 
+- . 任意字符
+- `\W` 非字母数字
+- `\s` 空白字符
+- `\d` 任意数字，即0-9
+
+
+###  fullmatch()
+
+正则匹配的意思是，一个字符串是否符合一个正则表达式。
+
+如果要求整个字符串完全符合正则表达式，使用fullmatch()。
+
+```
+re.fullmatch(pattern, string)
+```
+
+使用fullmatch()检测整个文本是否匹配pattern，如果匹配，则返回match，否则返回None，None在终端中不会显示。
+
+例如，检查字符串是否包含数字，可以使用正则表达式 `r'.*\d.*'`。
+
+除了检测字符串是否匹配pattern以外，有时候还需要找到匹配的位置，此时，使用search()。
+
+```
+import re
+
+# 检测字符串是否包含数字
+text = 'abc123def'
+pattern = re.compile(r'.*\d.*')
+
+result = pattern.fullmatch(text)
+print(result)
+# <re.Match object; span=(0, 9), match='abc123def'>
+
+pattern2 = re.compile(r'\d')
+result2 = pattern2.search(text)
+print(result2)
+# <re.Match object; span=(3, 4), match='1'>
+```
+
+
+###   分组和回引
+
+如果新子串需要保留旧子串的部分内容，则需要将这部分内容用圆括号包裹，表示一个组，并用特定的格式给这个组起个名字，然后再用特定的格式在新子串中引用。
+
+```
+定义分组：?P<name>
+回引： \g<name>
+```
+
+如下示例，书名使用中文粗括号包裹，希望改为书名号，此时书名就是需要保留的内容，使用括号包裹并定义为一个组：
+
+```
+import re
+ 
+# 示例文本
+text = "这本书的名字叫【活着】。"
+ 
+# 正则表达式，其中有命名组
+pattern = re.compile(r"【(?P<book>.*)】")
+ 
+# 替换文本中的命名组
+result = pattern.sub(r"《\g<book>》", text)
+print(result)  
+# 这本书的名字叫《活着》。
+```
+
+
+groups()
+
+如果要检测多个子串，可以使用分组。用圆括号包裹即创建一个分组。结果中会返回包含每组结果的元组。
+
+```
+# 导入re模块
+import re
+
+tel = "0755-98776754"
+
+# 定义正则表达式
+pattern = re.compile(r"(\\d{4})-(\\d{8})")
+
+result = pattern.search(tel)
+
+print(result)   
+# <re.Match object; span=(0, 13), match='0755-98776754'> 
+
+print(result.group())    # 0755-98776754
+
+# 返回匹配到的子串元组
+print(result.groups())    # ('0755', '98776754')
+# 返回第一个匹配子串
+print(result.group(1))    # 0755
+# 返回第二个匹配子串
+print(result.group(2))    # 98776754
+```
+
+正则替换：sub
+
+
+很多时候，要替换字符串的一部分为新的子串，但是，需要子对串进行模糊匹配，此时可以用sub()。
+
+如果要对字符串进行正则替换，则使用re模块的sub()方法。
+
+```
+pattern.sub(replacement, text)
+```
+
+匹配到pattern的子串，使用replacement替代。
+
+示例：
+
+```
+import re
+
+text =  "123abb456"
+# 数字匹配
+pattern = re.compile(r'\d')
+pattern.sub('*', "123abb456")
+# ***abb***
+```
+
+###  split()
+
+字符串的split()方法可以对字符串进行分割，如果要基于正则表达式进行分割，则使用re模块的split()方法。
+
+```
+re.split(pattern, string)
+```
+
+用pattern分开string，返回列表。
+
+
+```
+import re
+
+text = 'Words, words; words'
+# 非字母符号
+pattern = re.compile(r'\W+') 
+
+result = pattern.split(text)
+print(result)
+```
+
+`\W`表示非字母符号。
+
+
+
+# 字典
+
+
+
+Python中的字典包含一个或多个键值对。这些键值对是没有顺序的，因此不能通过索引访问。
+
+因为字典的键值对没有顺序，Python字典不是可迭代对象。
+
+###  新建字典
+
+通常通过一对花括号新建一个字典：
+
+```
+di= {'a': 1, 'b': 2}
+```
+
+键需要使用单引号或双引号包裹。
+
+###  字典的长度
+
+通过len()方法得到字典的键值对的数量，即字典的长度：
+
+```
+di = {'a': 1, 'b': 2, 'name': 'bob'}
+print(len(di))
+```
+
+###  读取字典的值
+
+通过中括号和引号包裹键名称可以访问对应的值。
+
+注意，与JavaScript不同，Python字典不支持使用点号语法！
+
+```
+di = {'a': 1, 'b': 2}
+print(di['a']) 
+```
+
+###  设置或添加键值对
+
+为键名称赋值即可添加键值对，如果键本来就存在，则会覆盖原来的值。
+
+```
+di = {'a': 1, 'b': 2}
+di['c'] = 3
+di['a'] = 10
+print(di) 
+```
+
+###  删除键值对
+
+使用del语句加上键名称可以删除对应的键值对。
+
+```
+di = {'a': 1, 'b': 2}
+del di['b']
+print(di)
+```
+
+###  对字典使用for遍历
+
+```
+users = {'Hans': 'active', 'Éléonore': 'inactive', '景太郎': 'active'}
+for user, status in users:
+        print(user, status)
+        
+```
+
+###  取出字典中的键：keys()
+
+使用keys()方法得到包含键的一种可迭代对象，可以使用list()包装：
+    
+```
+di = {'a': 1, 'b': 2}
+print(list(di.keys()))  
+```
+
+通过如下方式遍历字典中的键：
+
+```
+di = {'a': 1, 'b': 2}
+
+for k in di.keys():
+        print(k)
+```
+
+### 取出字典中的值：values()
+
+使用values()方法得到包含值的一种可迭代对象，可以使用list()包装：
+
+```
+di = {'a': 1, 'b': 2}
+print(list(di.values()))  
+```
+
+通过如下方式遍历字典中的值：
+
+```
+di = {'a': 1, 'b': 2}
+
+for v in di.values():
+        print(v)
+```
+
+### 取出字典中的键值对：items()
+
+使用items()方法得到包含键值对的一种可迭代对象，可以使用list()包装：
+
+```
+di = {'a': 1, 'b': 2}
+print(list(di.items))  
+```
+
+通过如下方式遍历字典中的键和值：
+
+```
+di = {'a': 1, 'b': 2}
+
+for k,v in di.items():
+    print(k,v)
+```
+
+
+# 字符串
+
+
+### 内置函数str()
+
+使用str()可将其它数据类型转换为字符串。下面是一些示例：
+
+```
+str1 = str(123)
+print(str1,type(str1))
+# 123 <class 'str'>
+
+str2 = str([1,2,3])
+print(str2,type(str2))
+# [1, 2, 3] <class 'str'>
+
+str3 = str({"a":1,"b":2})
+print(str3,type(str3))
+# {'a': 1, 'b': 2} <class 'str'>
+```
+
+使用str()可将其它数据类型转换为字符串。下面是一些示例：
+
+```
+str1 = str(123)
+
+str2 = str([1,2,3])
+
+str3 = str({"a":1,"b":2})
+```
+
+str()可以避免字符串和数字合并时发生的错误，例如下面的例子，你可能期望输出 'I am 40 years old'，但实际会发生语法错误：
+
+```
+age = 40
+print('I am ' + age + ' years old')
+# TypeError: can only concatenate str (not "int") to str
+```
+
+此时，str()就派上用场了，将整数转为字符串：
+
+```
+age = 40
+print('I am ' + str(age) + ' years old')
+# I am 40 years old
+```
+
+
+###  format()
+
+执行字符串格式化操作。点号左边的字符串如果包括花括号括起来的替换域，替换域可以包含位置索引。点号右边写上替换为的值，如果有多个替换域，依次书写。
+
+
+```python
+"The sum of 1 + 2 is {0}".format(1+2)
+# 'The sum of 1 + 2 is 3'
+```
+
+###  大小写
+
+- 小写：str.lower()
+- 大写： str.upper()
+- 大写转小写，小写转大写： str.swapcase()
+
+
+###  合并字符串
+
+可以使用加号合并两个或多个字符串，例如：
+
+```
+'Py' + 'thon'
+# 'Python'
+```
+
+使用空格也可以合并，不过这种方式仅适用于字符串字面量，例如：
+
+```
+'Py'  'thon'
+# 'Python'
+```
+
+###  isxxxx()系列函数
+
+- isalnum()： 如果字符串中的所有字符都是字母或数字且至少有一个字符，则返回 True，， 否则返回 False。
+- isspace()： 如果字符串中只有空白字符且至少有一个字符则返回 True ，否则返回 False 。
+- istitle()： 如果字符串中至少有一个字符且为标题字符串则返回 True ，例如大写字符之后只能带非大写字符而小写字符必须有大写字符打头。 否则返回 False 。
+- isupper()： 如果字符串中至少有一个区分大小写的字符且此类字符均为大写则返回 True ，否则返回 False 。
+- islower()： 如果字符串中至少有一个区分大小写的字符且此类字符均为小写则返回 True ，否则返回 False 。
+- isspace()： 如果字符串中只有空白字符且至少有一个字符则返回 True ，否则返回 False 。
+- isnumeric()： 如果字符串中至少有一个字符且所有字符均为数值字符则返回 True ，否则返回 False 。 
+- isdigit()： 如果字符串中的所有字符都是数字，并且至少有一个字符，返回 True ，否则返回 False 。
+
+###  移除前缀、后缀
+
+```
+str.removeprefix(prefix)
+```
+
+如果字符串以prefix开头，则返回删除了该前缀的新子串。如果不以该前缀开头，返回原字符串。
+
+```Python
+'TestHook'.removeprefix('Test')
+# 'Hook'
+
+'BaseTestCase'.removeprefix('Test')
+# 'BaseTestCase'
+#  虽然包含，但不是前缀
+```
+
+```
+str.removesuffix(suffix)
+```
+
+如果字符串以 suffix 字符串结尾，则返回删除了该后缀的新子串。如果不以该后缀结尾，返回原字符串。
+
+```
+'MiscTests'.removesuffix('Tests')
+# 'Misc'
+```
+
+###   startswith()和endswith()
+
+
+```
+str.endswith(substr)
+```
+
+如果字符串以指定的 substr结尾则返回 True，否则返回 False。 substr 也可以为由多个供查找的后缀构成的元组。
+
+可选参数，限定起始和结束位置。
+
+```
+str.startswith(substr)
+```
+
+如果字符串以指定的 substr 开始则返回 True，否则返回 False。substr 也可以为一个元组，只要有一个符合要求就返回True。
+
+
+
+
+# HTTP
+
+
+###   快速启动静态文件服务器
+
+
+快速起一个静态文件服务器：
+
+```
+python -m http.server 65000
+```
+
+###   使用FastAPI实现HTTP服务器
+
+FastAPI是Python 的第三方库，用于实现HTTP服务器。如下是一个简单的示例：
+
+
+```python
+import uvicorn
+from fastapi import FastAPI
+from fastapi.responses import JSONResponse 
+import json
+
+app = FastAPI()
+
+@app.get("/")
+async def get():
+        return "Hello,World"
+
+# 启动
+if __name__ == "__main__":
+    import uvicorn
+    # 启动服务，注意app值为——入口文件:入口函数
+    uvicorn.run(app='server:app', host="127.0.0.1", port=8080)
+
+```
+
+如下示例接收一个Post请求：
+```python
+import uvicorn
+from fastapi import FastAPI
+from fastapi.responses import JSONResponse 
+import json
+
+app = FastAPI()
+
+@app.post("/post")
+# request形参表示请求体，会自动把json转为dict
+async def post(request:dict):
+        print(request)
+        headers = {"Content-Type":"application/json"}
+        # 内容为json格式，要与Content-Type 对应
+        content = '{"key":"value"}'
+        # 返回的消息要包括：状态码、响应头、响应体
+        return JSONResponse(status_code=200, headers=headers, content=content)
+
+# 启动
+if __name__ == "__main__":
+    import uvicorn
+    # 启动服务，注意app值为——入口文件:入口函数
+    uvicorn.run(app='server:app', host="127.0.0.1", port=8080)
+
+```
+
+
+###   使用requests模块发送请求
+
+一个典型的HTTP请求包括如下四个组成部分：
+
+-  Method
+-  URL
+-  headers
+-  body
+
+发送post请求：
+
+```
+import requests
+
+url = 'http://127.0.0.1:8080/post'
+headers = {'Content-Type': 'application/json'}
+body = '{"key":"value"}'
+
+response = requests.post(url, headers=headers, data=body)
+
+# 打印响应码
+print(response.status_code)
+# 200
+
+print(response.json())
+```
+
+发送get请求：
+
+```
+import requests
+
+url = 'http://127.0.0.1:8080/post'
+headers = {'Content-Type': 'application/json'}
+
+response = requests.get(url, headers=headers)
+
+# 打印响应码
+print(response.status_code)
+# 200
+
+print(response.json())
+```
+
+
+ ###   在flask中构造json响应体
+
+在Web开发中，我们经常需要将列表数据封装到HTTP响应中返回给客户端。假设有一个API端点负责返回用户列表：
+
+```
+from flask import jsonify
+
+users = [
+    {'id': 1, 'name': 'Alice'},
+    {'id': 2, 'name': 'Bob'},
+]
+
+@app.route('/users')
+def get_users():
+    return jsonify(users=users)
+```
+
