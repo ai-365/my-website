@@ -7,6 +7,9 @@
 - [样式优先级](#样式优先级)
 - [选择器](#选择器)
 - [文字样式](#文字样式)
+- [背景、边框、轮廓](#背景边框轮廓)
+- [媒体查询](#媒体查询)
+- [特效](#特效)
 
 
 # DOM 
@@ -637,4 +640,546 @@ white-space: pre;
 
 注意，某些浏览器可能不支持文字渐变。
 
+
+# 背景、边框、轮廓
+
+
+
+
+- [背景](#背景)
+  - [背景颜色](#背景颜色)
+  - [背景图片](#背景图片)
+  - [背景图片固定](#背景图片固定)
+  - [背景图片尺寸](#背景图片尺寸)
+- [边框](#边框)
+  - [边框样式](#边框样式)
+  - [边框宽度](#边框宽度)
+  - [边框颜色](#边框颜色)
+  - [单独各边](#单独各边)
+  - [合并样式](#合并样式)
+  - [快速设置四边框数值](#快速设置四边框数值)
+  - [边框汇总](#边框汇总)
+  - [圆角边框](#圆角边框)
+- [轮廓](#轮廓)
+
+
+
+## 背景
+
+背景一般包括背景颜色或背景图片。属性如下：
+- background： 设置所有背景值的简写属性
+- background-attchment： 设置元素的背景附着属性，决定背景图片是否随页面一起滚动。
+- background-clip： 设置背景颜色和图像的裁剪区域
+- background-color： 设置背景颜色
+- background-image： 设置元素背景图像
+- background-origin： 设置背景图像绘制的起始位置
+- background-position： 设置背景图像在元素盒子中的位置
+- background-repeat： 设置背景图像的重复方式
+- background-size： 设置背景图像的绘制尺寸
+
+背景包括背景颜色和背景图像。
+
+### 背景颜色
+
+背景颜色使用background-color，一般可以简写为background。
+
+### 背景图片
+
+使用网络链接可以设置背景图片。注意，不是直接写链接，而是作为参数传入url()。例如：
+
+```
+<style>
+    div {
+        width: 700px;
+        height: 500px;
+        background-image: url("https://example.com/example.png");
+}
+</style>
+
+<div></div>
+```
+
+不过，如果图片比div小，则默认会重复，使用background-repeat设置重复方式：
+
+- space： 完全填充
+- no-repeat ： 不重复
+
+有时候设置背景图片不重复后，还希望背景图片能在容器的正中间显示，此时做如下设置：
+
+```css
+background-image: url("https://example.com/example.png");
+background-repeat: no-repeat;
+background-position: center;
+```
+
+### 背景图片固定
+
+有时候，我们希望把背景图片固定到页面中，不随之滚动，可做如下设置：
+
+```css
+body{
+        background-image: url("https://example.com/example.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+}
+```
+
+### 背景图片尺寸
+
+使用background-size手动设置背景图片尺寸，可以是绝对尺寸：
+
+```
+background-size: 400px 500px;
+```
+
+也可以是相对尺寸,相对的是容器的宽度和高度:
+
+```
+background-size: 50% 50%;
+```
+
+还可以是相对容器的文本字号:
+
+```
+background-size: 2em 4em;
+```
+
+上面几个属性值也可以混着使用。
+
+
+##  边框
+
+大部分元素都可以设置边框，例如p、div、img等等。
+
+### 边框样式
+
+边框样式使用border-style制定，默认边框是透明的。因此，如果要设置宽度、颜色，一定一定要首先设置border-style为可见的一种属性，例如solid，这点切记。
+
+大多数情况只需要使用下面这条属性即可：
+
+```css
+border-style: solid;
+```
+
+border-style可以取如下值：
+
+-  solid  ：定义实线边框，这是最常见的，一般只需要记住这个即可，下面可以不记。
+-  none   ： 默认，无边框                
+-  dotted ： 定义一个点线边框                
+-  dashed  ：  定义一个虚线边框               
+-  double ： 定义两个边框。 两个边框的宽度和 border-width 的值相同 
+-  groove ： 定义3D沟槽边框。效果取决于边框的颜色值               
+-  ridge  ： 定义3D脊边框。效果取决于边框的颜色值          
+-  inset  ： 定义一个3D的嵌入边框。效果取决于边框的颜色值        
+-  outset ： 定义一个3D突出边框。 效果取决于边框的颜色值            
+
+### 边框宽度
+
+指定宽度值：
+
+```css
+
+    border-width:5px;
+```
+
+使用内置关键字： thick 、medium（默认值） 和 thin。
+
+```css
+p{
+border-style:solid;
+    border-width:medium;
+}
+```
+
+### 边框颜色
+
+border-color
+
+颜色值、RGB、十六进制。
+
+### 单独各边
+
+在连字符中加入边的指代。left、right、top、bottom。
+
+```css
+p{
+	border-top-style:dotted;
+	border-left-style:solid;
+	border-top-color:red;
+	border-left-width: 5px;
+}
+```
+
+### 合并样式
+
+```
+p{
+	border:5px solid red;
+}
+h1{
+	border-top:5px solid red;
+	border-left:5px dotted green;
+}
+```
+
+### 快速设置四边框数值
+
+- 值1   值2   值3   值4	上->右->下->左
+- 值1   值2   值3  	上->左右->下
+- 值1   值2   	上下->左右
+- 值1  	上下左右
+
+```css
+p{
+	border-style : dashed;
+	border-width: 5px 2px;  /* 上下宽5px，左右宽2px */
+	border-color: red  green blue;  /*上边颜色红色、左右颜色绿色，下边颜色蓝色*/
+}
+```
+
+
+### 边框汇总
+
+对于边框需要考虑几点：
+- 哪一边：分为top、bottom、left、right。如果不写，则为所有边。
+- width： 宽度。
+- style：样式。包括虚线、实现、单点划线、双点划线等。
+- color：边框的颜色。
+- image：边框的图像。图像与颜色只能选择一种。
+
+边框包括如下属性：
+
+- border： 为所有边界设置的简写属性，包括宽度、样式、颜色。
+- border-top/bottom/left/right： 为上、下、左、右单独设置的属性。
+- border-bottom-color： 为下边框设置的颜色，其它方向类似。
+- border-bottom-left-radius： 将边框左下角设置为圆角，属性值为圆角值，其它方向为bottom-right、top-left、top-right。
+- border-bottom-style： 设置下边框的样式，其它方向类似。
+- border-bottom-width： 设置下边框的宽度，其它方向类似。
+- border-color： 统一设置四边的颜色。
+- border-image： 设置四边的图像
+- border-image-outset：指定图像向边框盒外部扩展的区域。
+- border-image-repeat： 指定边框图像的缩放和重复方式。
+- border-style： 统一设置四边的样式。
+- border-top-style：设置上边框的样式，其它方向类似。
+- border-width：统一设置四边的宽度。
+- box-shadow：设置元素的一个或多个阴影效果。
+
+### 圆角边框
+
+要定义圆角边框，使用border-radius属性。
+
+```
+border-radius: 10px;
+```
+
+单独一个角：
+
+```
+border-top-left-radius: 10px;
+```
+
+类似地，还有右上：top-right，坐下：bottom-left，右下：bottom-right。
+
+## 轮廓
+
+轮廓与边框类似，区别如下：
+
+- 轮廓不占空间
+- 无法为一边单独设置轮廓
+
+轮廓包括如下属性：
+
+- outline-color： 设置元素边框外围轮廓线的颜色
+- outline-offset： 设置轮廓距离元素边框边缘的偏移量
+- outline-style： 设置轮廓的样式
+- outline-width： 设置轮廓的宽度
+- outline： 轮廓的简写属性。
+
+
+
+
+
+# 媒体查询
+
+媒体查询主要用于区分手机、平板、电脑，以及横屏、竖屏的状态，以便于根据用户的屏幕种类及状态，呈现合适的布局。主要根据屏幕的宽度来推断。
+
+and运算符用于符号两边规则均满足条件的匹配，例如：
+
+```
+@media (min-width:300px)  and (max-width:600px){
+        /*匹配宽度在300px到600px之间的设备*/
+}
+```
+
+
+
+max-device-width： 设备宽度，max-width：界面宽度
+
+# 特效
+
+- [线性渐变](#线性渐变)
+- [过渡](#过渡)
+- [动画](#动画)
+  - [定义动画](#定义动画)
+  - [动画的组合](#动画的组合)
+- [图片阴影](#图片阴影)
+- [利用border-radius属性实现裁剪](#利用border-radius属性实现裁剪)
+- [块阴影box-shadow](#块阴影box-shadow)
+
+
+
+##  线性渐变
+
+线性渐变使用如下函数：
+
+```
+linear-gradient(角度, 起始颜色, 终止颜色)
+```
+
+```
+<style>
+    div {
+        width: 300px;
+        height: 300px;
+        background: linear-gradient(45deg,red,blue);
+    }
+</style>
+
+<div></div>
+```
+
+角度单位是deg。0表示从下到上，45deg从左下到右上。
+
+
+##  过渡
+
+过渡表示当某个属性发生**变化**时，应该在一定的时间内以动画的形式展现。
+
+过渡使用transition属性 ，该属性是一种简写方式，同时接收三个值：
+- 过渡的属性，如果有多个属性，使用逗号隔开。
+- 过渡时间，单位为s或ms。
+- 过渡的渐变方式。
+
+过渡的渐变方式主要有：
+- linear： 线性过渡
+- ease：中间较慢，两端较快
+- ease-in-out： 中间较快，两端较慢
+- ease-in： 慢速开始，然后加速
+- ease-out： 快速开始，然后减速
+
+为了直观地呈现过渡，通常使用:hover定义鼠标悬停时的样式。
+
+```html
+<style>
+    div {
+        width: 100px;
+        height: 100px;
+        background: lightblue;
+        transition: background 0.5s ease-in-out;
+    }
+
+    div:hover {
+        background: lightgreen;
+    }
+</style>
+<div></div>
+```
+
+
+##  动画
+
+-  定义关键帧
+-  定义动画
+-  定义动画组合
+
+为某个属性定义一个动画帧：
+
+```html
+<style>
+@keyframes color-fade
+{
+    from {background:lightblue;}
+    to {background:lightgreen;}
+}
+
+div{
+        width: 100px;
+        height: 100px;
+        background: lightblue;
+        animation: color-fade 0.5s ;
+}
+</style>
+
+<div></div>
+```
+
+### 定义动画
+
+animation主要包括如下细分属性：
+- animation-name： 动画名称
+- animation-duration： 播放时长
+- animation-delay： 延迟时间
+- animation-direction： 方向，默认正向，反向为reverse
+- animation-timing-function： 速度函数
+
+一般情况下，将几个属性合在一起写，如同上述的例子一样。绝大多数情况会用到如下5个属性，依次指定即可。
+
+```css
+animation : 关键帧名称  时长  次数  过渡类型  方向
+```
+
+这5个属性中，大多数情况设置的是前三个个：关键帧名称、时长、次数。
+
+时长为播放一次动画的时间，单位为s或ms。默认为0，如果不设置就看不到动画。
+
+次数是一个整数值，如果需要一直播放，设为infinite。
+
+过渡的意思是淡入淡出等效果，主要的过渡类型如下：
+
+- linear	：	动画从开始到结束的速度是相同的
+- ease	 ：	默认值，动画以低速开始，然后加快，在结束前变慢
+- ease-in	：	 动画以低速开始
+- ease-out	 ：	动画以低速结束
+- ease-in-out	：	动画以低速开始，并以低速结束
+
+方向有四个值：
+- norma： 默认，从0%到100%
+- reverse： 反向，每次都从100%到0%
+- alternate： 第一次正向，第二次反向，第三次正向，第四次反向，依此类推，此选项可以模拟动画的呼吸效果。
+- alternate-reverse：与alternate类似，只不过反过来，奇数次反向，偶数次正向。
+
+
+### 动画的组合
+
+动画的组合分有两种方式：
+- 在一个关键帧定义中，写多个属性，用分号分隔
+- 在animation值中，写多个关键帧，用逗号分隔
+
+可以将强关联的属性组合起来，比如：
+
+```html
+<style>
+    @keyframes fade{
+        from{width:10px; height:10px; background: lightblue;}
+        to{width:200px; height:200px; background: lightcoral;}
+    }
+    div{
+        animation: fade 3s infinite ease;
+    }
+    </style>
+    
+    <div></div>
+```
+
+也可以将多个关键帧组合，例如：
+
+```html
+<style>
+    @keyframes 尺寸{
+        from {
+            width: 10px;
+            height: 10px;
+        }
+
+        to {
+            width: 200px;
+            height: 200px;
+        }
+    }
+
+    @keyframes 颜色 {
+        from {background: lightblue;}
+        to {background: lightcoral;}
+    }
+
+    div {
+        animation: 尺寸 3s infinite ease, 颜色  3s infinite ease;
+    }
+</style>
+
+<div></div>
+```
+
+##  图片阴影
+
+```
+filter:drop-shadow( offset-x offset-y blur-radius spread-radius color )
+```
+
+- ffset-x：此参数设置图像的水平偏移。正值将创建右侧的偏移量，负值将创建左侧的偏移量。
+- offset-y：此参数设置图像的垂直偏移。正值创建到底部的偏移量，负值创建到顶部的偏移量。
+- blur-radius：设置模糊半径的值。它是一个可选参数。
+- spread-radius：设置扩散半径的值。它是一个可选参数。
+- color:它设置阴影的颜色。它的可选参数。
+
+
+```html
+<style>
+    img{
+        filter: drop-shadow(0 0 5em #646cffaa)
+    }
+</style>
+
+<img src="1.png">
+```
+
+
+
+##  利用border-radius属性实现裁剪
+
+大多数情况下，我们需要将div或者图片裁剪成圆角矩形或圆形，此时，可以很使用如下属性：
+
+```css
+border-radius: 50%;
+```
+
+如下示例将div裁剪成圆角矩形：
+
+```html
+<style>
+   div{
+    width:100px;
+    height:100px;
+    background: lightblue;
+    border-radius: 25%;
+   }
+</style>
+
+<div></div>
+```
+
+如下示例将图片裁剪成圆形：
+
+```html
+<style>
+   img{
+    border-radius: 50%;
+   }
+</style>
+
+<img src="1.png" alt="">
+```
+
+
+##  块阴影box-shadow
+
+之前介绍过text-shadow，这个属性为文本创建阴影。
+
+对于块元素，有一个类似地属性，叫做box-shadow。
+
+box-shadow接受三个值：向下的偏移量、向右的偏移量、阴影颜色。顺序不强制要求。示例如下：
+
+```
+<style>
+    div {
+        width: 100px;
+        height: 100px;
+        background: lightblue;
+        box-shadow: orange 10px 10px;
+    }
+</style>
+
+<div></div>
+```
 
