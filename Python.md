@@ -2054,3 +2054,452 @@ def get_users():
     return jsonify(users=users)
 ```
 
+# Jinja2
+
+Jinja2是一种模板语言，类似于 f 字符串或者format()函数，可以将包含变量的字符串或HTML模板文件渲染成最终的文本。
+
+##   渲染模板字符串
+
+```
+from jinja2 import Template
+template = Template('Hello {{ name }}!')
+template.render(name='John Doe')
+# Hello，John Doe
+```
+
+通过创建一个 Template 的实例，你会得到一个新的模板对象，提供一 个名为 render() 的方法，该方法在有字典或关键字参数时调用 扩充模板。字典或关键字参数会被传递到模板，即模板“上下文”。
+
+##  渲染模板HTML
+
+首先创建一个HTML文件，将需要解析的变量使用双花括号包裹，示例如下：
+
+```
+<html>
+<head>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <p>{{ content }}</p>
+</body>
+</html>
+
+```
+
+然后，传入变量的实际值，示例如下：
+
+```
+# 创建一个 Environment 对象，指定模板文件的路径
+env = Environment(loader=FileSystemLoader('templates'))
+# 加载模板文件
+template = env.get_template('example.html')
+# 渲染模板，传入变量的值
+html = template.render(title='Python Jinja2', content='This is a blog about Python Jinja2.')
+# 打印渲染后的 HTML 字符串
+print(html)
+
+```
+
+可以得到如下标准的HTML内容输出：
+
+```
+<html>
+<head>
+    <title>Python Jinja2</title>
+</head>
+<body>
+    <h1>Python Jinja2</h1>
+    <p>This is a blog about Python Jinja2.</p>
+</body>
+</html>
+
+```
+
+
+##   使用flask和jinja2渲染模板HTML
+
+在使用模板引擎（如Jinja2）构建动态网页时 ，列表数据常被用来生成表格、列表项等重复结构。例如下面的HTML模板文件：
+
+```
+<!-- users.html -->
+<ul>
+{% for user in users %}
+  <li>{{ user.name }} (ID: {{ user.id }})</li>
+{% endfor %}
+</ul>
+```
+
+在flask后端：
+
+```
+from flask import render_template
+
+@app.route('/users')
+def show_users():
+    users = [
+        {'id': 1, 'name': 'Alice'},
+        {'id': 2, 'name': 'Bob'},
+    ]
+    return render_template('users.html', users=users)
+```
+
+# Jupyter
+
+
+Jupyter广泛用于Python学习、数据科学、机器学习领域，结合了可运行的代码和Markdown文本，可以更直观的展现Python工作流。
+
+##  Juypter Notebook和Jupyter Lab的区别
+
+Jupyter Lab是Jupyter Notebook的升级版，Jupyter Lab可以同时打开多个ipynb文件。
+
+许多提供AI开发服务的云服务厂商提供了云端开箱即用的Jupyter Lab环境。因此推荐使用Jupyter Lab。
+
+##  Jupyter Lab
+
+如果要在本地使用Jupyter Lab，先使用pip 安装：
+
+```
+pip install jupyter-lab
+```
+
+进入到包含ipynb的目录，运行
+
+```
+jupyter-lab
+```
+
+启动jupyter。
+
+##  Jupyter的快捷键
+
+
+|若要	|	按|
+|---	|	---|
+运行本单元	|	Ctrl + Enter 
+单元转入Markdown状态	|	M
+单元转入代码状态	|	Y
+退出编辑	|	Esc
+选中单元格，Enter	|	编辑
+选中上/下一单元	|	↑/↓
+撤销	|	Ctr+Z 
+删除该行	|	Ctrl+D
+设置1~6级标题	|	1~6
+在上方/下方插入新单元	|	A/B
+删除选中的单元	|	D
+清除输出	|	Ctrl+E
+
+
+## 在Notebook中执行系统命令
+
+!开头以模拟系统命令。例如使用pip安装Python包：
+
+```
+!pip install package
+```
+
+
+# Numpy
+
+
+###  为什么Numpy数组比Python原生数组快？
+
+为什么Numpy数组比Python原生数组快？因为Numpy数组的元素类型是固定的，而Python原生数组的元素类型可以是任意类型，这使得Numpy数组可以在内存中连续存储，一个元素的下一个地址就是下一个元素，而Python数组的元素分散存储在内存的不同区域，每个区域存储一个元素值和下一个地址，系统要先“跳到”下一个地址再读取里面的值。
+
+
+### 创建数组
+
+如下示例创建了一个2行3列的二维数组：
+
+```
+import numpy as np
+arr = np.array([[1,2,3],[4,5,6]])
+```
+
+range(n)返回从0到n-1这n个整数组成的一维数组。
+
+arange(m,n,t)表示元素从m到n-1，步长为t。
+
+zeros(n)表示n个元素是0的一维数组。zeros(m,n)表示m行n列元素全部为0的二维数组。
+
+ones(n)表示n个元素是1的数组。ones(m,n)表示m行n列元素全部为1的二维数组。
+
+eye(n)表示对角线为1，其它元素全部为0的n行n列的二维数组。对角线指的是从左上角到右下角。
+
+```
+# 生成数字范围，默认步长为1
+range(10) 
+# [0,1,2,3,4,5,6,7,8,9]
+
+# 生成数字范围且指定步长
+arange(0,10,2)
+# [0,2,4,6,8]
+
+# 生成全0数组
+zeros(10)
+# [0,0,0,0,0,0,0,0,0,0]
+
+# 生成全1数组
+ones(10)
+# [1,1,1,1,1,1,1,1,1,1]
+
+# 对角线为1，其它为0
+eye(3)
+#  [  [ 1, 0, 0 ], 
+#     [ 0, 1, 0 ],
+#     [ 0, 0, 1 ]  ]
+```
+
+
+### 基本属性
+
+一维数组就是向量，二维数组就是矩阵。ndim表示维度，也叫做秩。
+
+形状，就是几行几列，使用shape属性得到。m x n 的二维数组，shape为(m,n)。
+
+|函数或属性	|	作用|
+|---	|	---|
+shape()	|	返回形状，一个元组，(m,n) m行n列
+size	|	属性为元素总个数，即mxn的值
+reshape(m,n)	|	改变形状为 mxn 
+dtype	|	元素的数据类型
+A.T	|	A的转置矩阵
+
+
+### 拷贝
+
+跟Python的规则一样，如果直接用等号将一个数组赋值给新数组，则为浅拷贝，任何一个数组的更改都会导致另一个的同步更改，因为这两个数组的指针指向同一处内存区域。
+
+如果要进行深拷贝，则应该使用copy()方法，这样，两个数组的指针指向不同的内存区域，两个是完全独立的，更改其中一个并不会影响另一个。
+
+
+### 连接
+
+如果元素的行数相同，则可以进行横向连接，使用hstack()方法。
+
+如果元素的列数相同，则可以进行纵向堆叠，使用vstack()方法。
+
+### 运算
+
+|函数	|	作用|
+|---	|	---|
+mean()	|	求平均值
+max()/min()	|	求最大/最小值
+std()	|	求标准差
+var()	|	求方差
+
+### 索引
+
+与Python的数组一样，arr[n]表示一维数组的第n+1个元素。arr[m][n]表示二维数组中，第m+1行n+1列的元素。
+
+### 随机数
+
+|函数	|	作用|
+|---	|	---|
+np.random.rand(n)	|	生成n个[0,1)之间的一维数组
+np.random.rand(m,n)	|	生成[0,1)之间的 mxn 二维数组，元素均匀分布
+np.random.randn(n,m)	|	生成[0,1)之间的 mxn 二维数组，元素平均值0、方差1，呈正态分布
+
+### 存储数组数据
+
+可以使用.npy文件后缀名保存数组，方便重复使用。
+
+如下示例先将arr数组使用np.save()方法保存到arr.npy文件中，然后使用load()方法读取数组，赋值给arr2：
+
+```
+import numpy as np
+arr = np.array([[1,2,3],[4,5,6]])
+
+// 存储为arr.npy文件
+np.save('arr.npy',arr)
+
+// 读取arr.npy文件
+arr2 = np.load('arr.npy')
+print(arr2)
+```
+
+
+###  变形
+
+|方法或属性	|	作用|
+|---	|	---|
+shape	|	属性返回形状，是一个元组，包括行数和列数
+reshape(p,q)	|	表示重新编排形状为 p x q
+reval() 	|	还原为一维数组，返回指针，依然指向原数组
+flatteb() 	|	还原为一维数组，返回新数组
+
+###  创建单位数组
+
+|方法或属性	|	作用|
+|---	|	---|
+zeros(m,n)	|	生成mxn的元素全是0的二维数组
+ones(m,n)	|	生成mxn的元素全为1的二维数组
+eye(m,n)	|	生成主对角线为1、其它元素全为0的 m x n 的二维数组，主对角线的意思是从左上角到右下角
+
+例如：
+
+```
+import numpy as np
+
+arr1 = np.zeros(3,2)
+arr2 = np.ones(3,2)
+arr3 = np.eye(4)
+```
+
+###  创建数列
+
+arange(m,n,t)表示元素从m到n-1，步长为t。如果省略t，则步长为1。
+
+```
+import numpy as np
+arr = np.arange(1,10,2)
+print(arr)
+# [1,3,5,7,9]
+```
+
+linspace(m,n,count) 表示最大值n，最小值为m，总数为count个的均匀分隔的数组。
+
+这两个区别在第三个参数，一个是指定步长，一个是指定元素个数（自动计算步长）。
+
+### 数学函数
+
+如下函数均接收一个Numpy数组作为参数：
+
+|函数	|	作用|
+|---	|	---|
+np.sum()	|	求所有元素的和
+np.abs ()	|	绝对值
+np.sin()、np.cos() 	|	正余弦
+log log10 	|	自然对数，以10为底的对数
+exp 	|	自然对数的x次方
+mean()	|	求平均值。
+max()/min()	|	求最大/最小值。
+std()	|	求标准差。
+var()	|	求方差。
+
+
+# Pandas
+
+
+###  读取CSV
+
+```
+pd.read_csv(路径，encoding="utf-8")
+```
+
+参数：
+- header：定义那一行作为标题
+- sep： 定义分隔符，一般为逗号
+- names吧为文件中的每一列定义列名
+- usecols： 从csv文件中提取哪些列
+- dtype： 列的数据类型
+
+写入CSV文件：
+
+```
+pd.to_csv(路径)
+```
+
+写入Excel：
+
+```
+pd.to_excel(路径)
+```
+
+###  排序
+
+
+```
+df.sort_values(by='步数')
+```
+
+ascending=False 表示逆序
+
+###  拼接
+
+纵向堆叠：
+
+```
+concat（[df1,df2], axis=0）
+```
+
+横向拼接：
+
+```
+concat（[df1,df2], axis=1）
+```
+
+###  与numpy结合
+
+```
+arr = nparange（100）.reshape(25, 4)
+df = pd.DataFrame(arr)
+```
+
+###  行列名称
+
+
+默认时，均从0开始。
+
+使用index关键字指定行名称
+
+使用columns关键字指定列名称
+
+###  条件筛选
+
+筛选出步数列中大于10000的行，并返回新的表：
+```
+df[df["步数"]>=10000]
+```
+
+注意，query的参数是一个字符串形式，但字段名不要加引号，例如：
+
+```
+df.query('  步数>=10000 and 摄入卡路里 <=1800   ' )
+```
+
+
+提取行或列
+
+
+```
+df["A"]  提取A字段列
+
+df["A"，"B"]  提取A和B字段列
+
+df[:2]  提取前2行
+```
+
+###  缺失值处理
+
+
+缺失值显示NaN，改成0
+
+fillna(0)
+
+###  loc和iloc
+
+loc使用具体的行或列的值提取。iloc使用序号提取。
+
+```
+df.loc(行,列)
+```
+
+
+第一个参数，哪些行，冒号表示所有。如果多个行，使用数组。
+
+第二个参数，哪些列，冒号表示所有，如果多个列，使用数组形式。
+
+```
+df.iloc(行号,列号)
+```
+
+第一个参数，哪几行。冒号表示所有，1:表示第2行到最后一行。
+
+第二个参数，哪几列。：2表示第1行到2行
+
+###  删除列
+
+```
+df.drop('日期'，axis=1)
+```
+
