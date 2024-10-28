@@ -36,6 +36,48 @@ h2::before {
   - [数值类型](#数值类型)
   - [原始值的相等判定](#原始值的相等判定)
   - [引用值的相等判定](#引用值的相等判定)
+- [字符串](#字符串)
+    - [字符串简介](#字符串简介)
+    - [字符串的不可变性](#字符串的不可变性)
+    - [字符串的长度](#字符串的长度)
+    - [原始值引用类型](#原始值引用类型)
+    - [大小写转换](#大小写转换)
+    - [indexOf()和lastIndexOf()方法](#indexof和lastindexof方法)
+    - [includes()方法](#includes方法)
+    - [startWith()和endsWith()方法](#startwith和endswith方法)
+    - [去除字符串的首尾空格](#去除字符串的首尾空格)
+    - [重复字符串](#重复字符串)
+    - [padStart()和padEnd()方法](#padstart和padend方法)
+    - [slice()、substring()和substr()方法](#slicesubstring和substr方法)
+    - [阻止反斜杠转义](#阻止反斜杠转义)
+    - [字符串模板字面量](#字符串模板字面量)
+- [JSON](#json)
+  - [JSON语法](#json语法)
+  - [JSON与JavaScript对象的区别](#json与javascript对象的区别)
+  - [将对象转换为JSON](#将对象转换为json)
+  - [将JSON序列化为对象](#将json序列化为对象)
+  - [JSON不是对象，而是字符串](#json不是对象而是字符串)
+- [数组](#数组)
+    - [新建数组](#新建数组)
+    - [数组的长度](#数组的长度)
+    - [数组的拖尾逗号](#数组的拖尾逗号)
+    - [数组的本质也是对象](#数组的本质也是对象)
+    - [数组的迭代](#数组的迭代)
+    - [数组的归并](#数组的归并)
+    - [数组的at()方法](#数组的at方法)
+    - [数组的concat()方法](#数组的concat方法)
+    - [数组的fill()方法](#数组的fill方法)
+    - [数组的flat()方法](#数组的flat方法)
+    - [数组的includes()方法](#数组的includes方法)
+    - [数组的indexOf()和lastIndexOf()方法](#数组的indexof和lastindexof方法)
+    - [数组的find()和findIndex()方法](#数组的find和findindex方法)
+    - [数组的join()方法](#数组的join方法)
+    - [数组的slice()方法](#数组的slice方法)
+    - [数组的splice()方法](#数组的splice方法)
+    - [在数组首尾插入删除元素](#在数组首尾插入删除元素)
+    - [数组元素的默认值](#数组元素的默认值)
+    - [数组元素的排序](#数组元素的排序)
+- [原型链](#原型链)
 - [代理](#代理)
   - [代理](#代理-1)
   - [创建空代理](#创建空代理)
@@ -83,6 +125,9 @@ h2::before {
   - [async](#async)
   - [期约的实例方法和期约链](#期约的实例方法和期约链)
   - [顶层await](#顶层await)
+- [正则表达式](#正则表达式)
+    - [正则表达式常用符号汇总](#正则表达式常用符号汇总)
+    - [分组、前瞻和后顾](#分组前瞻和后顾)
 - [DOM](#dom)
   - [窗口尺寸](#窗口尺寸)
   - [窗口事件](#窗口事件)
@@ -500,6 +545,280 @@ objD = objC // 此时只拷贝了指针
 console.log(objC==objD)  // true
 console.log(objC===objD) // true
 ```
+
+
+
+# 字符串
+
+
+###  字符串简介
+
+
+字符串类型表示零个或多个16为Unicode字符序列，可以用三种符号包裹：单引号、双引号和反引号（ES6新增）。
+
+双引号和单引号在Javascript中没有区别，这是与其它语言不同的地方。但是，引号必须成对使用。
+
+有些时候，需要嵌套使用引号，这时候需要将使用一种引号包裹另一种引号，以区分不同的部分，例如：
+
+```js
+eval("console.log("hello,world")") // 语法错误
+eval("console.log('hello,world')") // 正确
+```
+
+### 字符串的不可变性
+
+字符串是不可变的，意思是一旦创建，就不能改变，例如：
+
+```js
+let str = "hello,world"
+str.replace("h","H")
+console.log(str)  // hello,world
+```
+
+在上面的例子中，我们本意是像将字符串"hello,world"中的“h"替换为“H”，但事与愿违了，因为字符串是不能改变的。
+
+### 字符串的长度
+
+字符串的长度可以通过length()方法获得，例如：
+
+```js
+let str = "hello,world"
+console.log(str.length)  // 11
+```
+
+### 原始值引用类型
+
+读者可能会纳闷儿，字符串不是原始类型吗？为什么它可以像引用类型一样可以调用方法？
+
+其实，数值、字符串、布尔值这三种原始类型比较特殊，可以被包装成原始值引用类型，调用一些方法，不过，这个过程是系统帮我们自动完成的。例如，当调用str.length()时，系统会先为str生成一个对应的引用类型，这个引用类型包含各种方法供str调用。
+
+
+
+### 大小写转换
+
+可以使用如下两种方法对字符串进行大小写转换。
+
+```js
+let str='Hello'
+console.log(str.toLowercase())   // =>'hello'
+console.log(str.toUpperCase())   // =>'HELLO'
+```
+
+### indexOf()和lastIndexOf()方法
+
+可以使用indexOf()返回字符或子串在字符串中第一次出现的索引位置，lastIndexOf()方法类型，只是从字符串的末尾开始查找。
+
+```js
+let str = 'hello,world'
+console.log(str.indexOf('o'))  //=>4
+console.log(str.lastIndexOf('o')) //=>7
+console.log(str.indexOf('wo')) //=>6
+```
+
+### includes()方法
+
+可以使用includes()方法确认字符串是否包含某个字符或子串，例如：
+
+```js
+let str='hello,world'
+console.log(str.includes('hello'))    //=>true
+```
+
+### startWith()和endsWith()方法
+
+startWith()方法用于确认字符串是否以某个字符或子串开头，而endsWith()方法用于确认字符串是否以某个字符或子串结尾。例如：
+
+```js
+let str='hello,world'
+console.log(str.startsWith('hello'))  //=> true
+console.log(str.endsWith('world'))    //=>true
+```
+
+### 去除字符串的首尾空格
+
+有三种方法去除字符串的首尾空格，如下所示：
+
+```js
+let str='  hello,world  '  // 首尾各有两个空格
+console.log(str.trim())      //=>'hello,world'，同时去除首尾空格
+console.log(str.trimLeft())  //=>'hello,world  '，只去除左边的空格
+console.log(str.trimRight()) //=>'  hello,world'，只去除右边的空格
+```
+
+### 重复字符串
+
+使用repeat()方法对字符串进行重复，例如：
+
+```js
+let str='hello'
+console.log(str.repeat(3))  //=>'hellohellohello'
+```
+
+### padStart()和padEnd()方法
+
+有时候需要保证字符串的长度是固定的，就需要在左右使用字符进行填充。
+
+```js
+let str='hello'
+console.log(str.padStart(10))  //=> '     hello'，在左侧填充默认的5个空格
+console.log(str.padEnd(10))    //=>'hello     '，在右侧填充5个空格
+console.log(str.padStart(3))   //=>'hello'，长度足够，原样返回
+console.log(str.padStart(10,',')) // =>',,,,,hello'，在左侧使用逗号填充
+```
+
+### slice()、substring()和substr()方法
+
+要提取子字符串，有三种方法。slice()和substring()需要传入提取开始的位置和结束位置，而substr()需要传入开始位置和提取的字数量。
+
+```js
+let str='hello,world'
+console.log(str.slice(4,7))  //=>'o,w' ，从索引4位置开始提取，到索引7位置之前结束（左闭右开原则）
+console.log(str.slice(4))    //=> 'o,world'，从索引4位置开始提取，一直到结束
+console.log(str.substr(4,3)) // =>'o,w'，从索引4位置开始提取，提取3个字符
+```
+
+### 阻止反斜杠转义
+
+Windows平台下的路径字符串带有反斜杠，反斜杠在字符串中会进行转义，这并不是我们期待的现象。为了阻止转义，可以使用`String.raw` 函数，这个函数返回反引号中未经处理的文本，示例如下：
+
+```js
+// 反斜杠默认转义
+const path1 = "D:\test"
+console.log(path1)  // D:  est （\t表示一个Tab空格）
+
+// 阻止转义
+
+const path2 = String.raw`D:\test`
+console.log(path2)  // D:\test
+```
+
+
+### 字符串模板字面量
+
+
+模板字面量取代了早期和其它语言的`%d`、`%f`等写法，使得变量化的字符串更容易书写，也更易阅读。模板字符串使用反单引号包容，它有最主要的两个特点：保留了换行符等不可见字符（以往只能用`\n`）；提供了变量解析和运算。
+
+```js
+let str = `第一行 (这里按回车) 
+第二行`
+console.log(str)   // =>'第一行\n第二行'
+
+let a=1
+let b=2
+console.log(`a的值是${a}`)  // =>'a的值是1'
+console.log(`a+b的结果是${a+b}`)    // => 'a+b的结果是3'
+```
+
+虽然string类型是原始值，但是表现出像对象一样使用属性和方法。
+
+```js
+let str='hello'
+console.log(str.length)  // =>5， 字符串的长度
+console.log([...str])  //=>[ 'h', 'e', 'l', 'l', 'o' ] ，将字符串快速打平为数组
+```
+
+
+
+
+# JSON
+
+JSON全称是JavaScript对象表示法，是通用的数据交换格式，许多软件的配置文件均使用JSON文件格式。
+
+可以包括三种语法：
+* 原始值
+* 对象
+* 数组
+
+JSON无法包括如下的数据类型:
+- 集合
+- 映射
+
+## JSON语法
+
+JSON存在四组标记符号：
+- 中括号`[]`表示数组
+- 花括号`{}`表示键值对
+- 引号包裹住键的名称和字符串类型的键值，键值为数字是不加引号。
+- 逗号区分数组的各个元素和各个键值对
+
+## JSON与JavaScript对象的区别
+
+JSON的格式与JavaScript对象（包括数组）的字面量格式非常类似，使用时容易搞混，要注意几个区别：
+- JSON的键必须使用引号包裹，而JavaScript对象的键可以用也可以不用引号包裹。
+- JavaScript对象允许用双斜杠添加注释，而JSON不能添加任何注释。
+- JavaScript允许使用拖尾逗号，而JSON不能使用，逗号只能放在元素之间，不能用在末尾。
+
+## 将对象转换为JSON
+
+要将对象转换为JSON字符串，使用JSON.stringify()方法，例如：
+
+```js
+const obj = {a:1, b:2, c:3}
+
+const json = JSON.stringify(obj)  
+console.log(json)   //  {"a":1,"b":2,"c":3}
+```
+
+可以在第二个参数中指定一个数组，表示筛选哪些属性进入JSON字符串：
+
+```js
+const obj = {a:1, b:2, c:3}
+
+const json = JSON.stringify(obj,['a','c'])  
+console.log(json)   //  {"a":1,"c":3}
+```
+
+## 将JSON序列化为对象
+
+可以将JSON序列化为对象，使用JSON.parse()方法。例如：
+
+```
+const json = '{"a":1,"b":2,"c":3}'
+
+const obj = JSON.parse(json)
+console.log(obj)
+```
+
+再来看一个例子，从本地的配置文件中读取JSON字符串转化为对象，修改后保存回配置文件。
+如下是配置文件settings.json的内容：
+
+```JSON
+{
+	"a":1,
+  	"b":2,
+  	"c":3
+}
+```
+
+如下读取配置文件并解析为对象，然后写回配置文件中：
+
+```js
+const fs = require('fs')
+
+const json = fs.readFileSync('settings.json','utf8')
+const obj = JSON.parse(json)  
+console.log(obj)   // { a: 1, b: 2, c: 3 }
+
+obj.a = 2
+obj.c = 5
+const json2 = JSON.stringify(obj)
+fs.writeFileSync('settings.json',json2,'utf8')
+
+```
+
+## JSON不是对象，而是字符串
+
+需要特别强调的是，JSON不是对象，而是字符串。许多人习惯称呼JSON格式为“JSON对象”，这种说法是错误的。JSON的本质就是字符串，可以使用typeof关键字验证：
+
+```js
+const obj = {a:1, b:2, c:3}
+const json = JSON.stringify(obj)  
+console.log(typeof json)  // string
+```
+
+
+
+
 
 # 数组
 
@@ -994,6 +1313,67 @@ console.log(arr)
 ```
 
 这个例子使用了数组的indexOf()方法，通过在标准数组中查询索引，再将索引作减法，以确定谁排在前面。
+
+# 原型链
+
+
+JavaScript最最初就支持类的定义，不过，ES6之前是使用构造函数的方式，ES6正式支持使用class关键字定义一个类。这两种方式的底层原理是相同的，都是基于原型的继承。
+
+多个实例往往需要共享一些方法，因此我们定义一个类，作为多个实例的构造器，每个实例都使用这个命名空间中的成员。例如，通过Array构造函数实例化了arr1和arr2，我们就说arr1和arr2都继承了Array。Array默认存在一个共享空间，供实例调用，这个共享空间就是实例的原型，默认为构造函数或类的prototype属性的值，即Array.prototype。
+
+类本质上是一个命名空间，包含两个空间：
+
+* 静态成员，可以直接被类调用，例如Array.from()、Object.values()。
+
+* prototype对象，这个对象里面的成员是供实例使用、供子类继承的。例如Array.prototype.forEach()。
+
+虽然不是ES标准，但是大多数浏览器都为实例或子类提供了`__proto__`属性，该属性的值有两种情况：
+
+* 实例对应的类的prototype对象
+
+* 子类的prototype对象对应的父类的prototype对象
+
+例如：
+
+```js
+console.log([].__proto__===Array.prototype)
+// =>true，空数组实例对应的类是Array
+
+console.log(Array.prototype.__proto__===Object.prototype)
+//=> true，Array的父类是Object
+
+console.log(Object.prototype.__proto__===null)
+//=> true，Object的父类是null
+```
+
+Object的父类是null，这只是标准上的规定，我们需要知道的是，所有类型的起点都源于Object。
+我们将上面两个操作串联起来，就形成了一条原型链：
+
+```js
+console.log([].__proto__.__proto__===Object.prototype)
+```
+
+由此我们可以得出JavaScript的继承逻辑：Object是所有引用类型的继承起点，Object生出Array、Map、Set、Function等类型，再由这些类型生成实例。这些实例拥有丰富的方法，是因为可以通过原型链往上追溯，直到追溯到Object。
+
+因此，要全面了解一个数据类型，从三方面入手：
+
+* 看静态成员
+
+* 看prototype对象中有哪些方法提供给了实例
+
+* 通过`[类名].prototype.__proto__.__proto__....`不断往上追溯，寻找更丰富的方法，提供给实例使用
+
+拿Array类型举例，从三方面入手：
+
+* 看静态成员，有Array.from()、Array.of()、Array.isArray()等静态方法
+
+* 看Array.prototype，有Array.prototype.length、Array.prototype.sort()、Array.ptototype.splice()、Array.prototype.forEach()等诸多方法供数组实例使用。
+
+* 往上追溯，有Object.prototype.toString()、Object.prototype.toString()等方法，这些方法也可以被数组实例使用。
+
+另外要提醒的是，追溯的过程遵循就近原则，从实例本身开始追溯，如果已经找到了成员，那么就会直接使用该成员，而不再继续追溯。
+
+最后要强调的是，不要修改内置类型的prototype对象，也不要修改默认的`__proto__`指向，这些都会改变内置类型本身的行为。实际上，JavaScript语言规定的原型链是让我们去使用的，不是让我们去修改的，在绝大部分情况下，我们用好实例及其API就足够了。JavaScript不是偏向面向对象的语言，其更多侧重于函数式编程。但是对于原型和原型链这个知识点，我们一定要深入理解，这是Javascript语言的核心特性之一。
 
 
 # 代理
@@ -1551,6 +1931,188 @@ console.log(obj)  // { a: 2, b: 2, c: 3 }
 最后，要特别说明的是，无论使用Object.assign()，还是使用三点运算符，只推荐源对象不包括嵌套属性、并且属性值是原始值的时候使用，此时新对象对于源对象是独立的，不存在深浅拷贝的问题。如果源对象包括嵌套属性、或者属性值存在非原始值（其实嵌套属性本身也意味着属性值非原始值了），那么新对象的某些属性可能还引用着源对象，这里面有一些“语法陷阱”需要避免，建议先使用其它方式将对象打平，再进行合并。
 
 
+# Map和Set
+
+
+### Map类型基础
+Map类型是ES6新增的集合引用类型，对于强调键值映射和迭代的操作来说，Map类型比Object类型更加实用。Map的优势在于：
+* 是可迭代对象，这意味着不需要像Object那样使用for-in循环来遍历元素。
+* 更加方便的增删改查操作。
+
+使用构造函数新建一个空Map：
+
+```js
+const map = new Map()
+```
+
+要在新建的时候同时填充内容，可以使用set链式操作：
+
+```js
+const map =new Map().set('a',1).set('b',2)
+```
+
+除此之外，new Map()方法接收一个二维数组作为新Map实例的键值对：
+
+```js
+const map =new Map([ ['a',1],['b',2] ])
+```
+
+因此，可以使用Object.entreis()静态方法将对象的元素填充进map：
+
+```js
+const obj = {a:1,b:2}
+const map=new Map(Object.entries(obj))   
+```
+ 
+打印map时，输出结果是这样的：
+
+```js
+const map =new Map().set('a',1).set('b',2)
+console.log(map)
+// => Map(2) { 'a' => 1, 'b' => 2 }
+```
+
+### Map到数组的转换
+
+对map实例使用下面三种方法，可以返回可迭代对象：
+* keys()，返回由键组成的新数组
+* values()，返回由值组成的新数组
+* entries()，返回由键值组成的二维数组
+
+例如：
+
+```js
+const map = new Map().set('a',1).set('b',2).set('c',3)
+
+console.log(map.keys())  //=>[Map Iterator] { 'a', 'b', 'c' }
+
+console.log(map.values())// => [Map Iterator] { 1, 2, 3 }
+
+console.log(map.entries())// => [Map Entries] { [ 'a', 1 ], [ 'b', 2 ], [ 'c', 3 ] }
+```
+
+使用Array.from()或者`[...iterator]`，就可以将上面几个可迭代对象转换为真正的数组：
+
+```js
+// 承接上文代码
+console.log([...map.keys()])// => [ 'a', 'b', 'c' ]
+
+console.log([...map.values()]) // => [ 1, 2, 3 ]
+
+console.log([...map.entries()]) // => [ [ 'a', 1 ], [ 'b', 2 ], [ 'c', 3 ] ]
+```
+
+
+### Map的方法
+
+要增加或修改Map实例的键值，使用set()方法，允许链式操作，如果set()方法中的键名已在map中存在，那么就会修改键对应的值，否则就是增加键值，例如：
+
+```js
+const map =new Map([ ['a',1],['b',2] ])
+map.set('b',3)   //修改键对应的值
+map.set('c',3)   // 增加键值
+map.set('d',4).set('c',5).set('f',6)   //链式操作
+console.log(map)
+//=> Map(6) { 'a' => 1, 'b' => 3, 'c'=>3,'d'=>4,'e'=>5,'f'=>6}
+```
+
+使用has()方法可以查询map是否存在某个键：
+
+```js
+// 承接上文的map
+map.has(' a ')   //   => true
+map.get( ' aa ' )  //  => false
+使用get()方法可以通过键查询对应的值，如果键不存在，则返回undefined：
+// 承接上文的map
+map.get('a')     // 1
+map.get('aa')    //  undefined
+```
+
+使用delete()方法删除map中的键，删除成功返回true，删除不成功(键不存在)则返回false，例如：
+
+```js
+// 承接上文的map
+map.delete('f')    // =>true
+map.delete('f')   // =>false，键已经在上一步被删除了
+```
+
+要取得map的键值对的个数，使用size属性：
+
+```js
+// 承接上文
+console.log(map.size)   // =>5
+```
+
+如果要清空map中所有的键值对，使用clear()方法，例如：
+
+```js
+// 承接上文
+map.clear()
+console.log(map.size)   // 0
+console.log(map)  // Map(0) {}
+```
+
+### Set类型
+
+Set数据类型类是ES6新增的集合引用类型，表示元素唯一的集合。结构上类似于数组，与数组的区别是Set的元素不能重复。
+
+可以使用构造函数新建一个空的Set实例：
+
+```js
+const set = new Set()
+```
+
+该函数也接收一个可迭代对象：
+
+```js
+const set = new Set([1,2,3])
+```
+
+打印一个set实例会输出如下结果：
+
+```js
+const set = new Set([1,2,3]
+console.log(set)  //=> Set(3) { 1, 2, 3 }
+```
+
+set实例的size属性返回set的元素个数：
+
+```js
+const set = new Set([1,2,3])
+console.log(set.size)
+```
+
+使用add()方法添加元素，可使用链式操作：
+```js
+const set = new Set().add(1).add(2).add(3)
+```
+
+要查询是否包含某个元素，使用has()方法，该方法返回一个布尔值：
+
+```js
+const set = new Set([1,2,3])
+console.log(set.has(2))
+console.log(set.has(6))
+```
+
+要删除某个元素，使用delete()方法，可以选择接收返回值，返回值是一个布尔值，表示是否已删除成功:
+
+```js
+const set = new Set([1,2,3])
+set.delete(1)
+console.log(set.delete(2))  //=>true
+console.log(set.delete(2))  //=> false
+```
+
+要清空set的所有严元素，使用clear()方法：
+
+```js
+const set = new Set([1,2,3])
+set.clear()
+console.log(set.size)  //=>0
+```
+
+
 # 函数
 
 
@@ -2056,6 +2618,83 @@ async定义的函数依然是同步求值的，await关键字才是真正的异�
 
 
            
+# 正则表达式
+
+###   正则表达式常用符号汇总
+
+表示匹配数量的字符：
+
+符号	|	说明
+---	|	---
+` + `	|	常用，一个或多个前一个字符（组）
+` * `	|	0个或多个前一个字符（组）
+` ？`	|	0个或1个前一个字符
+
+
+用中括号表示单字符分组。中括号表示字符范围中的一个，只能匹配一个字符，例如：
+
+示例	|	说明
+---	|	---
+` [1-9] `	|	数字1-9中的任意一个数字
+` [a-f] ` 	|	字母a-f中的任意一个字母
+` [a-zA-Z] `	|	大写和小写字母中的任意一个
+` [abc123] ` 	|	这六个字符中的一个
+` [^abc123] `	|	不是这六个字符中的一个
+` [茴回囘囬] ` 	|	茴字的四种写法中的一个
+` [abc|cde] `	|	匹配abc或cde，注意这里不是匹配一个字符
+
+用圆括号包裹的内容视同一个字符，用于多字符分组。
+
+表示字母、数字集合的符号：
+
+符号	|	说明
+---	|	---
+` \d `	|	digital，任意数字，相当于` [0-9]` 
+` \D `	|	任意非数字，相当于` [^0-9] ` 
+` \w `	|	word，任意字母
+` \W `	|	任意非字母
+` \s `	|	space，任意空白字符
+` \S `	|	任意非空白字符
+
+需要转义的符号：
+
+需要转义的符号	|	说明及使用方式
+---	|	---
+` ^ `	|	文本的开头，若要匹配该字符本身，需使用`\^`
+` $ `	|	文本的结尾，若要匹配该字符本身，需使用`\$`
+` . `	|	任意字符，若要匹配该字符本身，需使用`\. `
+` * `	|	匹配0个或多个前一个字符（组），若要匹配该字符本身，需使用`\*`
+` + `	|	匹配1个或多个前一个字符（组），若要匹配该字符本身，需使用`\+`
+` ？`	|	匹配0个或1个前一个字符（组），若要匹配该字符本身，需使用`\?`
+` = `	|	若要匹配该字符本身，需使用`\=`
+` ! `	|	范围取反，若要匹配该字符本身，需使用`\!`
+` : `	|	若要匹配该字符本身，需使用`\:`
+` \| `	|	任选，匹配左边的子表达式或右边的子表达式。若要匹配该字符本身，需使用`\|`
+` \ `	|	转义，若要匹配该字符本身，需使用`\\`
+` / `	|	若要匹配该字符本身，需使用`\/`
+` ( `	|	表示分组的起始，若要匹配该字符本身，需使用`\(`
+` ) `	|	表示分组的结束，若要匹配该字符本身，需使用`\)`
+` [ `	|	若要匹配该字符本身，需使用` \[ `  
+` ] `	|	若要匹配该字符本身，需使用` \] `
+` { `	|	命名捕获组，若要匹配该字符本身，需使用` \{ `
+` } `	|	命名捕获组，若要匹配该字符本身，需使用` \} `
+
+其它的不常见字符例如` @ `、` # `、` % `、` & `、` ~ `、` ' `、` " `则不需要转义。
+
+匹配模式：
+
+符号	|	说明
+---	|	---
+` g `	|	全局标志，意味着要找到所有匹配而不仅仅是第一个。
+` i `	|	不区分大小写。
+` m `	|	多行模式。类似于sed，对每一行进行匹配。这意味着`^`和`$`会匹配到每一行的开头和末尾，而不仅仅是文件的开头和结尾。
+
+###   分组、前瞻和后顾
+
+(?=@) 返回@符号前边的子字符串
+
+正向后顾语法结构是(?<=pattern)
+(?<=@)返回@符号后边的子字符串
 
 
 
