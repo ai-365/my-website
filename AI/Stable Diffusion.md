@@ -45,7 +45,7 @@ SDXL 就是 SD 的升级版，图片生成的效果更好、更逼真、分辨�
 
 ###   repeat、epoch、batch_size的区别
 
-![repeat、epoch、batch_size](img/repeat、epoch、batch_size.png)
+![repeat、epoch、batch_size](../imgAI/repeat、epoch、batch_size.png)
 
 
 
@@ -118,5 +118,5 @@ SVD的训练分为三个主要步骤： 文生图预训练、 视频生成预训
 
 ## SVD配合ComfyUI 
 
-![ComfyUI-SVD](img/ComfyUI-SVD.png)
+![ComfyUI-SVD](../imgAI/ComfyUI-SVD.png)
 

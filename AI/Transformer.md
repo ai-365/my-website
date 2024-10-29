@@ -4,7 +4,7 @@
 
 ## Transformer 示意图
 
-![Transformer示意图](img/Transformer示意图.png)
+![Transformer示意图](../imgAI/Transformer示意图.png)
 
 
 ## Transformer 源码

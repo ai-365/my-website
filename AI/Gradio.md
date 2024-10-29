@@ -115,5 +115,5 @@ iface.launch()
 
 ```
 
-![Gradio](img/Gradio.png)
+![Gradio](../imgAI/Gradio.png)
 

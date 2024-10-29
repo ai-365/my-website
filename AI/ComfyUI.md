@@ -55,7 +55,7 @@ CPU+内存| 依据CPU的性能，每GB每秒
 
 费用举例：
 
-![费用参考](img/费用参考.png)
+![费用参考](../imgAI/费用参考.png)
 
 
 ###  阿里云部署参考文档
@@ -66,9 +66,9 @@ CPU+内存| 依据CPU的性能，每GB每秒
 
 ###  文件结构
 
-![文件结构](img/文件夹结构.png)
+![文件结构](../imgAI/文件夹结构.png)
 
-![文件结构2](img/文件夹结构2.png)
+![文件结构2](../imgAI/文件夹结构2.png)
 
 根目录下的四个文件（夹）的作用如下：
 -  ComfyUI ： 最关键的文件夹，存放着所有模型、节点。包括checkpoint大模型、LoRA模型、ControlNet模型等。
@@ -87,7 +87,7 @@ VAE | ComfyUI/models/vae
 LoRA模型 |  ComfyUI\models\loras
 
 
-![配置文件](img/配置文件.png)
+![配置文件](../imgAI/配置文件.png)
 
 
 
@@ -109,21 +109,21 @@ https://pan.baidu.com/s/1Su7BzC9GQ1uD_YgCVVpruQ?pwd=tfue
 
 下载 https://github.com/ltdrdata/ComfyUI-Manager ，解压到 ` ComfyUI\custom_nodes\ ` 中。
 
-![ComfyUI Manager](img/ComfyUI-Manager.png)
+![ComfyUI Manager](../imgAI/ComfyUI-Manager.png)
 
 有两种方式。第一种是使用git clone。
 
-![ComfyUI-Manger-Git方式安装](img/ComfyUI-Manger-Git方式安装.png)
+![ComfyUI-Manger-Git方式安装](../imgAI/ComfyUI-Manger-Git方式安装.png)
 
 第二种是直接下载zip包再解压。
 
-![ComfyUI-Manger-下载Zip方式安装](img/ComfyUI-Manger-下载Zip方式安装.png)
+![ComfyUI-Manger-下载Zip方式安装](../imgAI/ComfyUI-Manger-下载Zip方式安装.png)
 
 ##  常见节点的输入、输出、参数说明 
 
 ###  KSampler 采样器节点
 
-![采样器节点](img/采样器节点.png)
+![采样器节点](../imgAI/采样器节点.png)
 
 
 |参数	|	作用|
@@ -164,15 +164,15 @@ VAE解码需要使用一个VAE模型，VAE模型一般包含在SD基础模型中
 
 ##  AnimateDiff
 
-![AnimateDiff-1](img/AnimateDiff-1.png)
+![AnimateDiff-1](../imgAI/AnimateDiff-1.png)
 
-![AnimateDiff-2](img/AnimateDiff-2.png)
+![AnimateDiff-2](../imgAI/AnimateDiff-2.png)
 
-![AnimateDiff-3](img/AnimateDiff-3.png)
+![AnimateDiff-3](../imgAI/AnimateDiff-3.png)
 
-![AnimateDiff-4](img/AnimateDiff-4.png)
+![AnimateDiff-4](../imgAI/AnimateDiff-4.png)
 
-![AnimateDiff-5](img/AnimateDiff-5.png)
+![AnimateDiff-5](../imgAI/AnimateDiff-5.png)
 
 ## SDXL 组成
 
@@ -183,7 +183,7 @@ SDXL Refiner模型同样由U-Net、VAE和CLIP Text Encoder（一个）三个模�
 Base的作用是生成图像的Latent特征，Refiner的作用是小噪声去除和细节质量提升。
 
 
-![SDXL组成](img/SDXL组成.png)
+![SDXL组成](../imgAI/SDXL组成.png)
 
 
 SDXL Base 地址： https://hf-mirror.com/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors
@@ -194,7 +194,7 @@ Stable Diffusion XL模型放到ComfyUI/models/checkpoints/路径下。
 
 总之，base加refiner比单独的base好，SD XL 比SD好。
 
-![性能对比](img/性能对比.png)
+![性能对比](../imgAI/性能对比.png)
 
 ##  ControlNet
 
@@ -212,7 +212,7 @@ Adapter ，就是将一张图像的风格，迁移到另一张图像上去。通
 
 T2I  adapter 比ControlNet轻量，模型文件只有300M左右。T2I 给输入图片追加一定的条件，比如姿势图、草图、深度图，这样图片根据条件生成新图。
 
-![T2I-Idapter介绍](img/T2I-Idapter介绍.png)
+![T2I-Idapter介绍](../imgAI/T2I-Idapter介绍.png)
 
 ###  IP Adapter
 
@@ -221,9 +221,9 @@ IP adapter 根据参考图控制图像的生成。输入一张参考图和限定
 IP Adapter 中的“IP”不是网络中的IP，这里的“I”指的是Image（图片），“P”指的是Prompt（提示词）。所以，IP Adapter的直译是“图像提示适配器”。
 
 
-![IP-Adapter-1.png](img/IP-Adapter-1.png)
+![IP-Adapter-1.png](../imgAI/IP-Adapter-1.png)
 
-![IP-Adapter-2.png](img/IP-Adapter-2.png)
+![IP-Adapter-2.png](../imgAI/IP-Adapter-2.png)
 
 IP adapter 只有22M参数，比ControlNet和T2I更加轻量。
 
@@ -242,7 +242,7 @@ IP adapter 只有22M参数，比ControlNet和T2I更加轻量。
 -  face_id_plus
 -  face_id_plusV2： 改进版，效果最好。
 
-![IP-Adapter功能分类.png](img/IP-Adapter功能分类.png)
+![IP-Adapter功能分类.png](../imgAI/IP-Adapter功能分类.png)
 
 ###   ViT-H 和ViT-G
 
@@ -265,4 +265,4 @@ ComfyUI相比WebUI的优点是： 生成性能高、 节点式界面更直观、
 ComfyUI的默认工作流如下，更复杂的工作流都是基于这个默认工作流进行自定义和扩展的。
 
 
-![ComfyUI默认工作流.png](img/ComfyUI默认工作流.png)
+![ComfyUI默认工作流.png](../imgAI/ComfyUI默认工作流.png)
