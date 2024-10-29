@@ -1,8 +1,0 @@
--  [大模型](大模型.md)
--  [大模型相关论文PDF汇总](大模型相关论文PDF汇总.md)
--  [Clipchamp](Clipchamp.md)
--  [ComfyUI](ComfyUI.md)
--  [Gradio](Gradio.md)
--  [Stable Diffusion](<Stable Diffusion.md>)
--  [SVD](SVD.md)
--  [Transformer](Transformer.md)
