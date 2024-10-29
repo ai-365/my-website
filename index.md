@@ -11,7 +11,7 @@
 
 
 ## AI示意图
-![AI Excalidraw](AI.excalidraw.png)
+
 
 ## Github示意图
 ![Github Excalidraw](Github.excalidraw.png)
