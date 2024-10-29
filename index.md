@@ -1,5 +1,5 @@
 
-[AI](AI/index.md)  
+[AI](AI.md)  
 
 [Linux](Linux.md)  
 
