@@ -664,7 +664,116 @@ a:int = 1
 str:str = 'hello' 
 ```
 
-# 模块和包
+# 模块、包、pip
+
+## 模块和包
+
+### 示例
+
+```
+sound/                          最高层级的包
+      __init__.py               初始化 sound 包
+      formats/                  用于文件格式转换的子包
+              __init__.py
+              wavread.py
+              wavwrite.py
+              aiffread.py
+              aiffwrite.py
+              auread.py
+              auwrite.py
+              ...
+      effects/                  用于音效的子包
+              __init__.py
+              echo.py
+              surround.py
+              reverse.py
+              ...
+      filters/                  用于过滤器的子包
+              __init__.py
+              equalizer.py
+              vocoder.py
+              karaoke.py
+              ...
+```
+
+### 包和模块的区别
+
+要将一个文件夹变成Python包，需要在文件夹下添加__init__.py 文件。
+
+包和子包是不同的包，示例中，sound包和sound.effects是不同的包。
+
+包是文件夹，模块是Python文件。
+
+导入包时，实际执行的是文件夹里面的__init__文件。导入模块时，就是执行这个模块文件。
+
+
+### 包和文件夹的区别
+
+一个包本质上就是操作系统的一个文件夹，里面有若干.py文件。子包就是子文件夹。
+
+包和文件夹的唯一区别就是包里面有一个特殊文件： __init__.py文件。
+
+要将一个文件夹变成Python包，需要在文件夹下添加__init__.py 文件。
+
+包和子包是不同的包，示例中，sound包和sound.effects是不同的包。
+
+### import 语法
+
+import sound.effects.echo 
+
+使用时需要使用全名称前缀：
+ sound.effects.echo.类变量或函数。
+
+如果不想麻烦，则导入时应该使用as重命名：
+import sound.effects.echo  as echo
+
+这样，使用时：
+echo.类、变量或函数
+
+### from import 语法
+
+导入模块：
+from sound.effects import echo
+使用：
+echo.变量、类或函数
+
+导入模块里面的所有变量、类或函数：
+from sound.effects.echo import *
+然后，不加模块前缀，直接使用里面的类、变量或函数。
+
+导入模块里面具体的类、变量或函数：
+from sound.effects.echo import echofilter
+使用时：
+echofilter()
+
+`*` 默认为模块里面所有的全局变量、类和函数。但如果模块里面定义了 __all__数组，数组里面限制了导出了哪些变量、类或函数，则 `*`只会导入这些变量、类或函数。
+
+### import和from import的区别
+
+import 只能导入包、子包、模块，使用时需要使用全名称前缀，除非用as重命名。
+
+from import 可以导入包、子包、模块、具体的变量、函数。导入变量或函数时直接使用，不需要前缀。
+
+### from 相对导入
+
+如果surround.py要导入echo.py，可以使用：
+from . import echo
+. 表示当前文件夹。
+
+如果surround.py要导入formats包，可以使用：
+from  .. import  formats
+.. 表示上一级文件夹。
+
+如果surround.py要导入formats包里面的wavread.py，可以使用：
+from  ..formats  import  wavread
+..formats表示上一级文件夹中的formats文件夹。
+
+### 导入包时具体执行了什么？
+
+导入模块时，就是执行这个模块文件。
+
+而导入包时，实际执行的是文件夹里面的__init__文件。
+
 
 
 ##  模块
