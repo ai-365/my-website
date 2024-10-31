@@ -3324,27 +3324,6 @@ white-space: pre;
 
 # 背景、边框、轮廓
 
-
-
-
-- [背景](#背景)
-  - [背景颜色](#背景颜色)
-  - [背景图片](#背景图片)
-  - [背景图片固定](#背景图片固定)
-  - [背景图片尺寸](#背景图片尺寸)
-- [边框](#边框)
-  - [边框样式](#边框样式)
-  - [边框宽度](#边框宽度)
-  - [边框颜色](#边框颜色)
-  - [单独各边](#单独各边)
-  - [合并样式](#合并样式)
-  - [快速设置四边框数值](#快速设置四边框数值)
-  - [边框汇总](#边框汇总)
-  - [圆角边框](#圆角边框)
-- [轮廓](#轮廓)
-
-
-
 ## 背景
 
 背景一般包括背景颜色或背景图片。属性如下：
@@ -3494,7 +3473,7 @@ p{
 
 ### 合并样式
 
-```
+```css
 p{
 	border:5px solid red;
 }
@@ -3518,7 +3497,6 @@ p{
 	border-color: red  green blue;  /*上边颜色红色、左右颜色绿色，下边颜色蓝色*/
 }
 ```
-
 
 ### 边框汇总
 
@@ -3550,13 +3528,13 @@ p{
 
 要定义圆角边框，使用border-radius属性。
 
-```
+```css
 border-radius: 10px;
 ```
 
 单独一个角：
 
-```
+```css
 border-top-left-radius: 10px;
 ```
 
@@ -3577,48 +3555,31 @@ border-top-left-radius: 10px;
 - outline-width： 设置轮廓的宽度
 - outline： 轮廓的简写属性。
 
-
-
-
-
 # 媒体查询
 
 媒体查询主要用于区分手机、平板、电脑，以及横屏、竖屏的状态，以便于根据用户的屏幕种类及状态，呈现合适的布局。主要根据屏幕的宽度来推断。
 
 and运算符用于符号两边规则均满足条件的匹配，例如：
 
-```
+```css
 @media (min-width:300px)  and (max-width:600px){
         /*匹配宽度在300px到600px之间的设备*/
 }
 ```
 
-
-
 max-device-width： 设备宽度，max-width：界面宽度
 
 # 特效
-
-- [线性渐变](#线性渐变)
-- [过渡](#过渡)
-- [动画](#动画)
-  - [定义动画](#定义动画)
-  - [动画的组合](#动画的组合)
-- [图片阴影](#图片阴影)
-- [利用border-radius属性实现裁剪](#利用border-radius属性实现裁剪)
-- [块阴影box-shadow](#块阴影box-shadow)
-
-
 
 ##  线性渐变
 
 线性渐变使用如下函数：
 
-```
+```css
 linear-gradient(角度, 起始颜色, 终止颜色)
 ```
 
-```
+```css
 <style>
     div {
         width: 300px;
@@ -3635,7 +3596,7 @@ linear-gradient(角度, 起始颜色, 终止颜色)
 
 ##  过渡
 
-过渡表示当某个属性发生**变化**时，应该在一定的时间内以动画的形式展现。
+过渡表示当某个属性发生变化时，应该在一定的时间内以动画的形式展现。
 
 过渡使用transition属性 ，该属性是一种简写方式，同时接收三个值：
 - 过渡的属性，如果有多个属性，使用逗号隔开。
@@ -3666,7 +3627,6 @@ linear-gradient(角度, 起始颜色, 终止颜色)
 </style>
 <div></div>
 ```
-
 
 ##  动画
 
@@ -3784,7 +3744,7 @@ animation : 关键帧名称  时长  次数  过渡类型  方向
 
 ##  图片阴影
 
-```
+```css
 filter:drop-shadow( offset-x offset-y blur-radius spread-radius color )
 ```
 
@@ -3804,8 +3764,6 @@ filter:drop-shadow( offset-x offset-y blur-radius spread-radius color )
 
 <img src="1.png">
 ```
-
-
 
 ##  利用border-radius属性实现裁剪
 
@@ -3842,7 +3800,6 @@ border-radius: 50%;
 <img src="1.png" alt="">
 ```
 
-
 ##  块阴影box-shadow
 
 之前介绍过text-shadow，这个属性为文本创建阴影。
@@ -3851,7 +3808,7 @@ border-radius: 50%;
 
 box-shadow接受三个值：向下的偏移量、向右的偏移量、阴影颜色。顺序不强制要求。示例如下：
 
-```
+```css
 <style>
     div {
         width: 100px;
@@ -3865,7 +3822,6 @@ box-shadow接受三个值：向下的偏移量、向右的偏移量、阴影颜�
 ```
 
 # Node.js
-
 
 ## 文件处理
 
@@ -3940,7 +3896,6 @@ fs.renameSync('old.txt','new.txt')  // 重命名
 fs.renameSync('old.txt','dir/old.txt')
 ```
 
-
 如下示例移动且重命名文件：
 
 ```js
@@ -3984,7 +3939,6 @@ console.log(fs.statSync('file.txt'))
 ## 路径处理
 
 ### 引入path模块
-
 
 如果需要处理路径，则需要用到path模块。首先使用如下代码引入path模块：
 
@@ -4048,9 +4002,6 @@ path.resolve('home','foo/bar', '../baz')   // returns '/home/foo/baz'
 path.resolve('home', 'foo', 'build','aaaa','aadada','../../..', 'asset') //return '/home/foo/asset'
 ```
 
-
-
-
 ## 模块导出与导入
 
 ###   CommanJS模块语法
@@ -4084,7 +4035,6 @@ const {foo} = require('./export.js')
 fun()
 ```
 
-
 ###   ESM模块语法
 
 ESM，即ES Module，在2015年的ES6版本中被推出，这种语法同时支持Nodejs和浏览器环境。
@@ -4101,7 +4051,7 @@ ESM语法主要包括：
 
 要导出变量，使用export 关键字加上花括号，填入要导出的对象，用逗号隔开，例如export.mjs文件：
 
-```
+```js
 const a = 1;
 const str = "hello";
 const arr = [1,2,3];
@@ -4165,7 +4115,6 @@ datas.foo()
 
 在实践中，具名导出导入、默认导出导入均有使用，应熟练掌握。
 
-
 ## HTTP模块
 
 ### HTTP服务端实现：使用Node.js http模块
@@ -4198,7 +4147,7 @@ const url = new URL(req.url, ' http://localhost:8080')
 
 此时，就可以分别得到路径和查询参数了：
 
-```
+```js
 console.log(url.pathname)           //  路径
 console.log(url.searchParams)  //  查询参数，是一个可迭代对象。
 ```
@@ -4227,7 +4176,7 @@ res.end('res end')
 
 express是非常流行的Node.js HTTP库，可以实现生产级的HTTP服务器。示例如下：
 
-```
+```js
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
@@ -4248,8 +4197,6 @@ app.listen(8080, () => {
     console.log('Example app listening on port 8080')
 })
 ```
-
-
 
 ###  HTTP客户端实现：使用Fetch
 
@@ -4317,7 +4264,7 @@ npm config set registry https://registry.npmmirror.com/
 
 运行如下命令，如果输出新的镜像地址则表示镜像源更换成功：
 
-```
+```sh
 npm config get registry
 ```
 
@@ -4329,7 +4276,7 @@ npm run 脚本名称
 
 在scripts之下，可以添加一个条目，条目的属性名为脚本名称，属性值为要运行的命令，例如：
 
-```
+```sh
 "hello":"echo hello"
 ```
 
