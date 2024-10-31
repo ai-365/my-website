@@ -673,7 +673,7 @@ https://pan.baidu.com/s/1Su7BzC9GQ1uD_YgCVVpruQ?pwd=tfue
 
 下载 https://github.com/ltdrdata/ComfyUI-Manager ，解压到 ` ComfyUI\custom_nodes\ ` 中。
 
-![ComfyUI Manager](./imgAI/ComfyUI-Manager.png)
+![ComfyUI Manager](./img/ComfyUI-Manager.png)
 
 有两种方式。第一种是使用git clone。
 
@@ -681,7 +681,7 @@ https://pan.baidu.com/s/1Su7BzC9GQ1uD_YgCVVpruQ?pwd=tfue
 
 第二种是直接下载zip包再解压。
 
-![ComfyUI-Manger-下载Zip方式安装](./imgAI/ComfyUI-Manger-下载Zip方式安装.png)
+![ComfyUI-Manger-下载Zip方式安装](./img/ComfyUI-Manger-下载Zip方式安装.png)
 
 ##  常见节点的输入、输出、参数说明 
 
@@ -785,9 +785,9 @@ IP adapter 根据参考图控制图像的生成。输入一张参考图和限定
 IP Adapter 中的“IP”不是网络中的IP，这里的“I”指的是Image（图片），“P”指的是Prompt（提示词）。所以，IP Adapter的直译是“图像提示适配器”。
 
 
-![IP-Adapter-1.png](./imgAI/IP-Adapter-1.png)
+![IP-Adapter-1.png](./img/IP-Adapter-1.png)
 
-![IP-Adapter-2.png](./imgAI/IP-Adapter-2.png)
+![IP-Adapter-2.png](./img/IP-Adapter-2.png)
 
 IP adapter 只有22M参数，比ControlNet和T2I更加轻量。
 
@@ -806,7 +806,7 @@ IP adapter 只有22M参数，比ControlNet和T2I更加轻量。
 -  face_id_plus
 -  face_id_plusV2： 改进版，效果最好。
 
-![IP-Adapter功能分类.png](./imgAI/IP-Adapter功能分类.png)
+![IP-Adapter功能分类.png](./img/IP-Adapter功能分类.png)
 
 ###   ViT-H 和ViT-G
 
@@ -829,7 +829,7 @@ ComfyUI相比WebUI的优点是： 生成性能高、 节点式界面更直观、
 ComfyUI的默认工作流如下，更复杂的工作流都是基于这个默认工作流进行自定义和扩展的。
 
 
-![ComfyUI默认工作流.png](./imgAI/ComfyUI默认工作流.png)
+![ComfyUI默认工作流.png](./img/ComfyUI默认工作流.png)
 
 
 
@@ -1073,7 +1073,7 @@ SVD的训练分为三个主要步骤： 文生图预训练、 视频生成预训
 
 ## SVD配合ComfyUI 
 
-![ComfyUI-SVD](./imgAI/ComfyUI-SVD.png)
+![ComfyUI-SVD](./img/ComfyUI-SVD.png)
 
 # Transformer
 
