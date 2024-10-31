@@ -5708,8 +5708,6 @@ console.log(decodeURI('%E4%BD%A0%E5%A5%BD%20%E4%B8%96%E7%95%8C'))
 // out： 你好 世界
 ```
 
-
-
 ## 定时器API
 
 JavaScript定时器API可以延迟执行、循环执行另一个函数，有三种方法：setTimeout() 、 setInterval() 、 requestAnimationFrame() 。
