@@ -2430,7 +2430,7 @@ print(html)
 
 可以得到如下标准的HTML内容输出：
 
-```py
+```html
 <html>
 <head>
     <title>Python Jinja2</title>
