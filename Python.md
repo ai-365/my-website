@@ -550,7 +550,6 @@ sorted(fruits, key=lambda word: word[::-1])
 # ['banana', 'apple', 'fig', 'raspberry', 'strawberry', 'cherry']
 ```
 
-
 ###   列表与其它相似类型的互相转换
 
 列表与其它相似类型的互相转换十分常见，例如将列表转为元组或集合：
