@@ -950,7 +950,7 @@ iface.launch()
 
 ```
 
-![Gradio](./imgAI/Gradio.png)
+![Gradio](./img/Gradio.png)
 
 
 # Stable Diffusion
