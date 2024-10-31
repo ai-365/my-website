@@ -1,24 +1,3 @@
-<style>
-  h1{
-    background: azure;
-  }
-  h2{
-    background: pink;
-  }
-
-  
-h2::before {
-  content: "H2";
-  position:absolute;
-  right: 50px;
-  opacity: 30%;
-}
-
-  h3{
-    background: lightblue;
-  }
-</style>
-
 <p id="top" style="font-size:48px;color:green; font-weight:bolder;">AI</p>
 
 <p><a href="#top" style="position:fixed;">回到顶部</a></p>
@@ -179,8 +158,6 @@ h2::before {
 
 基本围绕AI。Veo视频生成模型。Gemini 大模型。 Agent工具。AI辅助编程工具等。
 
-
-
 ## 大模型文件后缀名及其含义
 
 （1）  safetensors
@@ -200,7 +177,6 @@ PyTorch Lightning 框架采用的模型存储格式。它不仅包含了模型�
 是 PyTorch 中用于保存模型状态的标准格式。方便模型的持久化和复用，支持完整模型结构和参数的保存与恢复。
 
 
-
 ##  Huggingface
 
 ###  Hugging Face镜像站
@@ -217,7 +193,7 @@ PyTorch Lightning 框架采用的模型存储格式。它不仅包含了模型�
 
 首先安装命令行工具Python包：
 
-```
+```sh
 pip  install  -U  huggingface_hub
 ```
 
@@ -225,13 +201,13 @@ pip  install  -U  huggingface_hub
 
 然后下载模型：
 
-```
+```sh
 huggingface-cli  download  --resume-download  gpt2  --local-dir  gpt2
 ```
 
 下载数据集：
 
-```
+```sh
 huggingface-cli  download  --repo-type  drataset  --esume-download  wikitext  --local-dir  wikitext
 ```
 
