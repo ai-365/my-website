@@ -254,7 +254,7 @@
     - [setTimeout()](#settimeout)
     - [setInterval()](#setinterval)
     - [requestAnimationFrame()](#requestanimationframe)
-  - [浏览器直接读写本地文件系统](#浏览器直接读写本地文件系统)
+  - [Flie System API：浏览器读写本地文件](#flie-system-api浏览器读写本地文件)
 - [React](#react)
   - [React 基础](#react-基础)
     - [在HTML页面中直接引入React](#在html页面中直接引入react)
@@ -5818,7 +5818,7 @@ animation()
 
 
 
-##  浏览器直接读写本地文件系统
+##  Flie System API：浏览器读写本地文件
 
 ```
 <!DOCTYPE html>
