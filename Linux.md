@@ -2,16 +2,6 @@
 
 <p><a href="#top" style="position:fixed;bottom:0px;">回到顶部</a></p>
 
-<style>
-  ul{
-    display: flex;
-    flex-flow: column wrap;
-    height: 400px;
-    background: pink;
-  }
-
-</style>
-
 目录：   
 
 - [命令行语法规则](#命令行语法规则)
