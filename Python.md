@@ -202,7 +202,7 @@
 
 Python是弱类型、动态类型、解释型语言，声明不变可以不指明类型，解释器会根据变量的值推断适合的类型。最近的版本为Python添加了类型支持，旨在构建更健壮的Python代码。声明变量很容易，示例如下：
 
-```
+```py
 a = 1
 arr = ['hello' , 'world']
 str = "hello,world"
@@ -231,7 +231,7 @@ is not 是 is 的否定。
 
 完整的if语句语法格式如下，注意条件后面的冒号一定不能漏掉。
 
-```
+```py
 if  条件1:
         条件1为真时的操作
 elif 条件2:
@@ -244,7 +244,7 @@ else
 
 示例如下：
 
-```
+```py
 score = int(input("请输入你的分数："))
 
 if score >= 80:
@@ -263,13 +263,13 @@ else:
 
 通常使用中括号包裹、逗号分隔的语法新建一个列表，如下新建了一个包含三个元素的列表：
 
-```
+```py
 li = [1, 'hello' ,2.5] 
 ```
 
 有些时候需要快速创建一个连续正整数数组，range()可以很方便的快速创建连续整数序列，range(m,n)表创建从m到n-1的整数序列，再使用list()包装成列表，例如：
 
-```
+```py
 li = list(range(2,5))
 print(li)
 // 2,3,4
@@ -277,7 +277,7 @@ print(li)
 
 range()还可以接收第三个参数，用于指定步长：
 
-```
+```py
 li = list(range(2,10,2))
 print(li)
 // 2,4,6,8
@@ -285,14 +285,14 @@ print(li)
 
 要获取列表的长度，即列表中有多少个元素，可以通过内置的len()函数得到：
 
-```
+```py
 li = [1,2,3]
 print(len(li)) // 3
 ```
 
 通过中括号和索引可以得到某一位置该元素的值，索引从0开始，li[n]表示列表li的第n+1个元素。索引还可以是负数， li[-1]表示最后一个元素，li[-2]表示倒数第二个元素，依此类推。
 
-```
+```py
 li = [1,2,3,4]
 
 // 第二个元素
@@ -304,7 +304,7 @@ print(li[-1])
 
 可以提取列表的某一范围内的元素，得到一个新的列表。 `[n:m]` 表示第n+1个元素到第m个元素。
 
-```
+```py
 li = [1,2,3,4,5,6,7,8]
 li2 = li[2:5]  
 print(li2) # [3,4,5]
@@ -312,7 +312,7 @@ print(li2) # [3,4,5]
 
 如果省略了冒号左边的值，则从第一个元素开始。如果省略了冒号右边的值，则一直到最后一个元素。如果都省略，相当于拷贝了一份列表的副本。
 
-```
+```py
 li = [1,2,3,4,5,6,7,8]
 li3 = li[2:]  
 print(li2) # [3,4,5,6,7,8]
@@ -333,14 +333,14 @@ range()返回的是一个range序列对象，并非列表。可以使用list()�
 
 range(n,m)返回从n到m-1的序列。
 
-```
+```py
 list(range(1,6))
 # [1, 2, 3, 4, 5]
 ```
 
 还可以指定第三个参数，指定步长。
 
-```
+```py
 list(range(1,9,2))
 #[1,3,5,7]
 ```
@@ -372,7 +372,7 @@ sum(digits)
 
 index()方法用于查找元素首次出现的的索引，如果找不到就会返回ValueError异常。
 
-```
+```py
 [1,2,3,4].index(2) 
 ```
 
@@ -383,7 +383,7 @@ index()方法用于查找元素首次出现的的索引，如果找不到就会�
 
 如下示例返回当前目录下以 .py 结尾的文件。
 
-```
+```py
 import os
 files = os.listdir('.')
 
@@ -397,7 +397,7 @@ files = os.listdir('.')
 
 使用append()方法可以将新元素添加到列表末尾：
 
-```
+```py
 li = [1,2]
 li.append(3)
 ```
@@ -406,7 +406,7 @@ li.append(3)
 
 使用insert()方法可以在指定位置插入新元素。insert(n,value)表示在第n+1个元素前面插入value这个新元素。例如：
 
-```
+```py
 li = [1,2]
 li.insert(0,3)
 # 在第一个元素前面插入3
@@ -417,7 +417,7 @@ print(li) # [3,1,2]
 
 使用pop()删除列表末尾的一个元素，例如：
 
-```
+```py
 li = [1,2,3]
 li.pop()
 print(li) # [1,2]
@@ -425,7 +425,7 @@ print(li) # [1,2]
 
 如果要删除指定位置的元素，只需传入索引即可：
 
-```
+```py
 li = [1,2,3]
 
 li.pop(0)
@@ -436,7 +436,7 @@ li.pop(0)
 
 del 语句可用于从列表中移除切片或清空整个列表。注意删除和清空的区别。
 
-```
+```py
 a = [-1, 1, 66.25, 333, 333, 1234.5]
 del a[0] # 清除第一个
 del a[2:4] # 清除第3到4个
@@ -449,7 +449,7 @@ del a  # 删除列表
 
 使用for in 语句可以遍历整个列表，示例如下：
 
-```
+```py
 li = [1,2,3]
 for item in li:
 		print(li)
@@ -457,7 +457,7 @@ for item in li:
 
 for in 语句不仅可以遍历列表，只要是可迭代对象，都可以，例如range()返回的对象。
 
-```
+```py
 for item in range(1,4):
 		print(item**2)
 ```
@@ -466,7 +466,7 @@ for item in range(1,4):
 
 很多使用，需要对列表的每一个元素执行相同的操作，这叫做列表的迭代。使用内置的map()函数可以完成，map()函数的用法是：
 
-```
+```py
 map(迭代函数, 可迭代对象)
 ```
 
@@ -474,7 +474,7 @@ map(迭代函数, 可迭代对象)
 
 迭代函数通常是一个匿名函数，例如：
 
-```
+```py
 li = [1,2,3]
 li2 = map(lambda x:x**2, li)
 
@@ -487,7 +487,7 @@ print(list(li2)) # [1,4,9]
 
 列表允许值重复，如果要去重，可以利用set类型的不重复特性。
 
-```
+```py
 li = [1,2,2,3,3]
 set1 = set(li)
 print(set1)
@@ -502,7 +502,7 @@ sorted()内置函数会返回一个新的列表。
 
 sorted方法的语法如下：
 
-```
+```py
 sorted(list, reverse, key)
 ```
 
@@ -511,13 +511,12 @@ sorted(list, reverse, key)
 - key： 排序依据。 例如key=str.lower不按大小写排序。可选关键字参数。
 
 排序有两种情况：
-
 - 对数字列表的排序： 这会按照自然数从小到大排。
 - 对字符串列表的排序： 这会按照字符串的ASCII码值排序。
 
 数字列表排序：
 
-```
+```py
 digits = [345, 6, 22]
 sorted(digits)
 # [6, 22, 345]
@@ -526,7 +525,7 @@ sorted(digits)
 
 字符串列表排序：
 
-```
+```py
 fruits = ['grape', 'raspberry', 'apple', 'banana']
 
 # 默认按字符串字符的ASCII码从小到大排
@@ -544,7 +543,7 @@ key还可以是一个函数。
 
 如下示例，` [: :-1] `表示字符串逆序。
 
-```
+```py
 fruits = ['strawberry', 'fig', 'apple', 'cherry', 'raspberry', 'banana']
 sorted(fruits, key=lambda word: word[::-1])
 # ['banana', 'apple', 'fig', 'raspberry', 'strawberry', 'cherry']
@@ -555,7 +554,7 @@ sorted(fruits, key=lambda word: word[::-1])
 
 列表与其它相似类型的互相转换十分常见，例如将列表转为元组或集合：
 
-```
+```py
 number_list = [1, 2, 3, 4, 5]
 tuple_version = tuple(number_list)
 set_version = set(number_list)
@@ -566,7 +565,7 @@ print(set_version)  # {1, 2, 3, 4, 5}
 
 若要将列表转为字典，通常需要提供一个与之对应的键列表：
 
-```
+```py
 keys = ['apple', 'banana', 'cherry']
 values = [10, 20, 30]
 fruit_dict = dict(zip(keys, values))
@@ -576,7 +575,7 @@ print(fruit_dict)  # {'apple': 10, 'banana': 20, 'cherry': 30}
 
 反过来，集合和字典也可以转换为列表，例如：
 
-```
+```py
 fruit_set = {'apple', 'banana', 'cherry'}
 fruit_list_from_set = list(fruit_set)
 
@@ -605,7 +604,7 @@ print(fruit_values_list)  # [10, 20, 30]
 
 使用class关键字创建类，类名习惯上首字母大写。注意，类名后面一定要跟上括号和冒号。
 
-```
+```py
 class Dog():
         """一次模拟小狗的简单尝试"""
 
@@ -628,13 +627,13 @@ class Dog():
 
 注意，不要写new。
 
-```
+```py
 dog = Dog('milk', 3)
 ```
 
 ###  使用句号语法访问属性和成员
 
-```
+```py
 dog.name
 # milk
 
@@ -646,7 +645,7 @@ dog.sit()
 
 Python中，比较常见的类型有str、int、float。
 
-```
+```py
 a:int = 1
 
 str:str = 'hello' 
@@ -658,7 +657,7 @@ str:str = 'hello'
 
 ### 示例
 
-```
+```py
 sound/                          最高层级的包
       __init__.py               初始化 sound 包
       formats/                  用于文件格式转换的子包
@@ -699,42 +698,72 @@ sound/                          最高层级的包
 
 一个包本质上就是操作系统的一个文件夹，里面有若干.py文件。子包就是子文件夹。
 
-包和文件夹的唯一区别就是包里面有一个特殊文件： __init__.py文件。
+包和文件夹的唯一区别就是包里面有一个特殊文件： `__init__.py`文件。
 
-要将一个文件夹变成Python包，需要在文件夹下添加__init__.py 文件。
+要将一个文件夹变成Python包，需要在文件夹下添加`__init__.py` 文件。
 
 包和子包是不同的包，示例中，sound包和sound.effects是不同的包。
 
 ### import 语法
 
+```py
 import sound.effects.echo 
+```
 
 使用时需要使用全名称前缀：
+
+```py
  sound.effects.echo.类变量或函数。
+```
+
 
 如果不想麻烦，则导入时应该使用as重命名：
+
+```py
 import sound.effects.echo  as echo
+```
 
 这样，使用时：
+
+```py
 echo.类、变量或函数
+```
 
 ### from import 语法
 
 导入模块：
+
+```py
 from sound.effects import echo
+```
+
 使用：
-echo.变量、类或函数
+
+```py
+echo.类、变量或函数
+```
 
 导入模块里面的所有变量、类或函数：
+
+```py
 from sound.effects.echo import *
+```
+
 然后，不加模块前缀，直接使用里面的类、变量或函数。
 
 导入模块里面具体的类、变量或函数：
-from sound.effects.echo import echofilter
-使用时：
-echofilter()
 
-`*` 默认为模块里面所有的全局变量、类和函数。但如果模块里面定义了 __all__数组，数组里面限制了导出了哪些变量、类或函数，则 `*`只会导入这些变量、类或函数。
+```py
+from sound.effects.echo import echofilter
+```
+
+使用时：
+
+```py
+echofilter()
+```
+
+`*` 默认为模块里面所有的全局变量、类和函数。但如果模块里面定义了 `__all__`数组，数组里面限制了导出了哪些变量、类或函数，则 `*`只会导入这些变量、类或函数。
 
 ### import和from import的区别
 
@@ -745,11 +774,19 @@ from import 可以导入包、子包、模块、具体的变量、函数。导�
 ### from 相对导入
 
 如果surround.py要导入echo.py，可以使用：
+
+```py
 from . import echo
+```
+
 . 表示当前文件夹。
 
 如果surround.py要导入formats包，可以使用：
+
+```py
 from  .. import  formats
+```
+
 .. 表示上一级文件夹。
 
 如果surround.py要导入formats包里面的wavread.py，可以使用：
