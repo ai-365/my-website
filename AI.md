@@ -619,7 +619,7 @@ CPU+内存| 依据CPU的性能，每GB每秒
 
 费用举例：
 
-![费用参考](./imgAI/费用参考.png)
+![费用参考](./img/费用参考.png)
 
 
 ###  阿里云部署参考文档
@@ -630,9 +630,9 @@ CPU+内存| 依据CPU的性能，每GB每秒
 
 ###  文件结构
 
-![文件结构](./imgAI/文件夹结构.png)
+![文件结构](./img/文件夹结构.png)
 
-![文件结构2](./imgAI/文件夹结构2.png)
+![文件结构2](./img/文件夹结构2.png)
 
 根目录下的四个文件（夹）的作用如下：
 -  ComfyUI ： 最关键的文件夹，存放着所有模型、节点。包括checkpoint大模型、LoRA模型、ControlNet模型等。
@@ -651,7 +651,7 @@ VAE | ComfyUI/models/vae
 LoRA模型 |  ComfyUI\models\loras
 
 
-![配置文件](./imgAI/配置文件.png)
+![配置文件](./img/配置文件.png)
 
 
 
@@ -687,7 +687,7 @@ https://pan.baidu.com/s/1Su7BzC9GQ1uD_YgCVVpruQ?pwd=tfue
 
 ###  KSampler 采样器节点
 
-![采样器节点](./imgAI/采样器节点.png)
+![采样器节点](./img/采样器节点.png)
 
 
 |参数	|	作用|
@@ -728,15 +728,15 @@ VAE解码需要使用一个VAE模型，VAE模型一般包含在SD基础模型中
 
 ##  AnimateDiff
 
-![AnimateDiff-1](./imgAI/AnimateDiff-1.png)
+![AnimateDiff-1](./img/AnimateDiff-1.png)
 
-![AnimateDiff-2](./imgAI/AnimateDiff-2.png)
+![AnimateDiff-2](./img/AnimateDiff-2.png)
 
-![AnimateDiff-3](./imgAI/AnimateDiff-3.png)
+![AnimateDiff-3](./img/AnimateDiff-3.png)
 
-![AnimateDiff-4](./imgAI/AnimateDiff-4.png)
+![AnimateDiff-4](./img/AnimateDiff-4.png)
 
-![AnimateDiff-5](./imgAI/AnimateDiff-5.png)
+![AnimateDiff-5](./img/AnimateDiff-5.png)
 
 ## SDXL 组成
 
@@ -758,7 +758,7 @@ Stable Diffusion XL模型放到ComfyUI/models/checkpoints/路径下。
 
 总之，base加refiner比单独的base好，SD XL 比SD好。
 
-![性能对比](./imgAI/性能对比.png)
+![性能对比](./img/性能对比.png)
 
 ##  ControlNet
 
