@@ -1422,6 +1422,7 @@ vim默认打开的模式为命令模式。
 命令模式	|	i	|	进入 -- INSERT --
     
 # VirtualBox
+
 1. 下载Virtual Box最新版本，安装。如果报错内容是缺少VC++2019，则去[https://learn.microsoft.com/ZH-cn/cpp/windows/latest-supported-vc-redist?view=msvc-170](https://learn.microsoft.com/ZH-cn/cpp/windows/latest-supported-vc-redist?view=msvc-170)下载支持文件。
 
 ![VC++2019](https://pics5.baidu.com/feed/91529822720e0cf39f8620b98bd2ee14bf09aa9a.png@f_auto?token=af0b3c59d267ec1cf710db8a2579d98c)
