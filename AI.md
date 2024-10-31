@@ -843,13 +843,13 @@ pip install gradio
 
 ## 导入gradio
 
-```
+```py
 import gradio as gr
 ```
 
  ##  一个简单的示例
 
-```
+```py
 import gradio as gr
 
 def greet(name, intensity):  # 参数列表对应输入 name文本框、intensity滑块
@@ -930,7 +930,7 @@ gr.Audio()	|	audio	|	上传音频	|	source：指定音频来源;type：指定返
 
 如下代码集成了HuggingFace的图像分类模型：
 
-```
+```py
 import gradio as gr
 from transformers import pipeline
 
@@ -1024,7 +1024,7 @@ SDXL 就是 SD 的升级版，图片生成的效果更好、更逼真、分辨�
 SD权重语法汇总如下：
 
 语法	|	说明
-|---	|	---|
+---	|	---
 `prompt`	|	没有任何符号，默认情况，1倍的权重
 `(prompt)`	|	增加权重，1层为1.1倍，2层为1.21倍，3层为1.331倍
 `(prompt: x)`	|	自定义权重，x最好控制在0.4~1.6之间。太小容易被忽视，太大容易拟合图像出错
@@ -1053,8 +1053,6 @@ Sora是一种文生视频大模型，但OpenAI的野心不止于此，官网的�
 ###  Sora有望推动机器人的发展
 
 Sora推出之所以轰动，不是因为它是文生视频，而是因为它通过观看大量的视频，理解了真实世界的物理规律。这就是“涌现”能力，除了文生视频带动视频相关行业的颠覆，还有两个更重要的价值： 通过AGI的途径之一（多种模态）、 直接用在机器人上。
-
-
 
 
 ## SVD
