@@ -1081,7 +1081,7 @@ SVD的训练分为三个主要步骤： 文生图预训练、 视频生成预训
 
 ## Transformer 示意图
 
-![Transformer示意图](./imgAI/Transformer示意图.png)
+![Transformer示意图](./img/Transformer示意图.png)
 
 
 ## Transformer 源码
