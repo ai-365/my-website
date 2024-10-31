@@ -5588,7 +5588,7 @@ GET https://api.github.com/user
 ### Github授权登陆流程
 
 步骤| 请求方式 | 请求URL | 请求参数|返回内容
-|---| ---| ---|---|---|
+---| ---| ---|---|---
 1|GET|`https://github.com/login/oauth/authorize`|client-id| redict-url|授权登陆GitHub的页面
 2|GET|`redict_url`|无|request-code
 3|POST|`https://github.com/login/oauth/access_token`|client-id、client-secret、request-code|access-token
@@ -5598,7 +5598,6 @@ GET https://api.github.com/user
 
 打开微信开发平台，地址：
 
-
 步骤| 请求方式 | 请求URL | 请求参数|返回内容
 ---| ---| ---|---|---
 1 | GET | `https://open.weixin.qq.com/connect/qrconnect`       | client-id                 | redict-url                 | 授权登陆微信的页面 |
@@ -5607,10 +5606,7 @@ GET https://api.github.com/user
 4   | GET  | `https://api.weixin.qq.com/sns/userinfo`             | 请求头中添加access-token        | 微信用户个人信息                   |           |
 5   | GET  | `https://api.weixin.qq.com/sns/oauth2/refresh_token` | appid、refresh-token       | 新的access-token             |           |
 
-
-
 ##  加密协议
-
 
 ### 加密算法的分类
 
@@ -5632,6 +5628,7 @@ GET https://api.github.com/user
 当然，名称也可以自己取一个有辨识度的名字。
 
 公钥顾名思义就是可以公开的，A和B首先把自己的公钥发给对方，然后把对方的的公钥追加进自己的~/.ssh/known_hosts文件中，这个文件存放的是从网络上接收到的各个主机的公钥，每条信息占一行，每一行的格式如下：
+
 ```
 主机  加密算法   公钥字符串==
 ```
