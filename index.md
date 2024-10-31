@@ -10,8 +10,3 @@
 [Office](Office.md)  
 
 
-## AI示意图
-
-
-## Github示意图
-![Github Excalidraw](Github.excalidraw.png)
