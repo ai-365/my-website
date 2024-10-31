@@ -5253,7 +5253,6 @@ app.on('activate', () => {
   }
 ```
 
-
 ###   新建窗口的详细配置
 
 BrowerWindow类创建窗口。返回窗口对象，通常命名为window。
@@ -5282,7 +5281,7 @@ BrowerWindow类的webPreferences
 
 把这个属性单独拿出来，因为很关键。
  
- 有一个很重要的选项：preload，指定预加载脚本文件。
+有一个很重要的选项：preload，指定预加载脚本文件。
 
 
 
@@ -5324,9 +5323,8 @@ ipcRenderer.invoke()和ipcMain.handle()是在electron7之后使用的双向通�
 
 同时，应该减少使用ipcRenderer.send()和ipcMain.on()
 
-
-
 # WebSocket
+
 ## HTTP协议的问题
 
 HTTP协议有两大特点：
