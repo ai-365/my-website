@@ -5497,8 +5497,6 @@ client.on('data',data=>console.log(data.toString().trim()))
 
 这样，就可以看到桌面通知了。
 
-
-
 ##  Local Storage
 
 要在浏览器本地存储数据，可以使用cookie、local storage、session storage，这三种对象的区别如下：
@@ -5543,7 +5541,6 @@ localStorage.removeItem(key)
 ```js
 localStorage.clear()
 ```
-
 
 ##   postMessage()
 
@@ -5604,11 +5601,11 @@ document.dispatchEvent(event)
 
 ```js
 <script>
-const event = document.createEvent("CustomEvent")
-event.initCustomEvent("myevent", true, false, "event happened!")
-
-document.addEventListener("myevent",event=>console.log(event.detail))
-document.dispatchEvent(event)
+    const event = document.createEvent("CustomEvent")
+    event.initCustomEvent("myevent", true, false, "event happened!")
+    
+    document.addEventListener("myevent",event=>console.log(event.detail))
+    document.dispatchEvent(event)
 </script>
 ```
 
