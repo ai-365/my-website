@@ -1,24 +1,3 @@
-<style>
-  h1{
-    background: azure;
-  }
-  h2{
-    background: pink;
-  }
-
-  
-h2::before {
-  content: "H2";
-  position:absolute;
-  right: 50px;
-  opacity: 30%;
-}
-
-  h3{
-    background: lightblue;
-  }
-</style>
-
 <p id="top" style="font-size:48px;color:green; font-weight:bolder;">Front-end</p>
 
 <p><a href="#top" style="position:fixed;">回到顶部</a></p>
