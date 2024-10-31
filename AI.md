@@ -677,7 +677,7 @@ https://pan.baidu.com/s/1Su7BzC9GQ1uD_YgCVVpruQ?pwd=tfue
 
 有两种方式。第一种是使用git clone。
 
-![ComfyUI-Manger-Git方式安装](./imgAI/ComfyUI-Manger-Git方式安装.png)
+![ComfyUI-Manger-Git方式安装](./img/ComfyUI-Manger-Git方式安装.png)
 
 第二种是直接下载zip包再解压。
 
@@ -1000,7 +1000,7 @@ SDXL 就是 SD 的升级版，图片生成的效果更好、更逼真、分辨�
 
 ###   repeat、epoch、batch_size的区别
 
-![repeat、epoch、batch_size](./imgAI/repeat、epoch、batch_size.png)
+![repeat、epoch、batch_size](./img/repeat、epoch、batch_size.png)
 
 
 
