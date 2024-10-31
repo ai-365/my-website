@@ -2,9 +2,17 @@
 
 <p><a href="#top" style="position:fixed;bottom:0px;">回到顶部</a></p>
 
-目录：   
+<style>
+  ul{
+    display: flex;
+    flex-flow: column wrap;
+    height: 400px;
+    background: pink;
+  }
 
-<div style="height:400px; background:pink; display:flex; flex-direction:column;flex-wrap:wrap;">
+</style>
+
+目录：   
 
 - [命令行语法规则](#命令行语法规则)
   - [管道](#管道)
