@@ -747,7 +747,7 @@ SDXL Refiner模型同样由U-Net、VAE和CLIP Text Encoder（一个）三个模�
 Base的作用是生成图像的Latent特征，Refiner的作用是小噪声去除和细节质量提升。
 
 
-![SDXL组成](./imgAI/SDXL组成.png)
+![SDXL组成](./img/SDXL组成.png)
 
 
 SDXL Base 地址： https://hf-mirror.com/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors
@@ -776,7 +776,7 @@ Adapter ，就是将一张图像的风格，迁移到另一张图像上去。通
 
 T2I  adapter 比ControlNet轻量，模型文件只有300M左右。T2I 给输入图片追加一定的条件，比如姿势图、草图、深度图，这样图片根据条件生成新图。
 
-![T2I-Idapter介绍](./imgAI/T2I-Idapter介绍.png)
+![T2I-Idapter介绍](./img/T2I-Idapter介绍.png)
 
 ###  IP Adapter
 
