@@ -4257,7 +4257,7 @@ app.listen(8080, () => {
 
 基本示例如下：
 
-```
+```sh
 //  请求四件套：method、url、headers、body
 const method = 'post'
 const url = 'http://127.0.0.1:8080/post'
@@ -4305,14 +4305,13 @@ fetch()函数返回的是一个期约对象，使用await解析期约值。如�
 - json()，如果响应体是一个JSON对象，使用该方法可以直接解析为JavaScript对象。
 
 
-
 ## npm的使用
 
 npm是Node.js官方的包管理器工具，默认随着node一起安装，无需单独安装。可以运行npm -v确认是否已安装。
 
 在确认npm安装后，一般需要更换镜像源以加速下载，运行如下命令更换为阿里云的npm镜像源：
 
-```
+```sh
 npm config set registry https://registry.npmmirror.com/ 
 ```
 
@@ -4324,7 +4323,7 @@ npm config get registry
 
 通常，在项目根目录下，有一个package.json文件，文件中有scripts项，使用如下命令运行脚本：
 
-```
+```sh
 npm run 脚本名称
 ```
 
@@ -4338,7 +4337,7 @@ npm run 脚本名称
 
 有些比较大的npm包会自带二进制命令，如果是本地安装的（本地安装的意思是将文件下载到当前目录下），二进制命令会被放在./node_modules/.bin目录下，无需将该目录下的命令添加到系统PATH环境变量，直接使用如下命令运行二进制程序：
 
-```
+```sh
 npx 二进制命令名称
 ```
 
@@ -4353,7 +4352,7 @@ npx 二进制命令名称
 
 如果在pages目录下创建了demo.js，内容如下：
 
-```
+```js
 export default function Demo(){
     return <h1>Demo Page</h1>
 }
@@ -4365,7 +4364,7 @@ export default function Demo(){
 
 用方括号封装文件夹名，
 
-```
+```js
 // pages/users/[name].js
  
 import { useRouter } from 'next/router'
@@ -4381,12 +4380,9 @@ export default function User() {
 
 这样一来，就会根据URL具体路径动态的返回页面内容。例如访问/users/zhangsan，就会返回 ` <h1>hello, zhangsan</h1> ` ，访问/users/lisi，就会返回 ` <h1>hello, lisi</h1> ` 。
 
-
-
 # React Native
 
 ## Android项目配置文件——AndroidManifest.xml
-
 
 AndroidManifest.xml是安卓项目的配置文件，里面包含了从应用级别到页面级别的各种属性设置。该文件需要引用其它文件的内容，如变量、图片、代码文件等，因此，需要先弄清楚Android项目结构。
 
@@ -4448,7 +4444,6 @@ android:label = "@string/变量名"
 ```
 android:src = "@drawable/不带后缀名的图片名称"
 ```
-
 
 ###  activity节点
 
@@ -4535,9 +4530,6 @@ user-permission节点是manifest的子节点，与application节点同级。该�
 - android.permission.FLASHLIGHT  允许访问闪光灯的权限
 
 
-
-
-
 ##  React Native项目所有依赖文件的使用说明
 
 
@@ -4566,7 +4558,7 @@ user-permission节点是manifest的子节点，与application节点同级。该�
 
 然后，解压 Android-SDK.7z 到一个不包含空格的英文路径，例如直接解压到D盘。在系统或用户的环境变量中，新增一个变量ANDROID_HOME，值为D:\Android-SDK。 随后，在系统或用户的Path变量中，新增三条：
 
-```
+```sh
 %ANDROID_HOME%\cmdline-tools\latest\bin
 %ANDROID_HOME%\platform-tools
 %ANDROID_HOME%\build-tools\34.0.0
@@ -4589,14 +4581,13 @@ user-permission节点是manifest的子节点，与application节点同级。该�
 
 ##  为安卓apk签名
 
-
 在构建安卓apk时，为apk签名之后才能提交到应用商店。
 
 首先需要使用keytool命令生成密钥文件，keytool命令位于JDK安装目录的bin目录下，在安装JDK时已经将该目录添加到PATH环境变量中了。
 
 进入到项目的android/app/ 目录下，运行如下命令，这会在当前目录生成密钥文件release.keystore：
 
-```
+```sh
 keytool -genkey -v -keystore release.keystore -alias release -keyalg RSA -keysize 2048 -validity 10000
 ```
 
@@ -4629,7 +4620,6 @@ buildTypes {
 
 ```
 
-
 ##  安卓开发环境的配置
 
 ###   Android SDK的安装和配置
@@ -4657,9 +4647,6 @@ buildTypes {
 
 在 ` %ANDROID_HOME%\cmdlines-tools ` 中新建一个名为latest的文件夹，将原先 cmdline-tools 下的四个文件移动到这里。这一步是官方文档推荐的做法，目的是方便 cmdline-tools 版本的管理。
 
-现在，你的目录结构应该如下图所示：
-
-
 
 4、在Path环境变量中添加条目
 
@@ -4683,7 +4670,7 @@ sdkmanager.bat  --list --no_https --proxy=http --proxy_host=g.cn --proxy_port=80
 
 任何Android开发都至少需要安装下面命令中列出的三个包：
 
-```
+```sh
 sdkmanager.bat "build-tools;34.0.0" "platform-tools" "platforms;android-34" --no_https --proxy=http --proxy_host=g.cn --proxy_port=80
 ```
 
@@ -4694,7 +4681,7 @@ sdkmanager.bat "build-tools;34.0.0" "platform-tools" "platforms;android-34" --no
 
 使用如下命令检查已经安装的包：
 
-```
+```sh
 sdkmanager.bat  --list_installed
 ```
 
@@ -4714,7 +4701,7 @@ Installed packages:
 
 这个步骤容易被忽略，但却非常非常重要，一定一定要执行！使用如下命令接受许可：
 
-```
+```sh
 sdkmanager --licenses
 ```
 
@@ -4724,7 +4711,7 @@ sdkmanager --licenses
 
 在用户或系统的PATH环境变量中新增如下两项：
 
-```
+```sh
 %ANDROID_HOME%\platform-tools
 %ANDROID_HOME%\build-tools\34.0.0
 ```
@@ -4765,22 +4752,19 @@ java
 
 进入“设置——更多设置——开发者选项”，开启“USB调试”、“USB安装”、“USB调试（安全设置）”。
 
-
 ![开启调试]( https://s21.ax1x.com/2024/06/25/pksTQns.png) 
 
 使用数据线连接电脑和手机，会自动触发打开一个弹窗，在弹窗中有“传输照片”、“传输文件”等选项，选择传输文件。
 
 运行：
 
-```
+```sh
 adb  devices 
 ```
 
 输出的内容中，手机设备标识符右边的状态是device表示已连接。注意，一定要是device，其它的单词都表示未连接。
 
-
 ![adb devices]( https://s21.ax1x.com/2024/06/25/pksT96H.png) 
-
 
 有线调试需要一直连着数据线，不是很方便。现在大多数手机都支持无线调试。
 
@@ -4790,7 +4774,6 @@ adb  devices
 2、 手机与电脑在同一WiFi下，也可以打开电脑上的移动热点。
 
 从有线调试切换到无线调试的过程中，可能需要运行adb kill-server重启一次adb服务，以及重启一次手机上的无线调试开关。重启无线调试开关后，手机的IP地址端口号会改变。
-
 
 ![无线调试]( https://s21.ax1x.com/2024/06/25/pksTJhT.png)
 
@@ -4928,8 +4911,6 @@ cd android
 
 打包完成后，在./android/app/build/outputs/apk/release文件夹下，可以找到app-release.apk文件。将这个文件拷贝到手机安装即可。不过，由于app没有签名，会提示不能直接安装，忽略风险继续安装即可。
 
-
-
 # 定位
 
 - [相对定位](#相对定位)
@@ -5065,9 +5046,7 @@ sticky 英文字面意思是粘，粘贴，所以可以把它称之为粘性定�
 
 当页面规定没有超出目标区域时，它的行为就像 position:relative；当页面滚动超出目标区域时，它的表现就像 position:fixed;，它会固定在目标位置。
 
-
 # 浮动
-
 
 把一个元素“浮动”(float) 起来，会改变该元素本身和在正常布局流（normal flow）中跟随它的其他元素的行为。这一元素会浮动到左侧或右侧，并且从正常布局流 (normal flow) 中移除，这时候其他的周围内容就会在这个被设置浮动 (float) 的元素周围环绕。
 float 属性有四个可能的值：
@@ -5104,7 +5083,7 @@ float 属性有四个可能的值：
 
 运行如下命令安装Electron：
 
-```
+```sh
 npm i electron
 ```
 
@@ -5182,7 +5161,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 运行如下命令启动应用：
 
-```
+```sh
 npx electron .
 ```
 
@@ -5210,9 +5189,7 @@ app.whenReady().then(()=>{
 })
 ```
 
-
 ## 新建窗口
-
 
 ###   新建基本窗口
 
@@ -5301,9 +5278,7 @@ window的方法：
 on事件：
 - close
 
-
 BrowerWindow类的webPreferences
-
 
 把这个属性单独拿出来，因为很关键。
  
@@ -5369,7 +5344,7 @@ HTTP协议有两大特点：
 
 我们使用Nodejs的ws模块实现WebSocket服务器。首先安装ws模块：
 
-```
+```sh
 npm i ws
 ```
 
@@ -5444,9 +5419,10 @@ WebSocket客户端使用浏览器实现，示例如下：
 ## Socket通信
 
 ### Socket服务端：Node.js net 模块实现
+
 Socket通信的服务端代码示例如下：
 
-```
+```js
 const net = require('net')
 const server = net.createServer()
 
@@ -5468,7 +5444,7 @@ server.listen(8888, () => console.log('服务器已启动'))
 
 Socket通信的客户端使用Node.js实现，代码如下：
 
-```
+```js
 const net = require('net')
 const client = net.createConnection({host:'127.0.0.1',port:8888})
 
@@ -5485,7 +5461,7 @@ client.on('data',data=>console.log(data.toString().trim()))
 ## 位置
 要获取设备的位置和速度，可以通过navigator.geoloaction.getCurrentPosition()方法，通过解析回调函数的参数可以得到经度、纬度、设备前进方向和速度，示例如下：
 
-```
+```html
 <script>
         navigator.geolocation.getCurrentPosition(position=>{
                 // 经度
@@ -5501,7 +5477,7 @@ client.on('data',data=>console.log(data.toString().trim()))
 
 可以直接调用Notification()函数即可创建一条通知，代码示例如下：
 
-```
+```html
 <script>
         new Notification( 'Title', {body:'content', icon:'notice.png'} )
 </script>
@@ -5534,37 +5510,37 @@ client.on('data',data=>console.log(data.toString().trim()))
 
 要存储键值对，使用setItem()方法：
 
-```
+```js
 localStorage.setItem(key, value)
 ```
 
 也可以直接使用点号语法：
 
-```
+```js
 localStorage.key = value
 ```
 
 使用getItem()方法读取键对应的值：
 
-```
+```js
 localStorage.getItem(key)
 ```
 
 也可以直接使用点号语法：
 
-```
+```js
 console.log(localStorage.key)
 ```
 
 使用removeItem()方法可以删除键值对：
 
-```
+```js
 localStorage.removeItem(key)
 ```
 
 使用clear()方法可以清空所有本地存储的键值对：
 
-```
+```js
 localStorage.clear()
 ```
 
@@ -5595,15 +5571,13 @@ window.onmessage=e=> document.body+=e.data
 </script>
 ```
 
-
-
 ##  自定义事件
 
 大部分情况下，我们都是使用的浏览器提供的默认事件，这些事件都由用户触发，如鼠标单击、键盘按键。其实，可以自定义事件。
 
 要创建自定义事件，使用如下方式定义一个事件对象event，事件名称是myevent，注意事件对象和事件名称概念要区分，不要搞混了。
 
-```
+```js
 const event = document.createEvent("CustomEvent")
 event.initCustomEvent("myevent", true, false, "event happened!")
 ```
@@ -5651,7 +5625,7 @@ document.querySelector('p').display='inline'
 
 如果在HTML中，元素的style属性里面的样式名称是用两个单词用连字符连接，例如background-color，那么在JavaScript中的style属性名称为backgroundColor，而不是background-color。例如：
 
-```
+```js
 document.querySelector('p').backgroundColor='red'
 document.querySelector('p').fontSize='20px'
 ```
@@ -5660,7 +5634,7 @@ document.querySelector('p').fontSize='20px'
 
 可以使用JavaScript引入外部的CSS文件，示例如下：
 
-```
+```js
 const link = document.createElement('link')
 link.rel='stylesheet'
 link.href='custom.css'
@@ -5669,7 +5643,7 @@ document.head.append(link)
 
 className设置或返回HTML中class属性的值，是一个字符串。classList是一个包含class名称的类数组对象。
 
-```
+```js
 <p class="aaa bbb">
 <script>
 const p = document.querySelector('p')
@@ -5682,21 +5656,19 @@ console.log(…p)
 </script>
 ```
 
-
-
 ## URL API
 
 浏览器和Node.js都有一个全局类型URL，使用new URL可以新建一个url实例，便于对链接进行解析。
 
 new URL()的第一个参数可以是绝对路径或相对路径，如下是一个绝对路径示例：
 
-```
+```js
 let url = new URL("https://example.com:8000/path/file.txt?key=value")
 ```
 
 如果是相对路径，则必须将主机名和端口作为第二个参数：
 
-```
+```js
 let url = new URL("/path/file.txt?key=value", "https://example.com:8000")
 ```
 
@@ -5712,7 +5684,7 @@ let url = new URL("/path/file.txt?key=value", "https://example.com:8000")
 
 查询参数对象url.searchParams是一个包含键值对的对象，可以获取、设置、添加、删除键值对。例如：
 
-```
+```html
 // 获取键对应的值：
 url.searchParams.get("key") 
 // 修改键的值：
@@ -5752,7 +5724,7 @@ setTimeout()的作用是在一定延时之后执行某个函数。它接受两�
 
 如下示例先定义了要执行的函数，然后将函数名称传给setTimeout()，注意，函数名称后面不可以加括号。
 
-```
+```html
 function foo(){
         console.log('2秒后')
 }
@@ -5767,7 +5739,7 @@ setInterval()的作用是按照给定的时间间隔重复执行一个函数。�
 
 可以使用clearInterval()函数取消定时。只需要将setInterval()赋给一个变量，如果要取消定时，将该变量传给clearInterval()即可。如下是一个按秒更新的计数器，在5秒之后便不再更新：
 
-```
+```html
 <script>
     
     let a = 0
@@ -5786,6 +5758,7 @@ setInterval()的作用是按照给定的时间间隔重复执行一个函数。�
 上述示例在Node.js环境下也同样适用。
 
 ###  requestAnimationFrame()
+
 requestAnimationFrame() 告诉浏览器希望执行一个动画，并且要求浏览器在下次重绘之前调用指定的回调函数更新动画。该方法需要传入一个回调函数作为参数，该回调函数会在浏览器下一次重绘之前执行。
 
 requestAnimationFrame()的基本语法如下：
@@ -5820,7 +5793,7 @@ animation()
 
 ##  Flie System API：浏览器读写本地文件
 
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5871,7 +5844,7 @@ animation()
 
 在页面使用React的简单示例：
 
-```
+```html
 <head>
     <script src="https://unpkg.com/react/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
@@ -5897,7 +5870,7 @@ animation()
 
 运行如下三行命令即可快速新建并启动一个React 项目：
 
-```
+```html
 npx create-react-app my-app
 cd my-app
 npm run start
@@ -5918,10 +5891,7 @@ export default ()=> <h1>Hello, React !</h1>
 
 浏览器会自动刷新为新的内容。
 
-
-
 ###  控制样式
-
 
 对于图形界面来说，样式也不可或缺。要为元素定义样式，可以在标签中添加style属性，这与HTML语法类似，但是，有几点不同的是：
 1、属性值必须用引号包裹，单双引号都可以；
@@ -5930,7 +5900,7 @@ export default ()=> <h1>Hello, React !</h1>
 
 定义样式的示例如下：
 
-```
+```js
 export default ()=> 
         <div style={{backgroundColor: 'red', width: '50%', height: '200px'}}>
                 Hello, React !
@@ -5939,19 +5909,16 @@ export default ()=>
 
 ###  使用 React 实现表单双向绑定
 
-```
+```js
 import { useState } from 'react'
 
-
 export default ()=> {
-
-  const [msg, setMsg] = useState('')
-
-  // 处理输入框的Change事件
-  // event.target 表示事件发生的源头，这里就是输入框
-  function handler(event) {
-    setMsg(event.target.value)
-  }
+    const [msg, setMsg] = useState('')
+    // 处理输入框的Change事件
+    // event.target 表示事件发生的源头，这里就是输入框
+    function handler(event) {
+        setMsg(event.target.value)
+    }
 
   return <>
     {/* 输入框内容改变时会不断触发Change事件 */}
@@ -5961,18 +5928,13 @@ export default ()=> {
 }
 ```
 
-
-
-
-
-
 ##  组件间通信
 
 ### 父子组件间通过 Props 通信
 
 子组件的示例代码如下：
 
-```
+```js
 // Props 子组件
 export default ({ count, handleClick }) => {
 
@@ -6019,13 +5981,11 @@ export default ()=> {
 ```
 
 
-
-
 ###   任意组件间通过 Redux 通信
 
 首先，定义store仓库：
 
-```
+```js
 // 引入createStore
 import {createStore} from 'redux'
 
@@ -6059,12 +6019,10 @@ export default store
 
 然后，定义事件触发端：
 
+```js
 import Store from "./定义Store仓库";
 
-
 export default ()=>{
-
-    
     function handler(event){
         // 只要输入框内容改变就会触发，输入内容作为action的payload
         Store.dispatch({type:'msg',payload:event.target.value})
@@ -6074,9 +6032,11 @@ export default ()=>{
         请输入:<input autoFocus id="input" onInput={handler}/><br/>
     </>
 }
+```
 
 然后，定义事件接收端：
 
+```js
 import { useState } from "react";
 import Store from "./定义Store仓库";
 
@@ -6098,7 +6058,7 @@ export default ()=>{
         <div style={style}>{info}</div>
     </>
 }
-
+```
 
 
 ##  React Hooks
