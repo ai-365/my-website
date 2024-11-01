@@ -1,9 +1,7 @@
-<p id="top" style="font-size:48px;color:green; font-weight:bolder;">Linux</p>
 
-<p><a href="#top" style="position:fixed;bottom:0px;">回到顶部</a></p>
 
-目录：   
-<div style="height:400px; background:pink ;position:fixed; overflow-y: scroll;right:0px;">
+
+<div style="font-size:16px; height:8000px;width: 500px; background:pink ;position:fixed; overflow-y: scroll;left:0px;top:0px;">
 
 - [上篇：基础篇](#上篇基础篇)
 - [命令行语法规则](#命令行语法规则)
@@ -332,6 +330,13 @@
     - [ssh-copy-id](#ssh-copy-id)
 
 </div>
+
+<div style="float:right; width: 750px;">
+
+<p id="top" style="font-size:48px;color:green; font-weight:bolder;">Linux</p>
+
+<p><a href="#top" style="position:fixed;bottom:0px;">回到顶部</a></p>
+
 
 # 上篇：基础篇
 
@@ -5696,4 +5701,4 @@ ssh-copy-id -i 公钥路径 远程用户名@远程主机地址
 ```
 
 
-
+</div>
