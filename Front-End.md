@@ -5626,7 +5626,7 @@ let url = new URL("/path/file.txt?key=value", "https://example.com:8000")
 
 查询参数对象url.searchParams是一个包含键值对的对象，可以获取、设置、添加、删除键值对。例如：
 
-```html
+```js
 // 获取键对应的值：
 url.searchParams.get("key") 
 // 修改键的值：
