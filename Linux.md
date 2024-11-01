@@ -3607,7 +3607,7 @@ git clone https://github.com/用户/仓库.git
 
 git add的作用是在编辑之后，将更改统一提交到暂存区：
 
-```
+```sh
 git add .
 ```
 
