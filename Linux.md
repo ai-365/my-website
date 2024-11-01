@@ -3739,7 +3739,6 @@ git tag -a v1.0 9fceb02 -m "Release 1.0"
 
 ##  服务
 
-
 ### 进程和服务的区别
 
 
@@ -3758,8 +3757,6 @@ Linux所提供的持续性服务由守护进程实现，Linux将管理每一个�
 
 所以，应该将重点放在systemd上。
 
-
-
 ###  systemd的单元、服务单元、目标单元
 
 systemd的主要任务是启动停止服务。Linux将管理的事项抽象成一个个单元（Units）。单元是一个由名称、类型和配置文件组成的组，专注于某一项服务。
@@ -3770,19 +3767,19 @@ systemd的主要任务是启动停止服务。Linux将管理的事项抽象成�
 
 列出所有的单元：
 
-```
+```sh
 systemctl list-units 
 ```
 
 列出所有的服务单元：
 
-```
+```sh
 systemctl list-units | grep  .service
 ```
 
 列出所有的目标单元：
 
-```
+```sh
 systemctl list-units | grep  .starget
 ```
 
@@ -3792,19 +3789,19 @@ systemctl list-units | grep  .starget
 
 列出所有的服务单元配置文件：
 
-```
+```sh
 systemctl list-units-files --type=service
 ```
 
 列出所有的目标单元配置文件：
 
-```
+```sh
 systemctl list-units-files --type=target
 ```
 
 显示sshd服务的单元配置文件：
 
-```
+```sh
 cat /lib/systemd/system/sshd.service
 ```
 
@@ -3821,26 +3818,26 @@ cat /lib/systemd/system/sshd.service
 
 启动服务：
 
-```
+```sh
 systemctl start sshd.service
 ```
 
 
 停止服务：
 
-```
+```sh
 systemctl stop sshd.service
 ```
 
 重启服务：
 
-```
+```sh
 systemctl restart sshd.service
 ```
 
 查看服务状态：
 
-```
+```sh
 systemctl status sshd.service
 ```
 
@@ -3857,12 +3854,9 @@ X Window分为X Server和X Client两个组件。X Server管理硬件，X Client�
 
 随着技术的发展，X Window窗口管理系统正逐步被淘汰，而被新一代图形界面管理系统——Wayland取代。
 
-
 X Window System使用C/S架构,服务端和客户端可以基于网络通信。
 
-客户端(也就是各种软件)将绘图请求发给服务端,服务端操纵显卡或视频终端把位图图像绘制出来,并处理键盘鼠标的事件,发送给客户端.注意,和人交互的是服务端.
-
-
+客户端(也就是各种软件)将绘图请求发给服务端,服务端操纵显卡或视频终端把位图图像绘制出来,并处理键盘鼠标的事件,发送给客户端.注意,和人交互的是服务端。
 
 - 服务端监听到显示器、鼠标、键盘事件，将事件信息（例如用户在哪个位置点了一下）发送给客户端，请求指示“此时应该怎么显示？”
 - 客户端接收到该事件信息，计算出显示逻辑（例如在某个地方显示一个图形），将绘制指令发送给客户端。注意，客户端没有绘制能力，它只发送绘制指令。
@@ -3889,6 +3883,7 @@ X Window System使用C/S架构,服务端和客户端可以基于网络通信。
 - 窗口管理器：你们的指令都收到了，我来汇总出一个总的绘制指令xxxxxxxx。
 - 窗口管理器对服务端说：我的总绘制指令是xxxxxxx，你负责给我显示出来。
 - 服务端：收到！我马上派遣驱动程序显示出来。
+
 ### Wayland
 
 Wayland将X中的Server和窗口管理器整合到一起作为服务端，称为合成器（Compositor），架构上只分了客户端和合成器两大部件。
@@ -3899,7 +3894,6 @@ Wayland将X中的Server和窗口管理器整合到一起作为服务端，称为
 client和server端都会发生绘制。client绘制本地的窗口内容，server端主要用于合成时渲染。两边都可独立选择用软件或者硬件渲染。
 
 为什么需要通知server再次合成？因为多个客户端窗口一般是层叠的，谁在前面谁在后面客户端自己是不知道的，只有集中在server中处理层叠关系。
-
 
 通俗解释：
 
