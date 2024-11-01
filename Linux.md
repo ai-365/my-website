@@ -1185,11 +1185,9 @@ find  要查找的目录  查找选项
 - -user  根据所有者
 - -mmin -10 过去10分钟修改的文件
 
-
-
 还可以对找到的文件执行命令，语法：
 
-```
+```sh
 find 要查找的目录  查找选项 -exec 命令 {} \;
 ```
 
@@ -1198,7 +1196,7 @@ find 要查找的目录  查找选项 -exec 命令 {} \;
 
 例如：
 
-```
+```sh
 find $HOME -name *.txt -exec echo "已经找到{}"  \;
 ```
 
@@ -1210,13 +1208,13 @@ find $HOME -name *.txt -exec echo "已经找到{}"  \;
 
 更新数据库：
 
-```
+```sh
 updatedb
 ```
 
 查找文件：
 
-```
+```sh
 locate.bashrc
 /etc/skel/.bashrc
 /home/student/.bashrc
