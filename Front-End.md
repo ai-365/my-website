@@ -5255,7 +5255,7 @@ data表示传递的参数。参数的个数可以是任意的，因为在主进�
 然后，在renderer.js中，点击页面中的按钮触发，传递实际的参数，通过预加载脚本发送消息给主进程，获取回应：
 
 ```js
-- document.querySelector('#button').onclick = () => {
+document.querySelector('#button').onclick = () => {
   // 传入实际参数，
   // 数量不限，但是数量要与preload.js定义的一致
    window.electronAPI.foo('消息内容1','消息内容2')
