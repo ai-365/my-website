@@ -4505,7 +4505,7 @@ PowerShell也内置对JSON文件的读取和写入。
 使用如下命令从CSV转为JSON：
 
 ```sh
-import-CSV   1.csv    -delimiter  ','  |  convertto-json
+import-CSV   1.csv    -delimiter  ','  |  ConvertTo-Json
 ```
 
 ## 变量的声明和打印
