@@ -2311,7 +2311,7 @@ cout << p2.name << ":" << p2.age << endl ;
 
 ###  数组
 
-```
+```java
 #  include   <iostream>
 using namespace std;
 
