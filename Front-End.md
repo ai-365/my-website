@@ -3,7 +3,7 @@
 <p><a href="#top" style="position:fixed;bottom:0px;">回到顶部</a></p>
 
 目录：
-- [JavaScript篇](#javascript篇)
+- [第一部分：JavaScript](#第一部分javascript)
 - [基础](#基础)
   - [JavaScript的历史](#javascript的历史)
   - [JavaScript的组成](#javascript的组成)
@@ -113,7 +113,7 @@
 - [正则表达式](#正则表达式)
     - [正则表达式常用符号汇总](#正则表达式常用符号汇总)
     - [分组、前瞻和后顾](#分组前瞻和后顾)
-- [DOM](#dom)
+- [第三部分：DOM](#第三部分dom)
   - [窗口尺寸](#窗口尺寸)
   - [窗口事件](#窗口事件)
   - [使用document获取元素对象](#使用document获取元素对象)
@@ -129,7 +129,7 @@
   - [删除元素](#删除元素)
   - [元素、节点的区别](#元素节点的区别)
   - [节点属性](#节点属性)
-- [第二篇：CSS](#第二篇css)
+- [第三部分：CSS](#第三部分css)
 - [样式优先级](#样式优先级)
 - [选择器](#选择器)
 - [文字样式](#文字样式)
@@ -174,7 +174,7 @@
   - [图片阴影](#图片阴影)
   - [利用border-radius属性实现裁剪](#利用border-radius属性实现裁剪)
   - [块阴影box-shadow](#块阴影box-shadow)
-- [Node.js](#nodejs)
+- [第四部分：Node.js](#第四部分nodejs)
   - [文件处理](#文件处理)
     - [引入fs模块](#引入fs模块)
     - [读取文本文件](#读取文本文件)
@@ -278,7 +278,7 @@
   - [获取媒体流](#获取媒体流)
   - [录制与下载](#录制与下载)
 
-#   JavaScript篇
+#   第一部分：JavaScript
 
 #  基础
 
@@ -2691,7 +2691,7 @@ async定义的函数依然是同步求值的，await关键字才是真正的异�
 
 
 
-# DOM 
+# 第三部分：DOM 
 
 - [窗口尺寸](#窗口尺寸)
 - [窗口事件](#窗口事件)
@@ -2953,7 +2953,7 @@ const element3 = document.body.children.at(-1)
 const element4 = document.body.lastElementChild
 ```
 
-# 第二篇：CSS
+# 第三部分：CSS
 
 # 样式优先级
 
@@ -3825,7 +3825,7 @@ box-shadow接受三个值：向下的偏移量、向右的偏移量、阴影颜�
 <div></div>
 ```
 
-# Node.js
+# 第四部分：Node.js
 
 ## 文件处理
 
