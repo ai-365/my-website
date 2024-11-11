@@ -2449,7 +2449,7 @@ int a = 1;
 
 ArrayList 类是一个可以动态修改的数组，与普通数组的区别就是它是没有固定大小的限制，我们可以添加或删除元素。
 
-```
+```java
 ArrayList<String> sites = new ArrayList<String>();
         sites.add("Google");
         sites.add("Runoob");
@@ -2463,7 +2463,7 @@ ArrayList<String> sites = new ArrayList<String>();
 ```
 
 
-```
+```java
 import java.util.*;
 public class 学习{
     public static void main(String[] args) {
