@@ -277,8 +277,6 @@
   - [获取媒体流](#获取媒体流)
   - [录制与下载](#录制与下载)
 
-<p align="center" style="color:blue; font-size:36px; font-weight:bolder; background: lightblue">第一部分：JavaScript</p>
-
 #  基础
 
 ##  JavaScript的历史
