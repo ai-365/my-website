@@ -531,7 +531,7 @@ console.log(objA===objB)  // false
 
 由于对象使用等号拷贝值时，默认使用浅拷贝，即只拷贝指针，那么这两个对象的指针指向同一处，因此相等，如下示例：
 
-```
+```js
 const objC = {name:"bob"}
 objD = objC // 此时只拷贝了指针
 console.log(objC==objD)  // true
