@@ -522,7 +522,7 @@ console.log(1===true)  // false 不进行类型转换
 
 例如，如下两个对象，虽然内容上看起来一样，但是它们实际的内容却存储在内存的不同地方，即指针的指向不一样，因此永远不会相等：
 
-```
+```js
 const objA = {name:"bob"}
 const objB = {name:"bob"}
 console.log(objA==objB)  // false 
