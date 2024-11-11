@@ -10,5 +10,4 @@
 [Office](Office.md)  
 
 
-![test svg](test.svg)
 
