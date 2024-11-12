@@ -728,9 +728,11 @@ VAE解码需要使用一个VAE模型，VAE模型一般包含在SD基础模型中
 
 ##  AnimateDiff
 
-![AnimateDiff-1](./img/AnimateDiff-1.png)
+![AnimateDiff-1](https://ai-365.github.io/blog/img/AnimateDiff-1.png)
 
-![AnimateDiff-2](./img/AnimateDiff-2.png)
+
+
+![AnimateDiff-2](./img/AnimateDiff-2.png) 
 
 ![AnimateDiff-3](./img/AnimateDiff-3.png)
 
