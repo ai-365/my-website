@@ -831,7 +831,7 @@ ComfyUI相比WebUI的优点是： 生成性能高、 节点式界面更直观、
 ComfyUI的默认工作流如下，更复杂的工作流都是基于这个默认工作流进行自定义和扩展的。
 
 
-![ComfyUI默认工作流.png](./img/ComfyUI默认工作流.png)
+![ComfyUI默认工作流.png](img/ComfyUI默认工作流.png)
 
 
 
@@ -952,7 +952,7 @@ iface.launch()
 
 ```
 
-![Gradio](./img/Gradio.png)
+![Gradio](img/Gradio.png)
 
 
 # Stable Diffusion
