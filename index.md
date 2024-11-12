@@ -5,7 +5,7 @@
 
 [Python](Python.md)  
 
-<a href="Front-End.md"  style="color:red;background: lightblue;">Front-End</a>
+<a href="Front-End.md#react"  style="color:red;background: lightblue;">Front-End</a>
 
 [Front-End](Front-End.md)  
 
