@@ -1,6 +1,6 @@
 <p id="top" style="font-size:48px;color:green; font-weight:bolder;">ComfyUI</p>
 
-<p><a href="#top" style="position:fixed;">回到顶部</a></p>
+<p><a href="#top" style="position:fixed;bottom:0px;">回到顶部</a></p>
 
 - [ComfyUI简介](#comfyui简介)
 - [ComfyUI的默认工作流](#comfyui的默认工作流)
