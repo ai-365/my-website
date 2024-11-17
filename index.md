@@ -1,5 +1,5 @@
 
-[AI](AI.md)    &ensp;    [Linux](Linux.md)  
+[AI](AI.md)  &emsp;  [Linux](Linux.md)  
 
 [Python](Python.md)  
 
