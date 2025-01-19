@@ -1892,6 +1892,8 @@ const b = 2
 const obj = {a , b}
 console.log(obj)  // {a:1, b:2}
 ```
+
+
 ### 使用Object.assign()合并对象
 
 可以使用Object.assign()合并对象，例如：
