@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-AI/ComfyUI" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.7.0">
+<title data-rh="true">ComfyUI | AI-365的个人博客</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://ai-365.github.io/blog/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://ai-365.github.io/blog/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://ai-365.github.io/blog/docs/AI/ComfyUI"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="ComfyUI | AI-365的个人博客"><meta data-rh="true" name="description" content="ComfyUI简介"><meta data-rh="true" property="og:description" content="ComfyUI简介"><link data-rh="true" rel="icon" href="/blog/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://ai-365.github.io/blog/docs/AI/ComfyUI"><link data-rh="true" rel="alternate" href="https://ai-365.github.io/blog/docs/AI/ComfyUI" hreflang="en"><link data-rh="true" rel="alternate" href="https://ai-365.github.io/blog/docs/AI/ComfyUI" hreflang="x-default"><link rel="stylesheet" href="/blog/assets/css/styles.62093eb4.css">
+<script src="/blog/assets/js/runtime~main.ce476c89.js" defer="defer"></script>
+<script src="/blog/assets/js/main.dad8e918.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/blog/img/logo.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/blog/"><div class="navbar__logo"><img src="/blog/img/logo.svg" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/blog/img/logo.svg" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">个人博客网站</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/blog/docs/AI/">Tutorial</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/blog/docs">docs</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/facebook/docusaurus" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite" aria-pressed="false"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/blog/docs/AI/">大模型</a><button aria-label="Collapse sidebar category &#x27;大模型&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/blog/docs/AI/ComfyUI">ComfyUI</a></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/blog/docs/CSS/">样式优先级</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/blog/docs/Electron/">Electron</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/blog/docs/JavaScript/">JavaScript</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/blog/docs/Linux/">index</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/blog/docs/Node.js/">Node.js</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/blog/docs/Office">Office</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/blog/docs/Python/">index</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/blog/docs/React/">React</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/blog/docs/React-Native/">React Native</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/blog/docs/WebRTC/">WebRTC</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/blog/docs/">index</a></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/blog/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/blog/docs/AI/"><span itemprop="name">大模型</span></a><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">ComfyUI</span><meta itemprop="position" content="2"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>ComfyUI</h1></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="comfyui简介">ComfyUI简介<a href="#comfyui简介" class="hash-link" aria-label="Direct link to ComfyUI简介" title="Direct link to ComfyUI简介">​</a></h2>
+<p>ComfyUI是基于Stable Diffusion 开源绘画大模型的节点可视化工具。comfy，英文释义是轻松的，这表明作者希望用户更轻松的使用Stable Diffusion。与之前的Web UI不同，ComfyUI不使用输入框，而是使用节点工作流，可控制的参数更多，可以更自由的实现各种效果。</p>
+<p>ComfyUI的Github地址：   <a href="https://github.com/comfyanonymous/ComfyUI" target="_blank" rel="noopener noreferrer">https://github.com/comfyanonymous/ComfyUI</a></p>
+<p>ComfyUI相比WebUI的优点是： 生成性能高、 节点式界面更直观、 丰富的自定义节点、 丰富的社区生态</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="comfyui的默认工作流">ComfyUI的默认工作流<a href="#comfyui的默认工作流" class="hash-link" aria-label="Direct link to ComfyUI的默认工作流" title="Direct link to ComfyUI的默认工作流">​</a></h2>
+<p>ComfyUI的默认工作流如下，更复杂的工作流都是基于这个默认工作流进行自定义和扩展的。</p>
+<p><img decoding="async" loading="lazy" alt="ComfyUI默认工作流.png" src="/blog/assets/images/ComfyUI默认工作流-21b5ed65f7ce81a58ded713620391f36.png" width="1269" height="481" class="img_ev3q"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="文生视频知识点梳理">文生视频知识点梳理<a href="#文生视频知识点梳理" class="hash-link" aria-label="Direct link to 文生视频知识点梳理" title="Direct link to 文生视频知识点梳理">​</a></h2>
+<ul>
+<li>部署<!-- -->
+<ul>
+<li>本地</li>
+<li>云端</li>
+<li>在线网站</li>
+</ul>
+</li>
+<li>ControlNet<!-- -->
+<ul>
+<li>风格转移</li>
+<li>骨架</li>
+<li>语义分割</li>
+<li>草绘生图</li>
+<li>inpaint</li>
+<li>openpose骨架</li>
+</ul>
+</li>
+<li>LoRA</li>
+<li>工作流的使用、分享、格式分析</li>
+<li>局部细节修复</li>
+<li>图片放大</li>
+<li>SR、CCSR、APISR</li>
+<li>AnimateDiff</li>
+<li>Segment Anything</li>
+<li>TensorRT</li>
+<li>Adapter</li>
+<li>Deforum</li>
+<li>Reactor 换脸</li>
+<li>SVD AI视频</li>
+<li>应用<!-- -->
+<ul>
+<li>换脸</li>
+<li>换衣服</li>
+<li>静图变动图</li>
+<li>目标跟踪</li>
+<li>语义分割</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="安装和部署">安装和部署<a href="#安装和部署" class="hash-link" aria-label="Direct link to 安装和部署" title="Direct link to 安装和部署">​</a></h2>
+<p>要用到的模型： checkpoint主模型、VAE模型、 ControlNet模型、Lora、Embedding、Hypernetwork ，需要一个超大存储空间。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="硬件要求">硬件要求<a href="#硬件要求" class="hash-link" aria-label="Direct link to 硬件要求" title="Direct link to 硬件要求">​</a></h3>
+<table><thead><tr><th>硬件</th><th>要求</th></tr></thead><tbody><tr><td>GPU</td><td>4060Ti以上</td></tr><tr><td>GPU存储（显存）</td><td>最低4GB，流畅运行推荐8GB</td></tr><tr><td>CPU</td><td>要求较低，Intel10代i3以上就可以</td></tr><tr><td>CPU存储（内存）</td><td>最低16GB，推荐32GB</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="云平台硬件计费说明">云平台硬件计费说明<a href="#云平台硬件计费说明" class="hash-link" aria-label="Direct link to 云平台硬件计费说明" title="Direct link to 云平台硬件计费说明">​</a></h3>
+<table><thead><tr><th>硬件</th><th>计费说明</th></tr></thead><tbody><tr><td>GPU+显存</td><td>依据GPU的性能，每GB每秒</td></tr><tr><td>CPU+内存</td><td>依据CPU的性能，每GB每秒</td></tr></tbody></table>
+<p>费用举例：</p>
+<p><img decoding="async" loading="lazy" alt="费用参考" src="/blog/assets/images/费用参考-a8ecd7de92c278ba0573a7216f206949.png" width="1203" height="381" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="阿里云部署参考文档">阿里云部署参考文档<a href="#阿里云部署参考文档" class="hash-link" aria-label="Direct link to 阿里云部署参考文档" title="Direct link to 阿里云部署参考文档">​</a></h3>
+<p><a href="https://help.aliyun.com/zh/functioncompute/deploying-comfyui-through-function-computation-to-implement-an-aigc-image-generation-system" target="_blank" rel="noopener noreferrer">函数计算部署</a></p>
+<p><a href="https://help.aliyun.com/zh/pai/user-guide/use-comfyui-to-deploy-an-ai-video-generation-model-service" target="_blank" rel="noopener noreferrer">PAI-EAS部署</a></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="文件结构">文件结构<a href="#文件结构" class="hash-link" aria-label="Direct link to 文件结构" title="Direct link to 文件结构">​</a></h3>
+<p><img decoding="async" loading="lazy" alt="文件结构" src="/blog/assets/images/文件夹结构-206a47d253af8ff5bb0e21273c24edbc.png" width="661" height="766" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="文件结构2" src="/blog/assets/images/文件夹结构2-96a4f4126023fadef7e1bb6c374922a1.png" width="880" height="158" class="img_ev3q"></p>
+<p>根目录下的四个文件（夹）的作用如下：</p>
+<ul>
+<li>ComfyUI ： 最关键的文件夹，存放着所有模型、节点。包括checkpoint大模型、LoRA模型、ControlNet模型等。</li>
+<li>run_cpu.bat ： 用CPU运行</li>
+<li>run_nvidia_gpu.bat ： 用GPU运行</li>
+<li>update： 版本升级</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="典型文件的位置">典型文件的位置<a href="#典型文件的位置" class="hash-link" aria-label="Direct link to 典型文件的位置" title="Direct link to 典型文件的位置">​</a></h3>
+<table><thead><tr><th>位置</th><th>作用</th></tr></thead><tbody><tr><td>模型文件</td><td>ComfyUI/models</td></tr><tr><td>自定义节点</td><td>ComfyUI\custom_nodes\</td></tr><tr><td>基础模型（大模型）</td><td>ComfyUI/models/checkpoints</td></tr><tr><td>VAE</td><td>ComfyUI/models/vae</td></tr><tr><td>LoRA模型</td><td>ComfyUI\models\loras</td></tr></tbody></table>
+<p><img decoding="async" loading="lazy" alt="配置文件" src="/blog/assets/images/配置文件-5dc5eff9554a1343bab38d33c2b5fb0a.png" width="827" height="839" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="自定义模型文件的位置">自定义模型文件的位置<a href="#自定义模型文件的位置" class="hash-link" aria-label="Direct link to 自定义模型文件的位置" title="Direct link to 自定义模型文件的位置">​</a></h3>
+<p>除了默认位置外，还可以自定义位置，在 <code>ComfyUI\extra_model_paths.yaml</code> 文件中更改。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="sd3下载">SD3下载<a href="#sd3下载" class="hash-link" aria-label="Direct link to SD3下载" title="Direct link to SD3下载">​</a></h3>
+<p><a href="https://pan.baidu.com/s/1Su7BzC9GQ1uD_YgCVVpruQ?pwd=tfue" target="_blank" rel="noopener noreferrer">https://pan.baidu.com/s/1Su7BzC9GQ1uD_YgCVVpruQ?pwd=tfue</a></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="模型插件管理器-comfyui-manager">模型插件管理器 ComfyUI Manager<a href="#模型插件管理器-comfyui-manager" class="hash-link" aria-label="Direct link to 模型插件管理器 ComfyUI Manager" title="Direct link to 模型插件管理器 ComfyUI Manager">​</a></h3>
+<p>下载 <a href="https://github.com/ltdrdata/ComfyUI-Manager" target="_blank" rel="noopener noreferrer">https://github.com/ltdrdata/ComfyUI-Manager</a> ，解压到 <code>ComfyUI\custom_nodes\</code> 中。</p>
+<p><img decoding="async" loading="lazy" alt="ComfyUI Manager" src="/blog/assets/images/ComfyUI-Manager-7a8d1f6334f37f9f033f2e216cbcbf6e.png" width="1076" height="581" class="img_ev3q"></p>
+<p>有两种方式。第一种是使用git clone。</p>
+<p><img decoding="async" loading="lazy" alt="ComfyUI-Manger-Git方式安装" src="/blog/assets/images/ComfyUI-Manger-Git方式安装-af6e81f1d7278ef9ae76bfd670ff6878.png" width="1500" height="1371" class="img_ev3q"></p>
+<p>第二种是直接下载zip包再解压。</p>
+<p><img decoding="async" loading="lazy" alt="ComfyUI-Manger-下载Zip方式安装" src="/blog/assets/images/ComfyUI-Manger-下载Zip方式安装-42d2d6c6e50f800db62d3fae0c84d380.png" width="1500" height="966" class="img_ev3q"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="常见节点的输入输出参数说明">常见节点的输入、输出、参数说明<a href="#常见节点的输入输出参数说明" class="hash-link" aria-label="Direct link to 常见节点的输入、输出、参数说明" title="Direct link to 常见节点的输入、输出、参数说明">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="ksampler-采样器节点">KSampler 采样器节点<a href="#ksampler-采样器节点" class="hash-link" aria-label="Direct link to KSampler 采样器节点" title="Direct link to KSampler 采样器节点">​</a></h3>
+<p><img decoding="async" loading="lazy" alt="采样器节点" src="/blog/assets/images/采样器节点-f3692d840f5ee8249ebee7ddd00874de.png" width="795" height="760" class="img_ev3q"></p>
+<table><thead><tr><th>参数</th><th>作用</th></tr></thead><tbody><tr><td>model</td><td>指定大模型</td></tr><tr><td>positive</td><td>正向提示词</td></tr><tr><td>negative</td><td>反向提示词</td></tr><tr><td>latent_image</td><td>是一个空的图像空间，用于在其中存储生成的图片数据，它来自于Empty Latent Image节点，这个节点提供指定宽高和数量的空图像空间。之所以用Latent这个词，是因为采样产生的图像数据还不是真正的图像格式，是一种图片数据的压缩格式，称为潜空间图像。</td></tr><tr><td>seed</td><td>图片生成的种子，每次使用不同的种子就会引入不同的随机特征，同样的参数就可以生成主题相同但变化的图像。使用完全相同的参数和种子将生成完全相同的图像。</td></tr><tr><td>control_after_generate</td><td>运行后操作，里面有四个选项：固定、增加、减少、随机。一般我们就使用固定或随机即可。</td></tr><tr><td>steps</td><td>迭代步数，一般设置30-40左右。</td></tr><tr><td>cfg</td><td>提示词相关性。参数越大，图片效果越接近提示词。参数越小，AI 发挥空间越大。默认为8，一般设置为10比较好。</td></tr><tr><td>sampler_name</td><td>采样器，反向扩散时去除噪音的方法，不同的方法对速度和质量会有不同的影响。默认选择的是euler，兼顾了生成图片的质量和速度，质量要求高时推荐选择dpmpp类的采样器。</td></tr><tr><td>scheduler</td><td>采样调度器。控制在整个采样过程的时间线上每一步降噪的幅度。如果对默认的调度器不满意，可以试试Karras，它可以让生成获得更高的采样效率和图片质量。</td></tr><tr><td>denoise</td><td>去噪幅度，最大1.0。越高的值代表初识噪音保留的越少，图像特征越清晰；越低的值代表初识噪音保留的较多，图像更抽象或者有某种艺术效果。生成图片时要一起考虑提示词、图像尺寸、采样策略等因素的影响。</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="vae-decode">VAE Decode<a href="#vae-decode" class="hash-link" aria-label="Direct link to VAE Decode" title="Direct link to VAE Decode">​</a></h3>
+<p>采样器生成的图片数据是一种特殊的压缩格式，和真正的图片数据格式不同，要获取真正的图片数据，还需要VAE解码。</p>
+<p>VAE解码需要使用一个VAE模型，VAE模型一般包含在SD基础模型中，也可以使用单独的VAE模型。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="加载器效率">加载器（效率）<a href="#加载器效率" class="hash-link" aria-label="Direct link to 加载器（效率）" title="Direct link to 加载器（效率）">​</a></h3>
+<ul>
+<li>输入： LoRA堆、ControlNet堆</li>
+<li>输出： 模型、正面、负面、Latent、VAE、Clip、</li>
+<li>参数： CKPT模型名称、VAE、Clip Skip、LoRA、正面、反面提、宽度、高度、批次大小</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="k采样器效率">K采样器（效率）<a href="#k采样器效率" class="hash-link" aria-label="Direct link to K采样器（效率）" title="Direct link to K采样器（效率）">​</a></h3>
+<ul>
+<li>输入： 模型、正面、负面、Latent、VAE、脚本</li>
+<li>输出： 模型、正面、负面、Latent、VAE、图像</li>
+<li>参数： 随机种子、步数、CFG、采样器、调度器</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="lora堆">LoRA堆<a href="#lora堆" class="hash-link" aria-label="Direct link to LoRA堆" title="Direct link to LoRA堆">​</a></h3>
+<ul>
+<li>输入：</li>
+<li>输出：</li>
+<li>参数： 输入模式、LoRA数量、LoRA1、LoRA1的权重、LoRA2、LoRA2的权重、......</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="animatediff">AnimateDiff<a href="#animatediff" class="hash-link" aria-label="Direct link to AnimateDiff" title="Direct link to AnimateDiff">​</a></h2>
+<p><img decoding="async" loading="lazy" alt="AnimateDiff-1" src="/blog/assets/images/AnimateDiff-1-a0d851deb8f87c9ae497522ff7c08042.png" width="640" height="221" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="AnimateDiff-2" src="/blog/assets/images/AnimateDiff-2-fa2dbcd99baff3693c4ecf7fda692920.png" width="693" height="271" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="AnimateDiff-3" src="/blog/assets/images/AnimateDiff-3-eb4efed842e94aa75241ce55869e4dbf.png" width="699" height="204" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="AnimateDiff-4" src="/blog/assets/images/AnimateDiff-4-213f62bf0f82e363d4154285837a1087.png" width="1202" height="632" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="AnimateDiff-5" src="/blog/assets/images/AnimateDiff-5-8274b683a7fd33674573e3e9f2415d3a.png" width="926" height="314" class="img_ev3q"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="sdxl-组成">SDXL 组成<a href="#sdxl-组成" class="hash-link" aria-label="Direct link to SDXL 组成" title="Direct link to SDXL 组成">​</a></h2>
+<p>SDXL Base模型由U-Net、VAE以及CLIP Text Encoder（两个）三个模块组成，在FP16精度下Base模型大小6.94G（FP32：13.88G），其中U-Net占5.14G、VAE模型占167M以及两个CLIP Text Encoder一大一小（OpenCLIP ViT-bigG和OpenAI CLIP ViT-L）分别是1.39G和246M。</p>
+<p>SDXL Refiner模型同样由U-Net、VAE和CLIP Text Encoder（一个）三个模块组成，在FP16精度下Refiner模型大小6.08G，其中U-Net占4.52G、VAE模型占167M（与Base模型共用）以及CLIP Text Encoder模型（OpenCLIP ViT-bigG）大小1.39G（与Base模型共用）。</p>
+<p>Base的作用是生成图像的Latent特征，Refiner的作用是小噪声去除和细节质量提升。</p>
+<p><img decoding="async" loading="lazy" alt="SDXL组成" src="/blog/assets/images/SDXL组成-f37736b09f7e0b6c7aa609da3ac3109f.png" width="1440" height="507" class="img_ev3q"></p>
+<p>SDXL Base 地址： <a href="https://hf-mirror.com/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors" target="_blank" rel="noopener noreferrer">https://hf-mirror.com/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors</a></p>
+<p>SDXL Refinery 地址： <a href="https://hf-mirror.com/stabilityai/stable-diffusion-xl-refiner-1.0/resolve/main/sd_xl_refiner_1.0.safetensors" target="_blank" rel="noopener noreferrer">https://hf-mirror.com/stabilityai/stable-diffusion-xl-refiner-1.0/resolve/main/sd_xl_refiner_1.0.safetensors</a></p>
+<p>Stable Diffusion XL模型放到ComfyUI/models/checkpoints/路径下。</p>
+<p>总之，base加refiner比单独的base好，SD XL 比SD好。</p>
+<p><img decoding="async" loading="lazy" alt="性能对比" src="/blog/assets/images/性能对比-680413336d5bead400bbd9aea9d6a7da.png" width="1440" height="1075" class="img_ev3q"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="controlnet">ControlNet<a href="#controlnet" class="hash-link" aria-label="Direct link to ControlNet" title="Direct link to ControlNet">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="controlnet简介">ControlNet简介<a href="#controlnet简介" class="hash-link" aria-label="Direct link to ControlNet简介" title="Direct link to ControlNet简介">​</a></h2>
+<p>通过你手上已有的图而不是咒语，实现对AI绘图的控制。比如通过线稿生成图片、风格迁移。</p>
+<p>可以认为是大模型的插件，增强文生图的功能，生成更符合期望的图片。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="adapter">Adapter<a href="#adapter" class="hash-link" aria-label="Direct link to Adapter" title="Direct link to Adapter">​</a></h2>
+<p>Adapter ，就是将一张图像的风格，迁移到另一张图像上去。通俗的讲，就是垫图。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="t2i-adpter">T2I adpter<a href="#t2i-adpter" class="hash-link" aria-label="Direct link to T2I adpter" title="Direct link to T2I adpter">​</a></h3>
+<p>T2I  adapter 比ControlNet轻量，模型文件只有300M左右。T2I 给输入图片追加一定的条件，比如姿势图、草图、深度图，这样图片根据条件生成新图。</p>
+<p><img decoding="async" loading="lazy" alt="T2I-Idapter介绍" src="/blog/assets/images/T2I-Idapter介绍-f4f30e9f4f44e03fb7923614bd3c8f21.png" width="1440" height="912" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="ip-adapter">IP Adapter<a href="#ip-adapter" class="hash-link" aria-label="Direct link to IP Adapter" title="Direct link to IP Adapter">​</a></h3>
+<p>IP adapter 根据参考图控制图像的生成。输入一张参考图和限定文字，可以生成符合文字要求的新图。输入一张参考图和另一张图片，可以生成基于参考图且叠加另一种图片要素的新图。</p>
+<p>IP Adapter 中的“IP”不是网络中的IP，这里的“I”指的是Image（图片），“P”指的是Prompt（提示词）。所以，IP Adapter的直译是“图像提示适配器”。</p>
+<p><img decoding="async" loading="lazy" alt="IP-Adapter-1.png" src="/blog/assets/images/IP-Adapter-1-9aa1983385fc8c7427c18534d480c271.png" width="1440" height="584" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="IP-Adapter-2.png" src="/blog/assets/images/IP-Adapter-2-38bac54e9779ad7e65a8e9ba9596159a.png" width="1440" height="695" class="img_ev3q"></p>
+<p>IP adapter 只有22M参数，比ControlNet和T2I更加轻量。</p>
+<p>下载完后需要放在 /ComfyUI/models/ipadapter 目录下</p>
+<p>按照推出的先后时间是： ControlNet -&gt;  T2I Adapter -&gt;  IP Adapter 。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="ip-adapter-的功能分类">IP Adapter 的功能分类<a href="#ip-adapter-的功能分类" class="hash-link" aria-label="Direct link to IP Adapter 的功能分类" title="Direct link to IP Adapter 的功能分类">​</a></h3>
+<ul>
+<li>clip ：将参考图整体看作提示。</li>
+<li>face_id： 将人物面部特征作为提示。</li>
+</ul>
+<p>其中，face_id又分为两个版本：</p>
+<ul>
+<li>face_id</li>
+<li>face_id_plus</li>
+<li>face_id_plusV2： 改进版，效果最好。</li>
+</ul>
+<p><img decoding="async" loading="lazy" alt="IP-Adapter功能分类.png" src="/blog/assets/images/IP-Adapter功能分类-6201f22fae0d17c6a0fa07e7b0511fe8.png" width="1818" height="850" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="vit-h-和vit-g">ViT-H 和ViT-G<a href="#vit-h-和vit-g" class="hash-link" aria-label="Direct link to ViT-H 和ViT-G" title="Direct link to ViT-H 和ViT-G">​</a></h3>
+<p>这两个都是图像编码器，SDXL默认使用Vit-G，SD1.5默认使用ViT-H。</p>
+<p>例如ip-adapter-clip-sdxl这个模型，只标明了SDXL，没标明图像编码器，那么默认就是ViT-G。而ip-adapter_clip_sdxl_plus_vith则表示sdxl基础模型搭配ViT-H图像编码器。</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/AI/ComfyUI.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/blog/docs/AI/"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">大模型</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/blog/docs/CSS/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">样式优先级</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#comfyui简介" class="table-of-contents__link toc-highlight">ComfyUI简介</a></li><li><a href="#comfyui的默认工作流" class="table-of-contents__link toc-highlight">ComfyUI的默认工作流</a></li><li><a href="#文生视频知识点梳理" class="table-of-contents__link toc-highlight">文生视频知识点梳理</a></li><li><a href="#安装和部署" class="table-of-contents__link toc-highlight">安装和部署</a><ul><li><a href="#硬件要求" class="table-of-contents__link toc-highlight">硬件要求</a></li><li><a href="#云平台硬件计费说明" class="table-of-contents__link toc-highlight">云平台硬件计费说明</a></li><li><a href="#阿里云部署参考文档" class="table-of-contents__link toc-highlight">阿里云部署参考文档</a></li><li><a href="#文件结构" class="table-of-contents__link toc-highlight">文件结构</a></li><li><a href="#典型文件的位置" class="table-of-contents__link toc-highlight">典型文件的位置</a></li><li><a href="#自定义模型文件的位置" class="table-of-contents__link toc-highlight">自定义模型文件的位置</a></li><li><a href="#sd3下载" class="table-of-contents__link toc-highlight">SD3下载</a></li><li><a href="#模型插件管理器-comfyui-manager" class="table-of-contents__link toc-highlight">模型插件管理器 ComfyUI Manager</a></li></ul></li><li><a href="#常见节点的输入输出参数说明" class="table-of-contents__link toc-highlight">常见节点的输入、输出、参数说明</a><ul><li><a href="#ksampler-采样器节点" class="table-of-contents__link toc-highlight">KSampler 采样器节点</a></li><li><a href="#vae-decode" class="table-of-contents__link toc-highlight">VAE Decode</a></li><li><a href="#加载器效率" class="table-of-contents__link toc-highlight">加载器（效率）</a></li><li><a href="#k采样器效率" class="table-of-contents__link toc-highlight">K采样器（效率）</a></li><li><a href="#lora堆" class="table-of-contents__link toc-highlight">LoRA堆</a></li></ul></li><li><a href="#animatediff" class="table-of-contents__link toc-highlight">AnimateDiff</a></li><li><a href="#sdxl-组成" class="table-of-contents__link toc-highlight">SDXL 组成</a></li><li><a href="#controlnet" class="table-of-contents__link toc-highlight">ControlNet</a></li><li><a href="#controlnet简介" class="table-of-contents__link toc-highlight">ControlNet简介</a></li><li><a href="#adapter" class="table-of-contents__link toc-highlight">Adapter</a><ul><li><a href="#t2i-adpter" class="table-of-contents__link toc-highlight">T2I adpter</a></li><li><a href="#ip-adapter" class="table-of-contents__link toc-highlight">IP Adapter</a></li><li><a href="#ip-adapter-的功能分类" class="table-of-contents__link toc-highlight">IP Adapter 的功能分类</a></li><li><a href="#vit-h-和vit-g" class="table-of-contents__link toc-highlight">ViT-H 和ViT-G</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/blog/docs">Tutorial</a></li></ul></div><div class="col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://stackoverflow.com/questions/tagged/docusaurus" target="_blank" rel="noopener noreferrer" class="footer__link-item">Stack Overflow<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://discordapp.com/invite/docusaurus" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://x.com/docusaurus" target="_blank" rel="noopener noreferrer" class="footer__link-item">X<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/blog/docs">Blog</a></li><li class="footer__item"><a href="https://github.com/facebook/docusaurus" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 My Project, Inc. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
