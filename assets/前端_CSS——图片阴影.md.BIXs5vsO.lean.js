@@ -1,0 +1,1 @@
+import{_ as i,c as a,o as t,ae as l}from"./chunks/framework.rTUm5mJw.js";const o=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"前端/CSS——图片阴影.md","filePath":"前端/CSS——图片阴影.md"}'),n={name:"前端/CSS——图片阴影.md"};function p(h,s,e,k,r,d){return t(),a("div",null,s[0]||(s[0]=[l("",3)]))}const g=i(n,[["render",p]]);export{o as __pageData,g as default};

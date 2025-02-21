@@ -1,0 +1,1 @@
+import{_ as i,c as a,o as n,ae as t}from"./chunks/framework.rTUm5mJw.js";const g=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"前端/CSS——裁剪.md","filePath":"前端/CSS——裁剪.md"}'),h={name:"前端/CSS——裁剪.md"};function l(p,s,k,e,E,d){return n(),a("div",null,s[0]||(s[0]=[t("",6)]))}const y=i(h,[["render",l]]);export{g as __pageData,y as default};

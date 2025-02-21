@@ -1,1 +1,0 @@
-import{_ as i,c as a,o as t,ae as n}from"./chunks/framework.rTUm5mJw.js";const E=JSON.parse('{"title":"媒体查询","description":"","frontmatter":{},"headers":[],"relativePath":"前端/CSS/媒体查询.md","filePath":"前端/CSS/媒体查询.md"}'),e={name:"前端/CSS/媒体查询.md"};function p(h,s,l,k,d,r){return t(),a("div",null,s[0]||(s[0]=[n("",5)]))}const c=i(e,[["render",p]]);export{E as __pageData,c as default};

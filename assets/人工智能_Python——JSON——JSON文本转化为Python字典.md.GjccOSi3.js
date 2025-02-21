@@ -1,0 +1,8 @@
+import{_ as n,c as a,o as t,ae as p}from"./chunks/framework.rTUm5mJw.js";const h=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"人工智能/Python——JSON——JSON文本转化为Python字典.md","filePath":"人工智能/Python——JSON——JSON文本转化为Python字典.md"}'),o={name:"人工智能/Python——JSON——JSON文本转化为Python字典.md"};function e(i,s,l,c,d,r){return t(),a("div",null,s[0]||(s[0]=[p(`<p><strong>将json文本转化为Python字典</strong></p><p>使用json模块的loads()方法可以将JSON文本转换为字典：</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>import json</span></span>
+<span class="line"><span>jsonStr = &#39;{&quot;姓名&quot;: &quot;张三&quot;, &quot;国籍&quot;: &quot;中国&quot;}&#39;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>di = json.loads(jsonStr)</span></span>
+<span class="line"><span>print(di)</span></span></code></pre></div><p>jsonStr就是一个普通的字符串，一般来源于对一个json文件的读取，通过使用open()和read()函数读取为字符串即可。</p><p>也可以直接加载json文件为Python对象，注意，json文件一定要是utf8编码。例如：</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>import json</span></span>
+<span class="line"><span>with open(&#39;file.json&#39;,encoding=&#39;utf8&#39;) as f :</span></span>
+<span class="line"><span>        di = json.load(f)</span></span>
+<span class="line"><span>print(di)</span></span></code></pre></div>`,6)]))}const u=n(o,[["render",e]]);export{h as __pageData,u as default};

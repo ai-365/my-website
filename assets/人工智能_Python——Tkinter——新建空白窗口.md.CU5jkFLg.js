@@ -1,0 +1,14 @@
+import{_ as i,c as a,o as n,ae as p}from"./chunks/framework.rTUm5mJw.js";const c=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"人工智能/Python——Tkinter——新建空白窗口.md","filePath":"人工智能/Python——Tkinter——新建空白窗口.md"}'),t={name:"人工智能/Python——Tkinter——新建空白窗口.md"};function e(l,s,h,k,o,d){return n(),a("div",null,s[0]||(s[0]=[p(`<p>绘制Tkinter图形界面，首先需要新建窗口，然后才能新建文本、按钮等元素。</p><div class="language-Python vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">Python</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> tkinter </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">as</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> tk</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 新建窗口对象</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">window</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">tk.Tk()</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 窗口标题</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">window.title</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&#39;my window&#39;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 窗口大小为800x600，位置为(500,200)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">window.geometry(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&#39;800x600+500+200&#39;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 显示窗口</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">window.mainloop()</span></span></code></pre></div><p>注意，loop因为是循环的意思，window.mainloop就会让window不断的刷新，如果没有mainloop,就是一个静态的window,传入进去的值就不会有循环，mainloop就相当于一个很大的while循环，有个while，每点击一次就会更新一次，所以我们必须要有循环。</p><p>所有的窗口文件都必须有类似的mainloop函数，mainloop是窗口文件的关键的关键。</p><p>窗口的大小的位置的写法是：</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>window.geometry(&#39;wxh+x+y&#39;)</span></span></code></pre></div><p>x是小写字母，（x,y）相对于屏幕左上角。</p>`,7)]))}const E=i(t,[["render",e]]);export{c as __pageData,E as default};

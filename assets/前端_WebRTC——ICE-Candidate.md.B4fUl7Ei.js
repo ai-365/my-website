@@ -1,0 +1,14 @@
+import{_ as s,c as n,o as p,ae as e}from"./chunks/framework.rTUm5mJw.js";const C=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"前端/WebRTC——ICE-Candidate.md","filePath":"前端/WebRTC——ICE-Candidate.md"}'),d={name:"前端/WebRTC——ICE-Candidate.md"};function i(t,a,l,c,o,r){return p(),n("div",null,a[0]||(a[0]=[e(`<h2 id="ice-candidate-连接候选项" tabindex="-1">ICE Candidate（连接候选项） <a class="header-anchor" href="#ice-candidate-连接候选项" aria-label="Permalink to &quot;ICE Candidate（连接候选项）&quot;">​</a></h2><p>candidate中文翻译为候选人，顾名思义，在WebRTC中表示连接的候选方案，因为两个用户传输可以有多个候选方案，比如有两块网卡，那么每块网卡都对应一个候选项，再比如传输层可以是TCP，也可以是UDP。</p><p>ICE Candidate 主要分为以下三种类型：</p><ul><li>host 类型：即本机内网的 IP 和端口</li><li>srflx 类型：即本机 NAT 映射后的外网的 IP 和端口</li><li>relay 类型：即中继服务器的 IP 和端口</li></ul><p>一般由以下字段组成:</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>IP: xxx.xxx.xxx.xxx       \\\\IP地址</span></span>
+<span class="line"><span>  port: number              \\\\端口</span></span>
+<span class="line"><span>  type: host/srflx/relay    \\\\类型</span></span>
+<span class="line"><span>  priority: number          \\\\优先级</span></span>
+<span class="line"><span>  protocol: UDP/TCP         \\\\传输协议</span></span>
+<span class="line"><span>  usernameFragment: string  \\\\访问服务的用户名</span></span>
+<span class="line"><span>  ...</span></span></code></pre></div><p>如下是一个客户端的ICE candidate示例：</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>sdpMid: audio, sdpMLineIndex: 0, candidate:2213672593 1 udp 2122260223 30.2.228.19 51068 typ host</span></span>
+<span class="line"><span>sdpMid: video, sdpMLineIndex: 1, candidate:2213672593 1 udp 2122260223 30.2.228.19 55061 typ host</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>sdpMid: audio, sdpMLineIndex: 0, candidate:3446803041 1 tcp 1518280447 30.2.228.19 9 typ host</span></span>
+<span class="line"><span>sdpMid: video, sdpMLineIndex: 1, candidate:3446803041 1 tcp 1518280447 30.2.228.19 9 typ host</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>sdpMid: video, sdpMLineIndex: 1, candidate:150963819 1 udp 41885439 182.92.80.26 54400 typ relay raddr 42.120.74.91 rport 37714</span></span>
+<span class="line"><span>sdpMid: audio, sdpMLineIndex: 0, candidate:150963819 1 udp 41885439 182.92.80.26 59241 typ relay raddr 42.120.74.91 rport 49618</span></span></code></pre></div><p>双方都会提供自己的candidates给对方，双方商量出一个最优的传输方案。</p><p>candidate与SDP协议一样，也只是一种信息交流所遵循的文本格式。</p>`,10)]))}const h=s(d,[["render",i]]);export{C as __pageData,h as default};

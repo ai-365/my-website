@@ -1,0 +1,1 @@
+import{_ as a,c as o,o as l,ae as s}from"./chunks/framework.rTUm5mJw.js";const d=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"人工智能/index.md","filePath":"人工智能/index.md"}'),e={name:"人工智能/index.md"};function c(h,t,r,p,n,i){return l(),o("div",null,t[0]||(t[0]=[s("",8)]))}const b=a(e,[["render",c]]);export{d as __pageData,b as default};

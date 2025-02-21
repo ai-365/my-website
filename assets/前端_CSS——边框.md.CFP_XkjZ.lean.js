@@ -1,0 +1,1 @@
+import{_ as i,c as a,o as l,ae as t}from"./chunks/framework.rTUm5mJw.js";const c=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"前端/CSS——边框.md","filePath":"前端/CSS——边框.md"}'),e={name:"前端/CSS——边框.md"};function n(p,s,h,d,r,o){return l(),a("div",null,s[0]||(s[0]=[t("",34)]))}const g=i(e,[["render",n]]);export{c as __pageData,g as default};

@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as i,ae as s}from"./chunks/framework.rTUm5mJw.js";const u=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"前端/CSS——段落样式.md","filePath":"前端/CSS——段落样式.md"}'),n={name:"前端/CSS——段落样式.md"};function l(p,a,h,o,r,d){return i(),t("div",null,a[0]||(a[0]=[s("",17)]))}const _=e(n,[["render",l]]);export{u as __pageData,_ as default};

@@ -1,0 +1,4 @@
+import{_ as a,c as n,o as e,ae as t}from"./chunks/framework.rTUm5mJw.js";const h=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"人工智能/Python——列表——筛选元素.md","filePath":"人工智能/Python——列表——筛选元素.md"}'),p={name:"人工智能/Python——列表——筛选元素.md"};function i(o,s,_,l,c,r){return e(),n("div",null,s[0]||(s[0]=[t(`<p>一个常见的场景是要筛选出序列中的元素，此时推导式很有用。</p><p>如下示例返回当前目录下以 .py 结尾的文件。</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>import os</span></span>
+<span class="line"><span>files = os.listdir(&#39;.&#39;)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[x for x in file if x.endswith(&#39;.py&#39;)]</span></span></code></pre></div>`,3)]))}const f=a(p,[["render",i]]);export{h as __pageData,f as default};

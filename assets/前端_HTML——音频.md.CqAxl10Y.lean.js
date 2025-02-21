@@ -1,0 +1,1 @@
+import{_ as i,c as a,o as t,ae as n}from"./chunks/framework.rTUm5mJw.js";const o=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"前端/HTML——音频.md","filePath":"前端/HTML——音频.md"}'),l={name:"前端/HTML——音频.md"};function e(h,s,p,k,d,E){return t(),a("div",null,s[0]||(s[0]=[n("",5)]))}const c=i(l,[["render",e]]);export{o as __pageData,c as default};

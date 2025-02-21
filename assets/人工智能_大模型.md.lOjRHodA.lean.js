@@ -1,0 +1,1 @@
+import{_ as s,c as n,o as e,ae as p}from"./chunks/framework.rTUm5mJw.js";const u=JSON.parse('{"title":"大模型","description":"","frontmatter":{},"headers":[],"relativePath":"人工智能/大模型.md","filePath":"人工智能/大模型.md"}'),t={name:"人工智能/大模型.md"};function i(l,a,r,o,h,d){return e(),n("div",null,a[0]||(a[0]=[p("",132)]))}const m=s(t,[["render",i]]);export{u as __pageData,m as default};

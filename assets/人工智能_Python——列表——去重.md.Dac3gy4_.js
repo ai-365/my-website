@@ -1,0 +1,4 @@
+import{_ as a,c as n,o as e,ae as t}from"./chunks/framework.rTUm5mJw.js";const h=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"人工智能/Python——列表——去重.md","filePath":"人工智能/Python——列表——去重.md"}'),p={name:"人工智能/Python——列表——去重.md"};function i(o,s,_,l,c,r){return e(),n("div",null,s[0]||(s[0]=[t(`<p>序列允许值重复，如果要去重，可以利用set类型的不重复特性。</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>li = [1,2,2,3,3]</span></span>
+<span class="line"><span>set1 = set(li)</span></span>
+<span class="line"><span>print(set1)</span></span>
+<span class="line"><span># {1, 2, 3}</span></span></code></pre></div>`,2)]))}const m=a(p,[["render",i]]);export{h as __pageData,m as default};

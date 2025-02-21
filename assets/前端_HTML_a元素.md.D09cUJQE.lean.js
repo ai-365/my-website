@@ -1,1 +1,0 @@
-import{_ as i,c as a,o as t,ae as l}from"./chunks/framework.rTUm5mJw.js";const o=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"前端/HTML/a元素.md","filePath":"前端/HTML/a元素.md"}'),e={name:"前端/HTML/a元素.md"};function n(h,s,p,k,r,d){return t(),a("div",null,s[0]||(s[0]=[l("",5)]))}const g=i(e,[["render",n]]);export{o as __pageData,g as default};
