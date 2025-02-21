@@ -1,11 +1,23 @@
+::: tip 人工智能
+[人工智能](人工智能/index.md) 
+:::
 
-[人工智能](人工智能/) 
+::: warning JavaScript
+[JavaScript](JavaScript/index.md)  
+:::
 
-[Linux](Linux/)  
+::: tip Python
+[Python](Python/index.md)  
+:::
 
-[Python](Python/)  
 
-[JavaScript](JavaScript/)  
+::: warning Linux
+[Linux](Linux/index.md)  
+:::
+
+
+
+
 
 
 
