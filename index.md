@@ -1,12 +1,11 @@
 
-[AI](AI/index.md) 
+[人工智能](人工智能/) 
 
-[Linux](Linux/index.md)  
+[Linux](Linux/)  
 
-[Python](Python/index.md)  
+[Python](Python/)  
 
-[JavaScript](JavaScript/index.md)  
+[JavaScript](JavaScript/)  
 
-[Office](Office.md)  
 
 

@@ -79,7 +79,7 @@ A.T	|	A的转置矩阵
 
 如果元素的列数相同，则可以进行纵向堆叠，使用vstack()方法。
 
-![Numpy拼接](./../img/Numpy%E6%8B%BC%E6%8E%A5.svg)
+![Numpy拼接](img/Numpy拼接.svg)
 
 ### 运算
 
