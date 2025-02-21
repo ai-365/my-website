@@ -1,0 +1,1 @@
+import{_ as i,c as a,o as n,ae as h}from"./chunks/framework.rTUm5mJw.js";const g=JSON.parse('{"title":"特效","description":"","frontmatter":{},"headers":[],"relativePath":"前端/CSS/特效.md","filePath":"前端/CSS/特效.md"}'),l={name:"前端/CSS/特效.md"};function k(t,s,p,e,E,d){return n(),a("div",null,s[0]||(s[0]=[h("",53)]))}const y=i(l,[["render",k]]);export{g as __pageData,y as default};

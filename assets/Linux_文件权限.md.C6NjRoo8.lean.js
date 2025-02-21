@@ -1,0 +1,1 @@
+import{_ as s,c as i,o as e,ae as t}from"./chunks/framework.rTUm5mJw.js";const k=JSON.parse('{"title":"文件权限","description":"","frontmatter":{},"headers":[],"relativePath":"Linux/文件权限.md","filePath":"Linux/文件权限.md"}'),h={name:"Linux/文件权限.md"};function n(p,a,l,d,o,r){return e(),i("div",null,a[0]||(a[0]=[t("",17)]))}const u=s(h,[["render",n]]);export{k as __pageData,u as default};

@@ -1,1 +1,0 @@
-import{_ as i,c as a,o as t,ae as n}from"./chunks/framework.CDwmhxVj.js";const g=JSON.parse('{"title":"字符串","description":"","frontmatter":{},"headers":[],"relativePath":"Python/字符串.md","filePath":"Python/字符串.md"}'),h={name:"Python/字符串.md"};function p(l,s,e,k,r,d){return t(),a("div",null,s[0]||(s[0]=[n("",35)]))}const y=i(h,[["render",p]]);export{g as __pageData,y as default};

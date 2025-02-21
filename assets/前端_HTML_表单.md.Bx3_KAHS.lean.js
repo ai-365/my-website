@@ -1,0 +1,1 @@
+import{_ as i,c as a,o as t,ae as l}from"./chunks/framework.rTUm5mJw.js";const g=JSON.parse('{"title":"表单","description":"","frontmatter":{},"headers":[],"relativePath":"前端/HTML/表单.md","filePath":"前端/HTML/表单.md"}'),n={name:"前端/HTML/表单.md"};function h(p,s,e,k,E,r){return t(),a("div",null,s[0]||(s[0]=[l("",29)]))}const o=i(n,[["render",h]]);export{g as __pageData,o as default};

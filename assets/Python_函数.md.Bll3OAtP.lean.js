@@ -1,1 +1,0 @@
-import{_ as i,c as a,o as n,ae as h}from"./chunks/framework.CDwmhxVj.js";const g=JSON.parse('{"title":"函数","description":"","frontmatter":{},"headers":[],"relativePath":"Python/函数.md","filePath":"Python/函数.md"}'),p={name:"Python/函数.md"};function l(k,s,t,e,d,r){return n(),a("div",null,s[0]||(s[0]=[h("",24)]))}const y=i(p,[["render",l]]);export{g as __pageData,y as default};

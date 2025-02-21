@@ -1,1 +1,0 @@
-import{_ as i,c as a,o as h,ae as n}from"./chunks/framework.CDwmhxVj.js";const g=JSON.parse('{"title":"字典","description":"","frontmatter":{},"headers":[],"relativePath":"Python/字典.md","filePath":"Python/字典.md"}'),t={name:"Python/字典.md"};function k(p,s,l,e,E,d){return h(),a("div",null,s[0]||(s[0]=[n("",37)]))}const y=i(t,[["render",k]]);export{g as __pageData,y as default};

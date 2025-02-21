@@ -1,1 +1,0 @@
-import{_ as i,c as a,o as n,ae as t}from"./chunks/framework.CDwmhxVj.js";const c=JSON.parse('{"title":"异步","description":"","frontmatter":{},"headers":[],"relativePath":"Python/异步.md","filePath":"Python/异步.md"}'),p={name:"Python/异步.md"};function l(h,s,k,e,r,E){return n(),a("div",null,s[0]||(s[0]=[t("",13)]))}const y=i(p,[["render",l]]);export{c as __pageData,y as default};

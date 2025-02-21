@@ -1,1 +1,0 @@
-import{_ as i,c as a,o as e,ae as d}from"./chunks/framework.CDwmhxVj.js";const g=JSON.parse('{"title":"Git","description":"","frontmatter":{},"headers":[],"relativePath":"Linux/Git.md","filePath":"Linux/Git.md"}'),s={name:"Linux/Git.md"};function o(c,t,l,p,n,h){return e(),a("div",null,t[0]||(t[0]=[d("",89)]))}const u=i(s,[["render",o]]);export{g as __pageData,u as default};

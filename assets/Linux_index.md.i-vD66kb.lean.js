@@ -1,0 +1,1 @@
+import{_ as a,c as l,o as s,ae as c}from"./chunks/framework.rTUm5mJw.js";const n=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"Linux/index.md","filePath":"Linux/index.md"}'),e={name:"Linux/index.md"};function i(o,t,p,r,m,h){return s(),l("div",null,t[0]||(t[0]=[c("",12)]))}const u=a(e,[["render",i]]);export{n as __pageData,u as default};

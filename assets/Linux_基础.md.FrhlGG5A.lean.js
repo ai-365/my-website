@@ -1,0 +1,1 @@
+import{_ as e,c as l,o as s,ae as i}from"./chunks/framework.rTUm5mJw.js";const u=JSON.parse('{"title":"基础","description":"","frontmatter":{},"headers":[],"relativePath":"Linux/基础.md","filePath":"Linux/基础.md"}'),t={name:"Linux/基础.md"};function n(h,a,p,d,o,r){return s(),l("div",null,a[0]||(a[0]=[i("",61)]))}const b=e(t,[["render",n]]);export{u as __pageData,b as default};
