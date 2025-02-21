@@ -1,1 +1,0 @@
-import{_ as d,c as e,o as r,ae as a}from"./chunks/framework.rTUm5mJw.js";const s=JSON.parse('{"title":"Vim","description":"","frontmatter":{},"headers":[],"relativePath":"Linux/Vim.md","filePath":"Linux/Vim.md"}'),o={name:"Linux/Vim.md"};function h(l,t,i,c,n,b){return r(),e("div",null,t[0]||(t[0]=[a("",28)]))}const m=d(o,[["render",h]]);export{s as __pageData,m as default};

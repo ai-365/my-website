@@ -1,1 +1,0 @@
-import{_ as a,c as i,o as t,ae as e}from"./chunks/framework.rTUm5mJw.js";const r=JSON.parse('{"title":"常用命令","description":"","frontmatter":{},"headers":[],"relativePath":"Linux/常用命令.md","filePath":"Linux/常用命令.md"}'),p={name:"Linux/常用命令.md"};function h(l,s,n,d,k,o){return t(),i("div",null,s[0]||(s[0]=[e("",99)]))}const g=a(p,[["render",h]]);export{r as __pageData,g as default};
